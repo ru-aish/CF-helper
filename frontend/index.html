@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces AI Tutor</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-graduation-cap"></i> Codeforces AI Tutor</h1>
+            <p>Your intelligent companion for competitive programming mastery</p>
+        </header>
+
+        <!-- URL Input Section -->
+        <section id="url-section" class="section">
+            <div class="card">
+                <h2><i class="fas fa-link"></i> Enter Problem URL</h2>
+                <div class="input-group">
+                    <input type="url" id="problem-url" placeholder="https://codeforces.com/contest/2135/problem/C" class="url-input">
+                    <button id="extract-btn" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Extract Problem
+                    </button>
+                </div>
+                <div id="url-loading" class="loading hidden">
+                    <i class="fas fa-spinner fa-spin"></i> Extracting problem data...
+                </div>
+                <div id="url-error" class="error hidden"></div>
+            </div>
+        </section>
+
+        <!-- Problem Overview Section -->
+        <section id="problem-section" class="section hidden">
+            <div class="card">
+                <h2><i class="fas fa-code"></i> Problem Overview</h2>
+                <div id="problem-info">
+                    <div class="problem-header">
+                        <h3 id="problem-title"></h3>
+                        <p id="problem-contest"></p>
+                    </div>
+                    <div class="problem-meta">
+                        <span id="time-limit" class="meta-item"></span>
+                        <span id="memory-limit" class="meta-item"></span>
+                        <div id="tags" class="tags"></div>
+                    </div>
+                    <div id="problem-statement" class="problem-statement"></div>
+                    <div id="sample-tests" class="sample-tests"></div>
+                </div>
+                <button id="start-session-btn" class="btn btn-success">
+                    <i class="fas fa-play"></i> Start Tutoring Session
+                </button>
+            </div>
+        </section>
+
+        <!-- Tutoring Session Section -->
+        <section id="session-section" class="section hidden">
+            <div class="session-layout">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h3><i class="fas fa-comments"></i> AI Tutor Chat</h3>
+                        <div class="session-info">
+                            <span id="session-id-display"></span>
+                            <span id="hints-counter">Hints given: 0</span>
+                        </div>
+                    </div>
+                    <div id="chat-messages" class="chat-messages">
+                        <!-- Messages will be added here -->
+                    </div>
+                    <div class="chat-input-container">
+                        <div class="input-group">
+                            <textarea id="chat-input" placeholder="Ask a question, share your approach, or request help..." rows="2"></textarea>
+                            <button id="send-btn" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actions-panel">
+                    <h3><i class="fas fa-tools"></i> Quick Actions</h3>
+                    <button id="get-hint-btn" class="btn btn-info">
+                        <i class="fas fa-lightbulb"></i> Get Progressive Hint
+                    </button>
+                    <button id="get-solution-btn" class="btn btn-warning">
+                        <i class="fas fa-key"></i> Show Complete Solution
+                    </button>
+                    <button id="analyze-code-btn" class="btn btn-secondary">
+                        <i class="fas fa-search"></i> Analyze My Code
+                    </button>
+                    <button id="new-problem-btn" class="btn btn-outline">
+                        <i class="fas fa-plus"></i> New Problem
+                    </button>
+                    
+                    <div id="code-input-modal" class="modal hidden">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h3>Submit Your Code for Analysis</h3>
+                            <textarea id="student-code" placeholder="Paste your code here..." rows="15"></textarea>
+                            <div class="modal-actions">
+                                <button id="submit-code-btn" class="btn btn-primary">Submit for Analysis</button>
+                                <button id="cancel-code-btn" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading and Error States -->
+        <div id="global-loading" class="loading hidden">
+            <i class="fas fa-spinner fa-spin"></i> Processing...
+        </div>
+        <div id="global-error" class="error hidden"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

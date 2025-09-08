@@ -75,8 +75,14 @@ class ComprehensiveCodeforcesSolutionExtractor:
             # Extract problem ID from URL
             url_parts = url.split('/')
             problem_id = ""
-            if len(url_parts) >= 6:
-                problem_id = url_parts[-2] + url_parts[-1]  # e.g., "2135C"
+            if 'contest' in url_parts and 'problem' in url_parts:
+                problem_index = url_parts.index('problem')
+                if problem_index > 0:
+                    problem_id = url_parts[problem_index-1] + url_parts[problem_index+1]
+            elif 'problemset' in url_parts and 'problem' in url_parts:
+                problem_index = url_parts.index('problem')
+                if len(url_parts) > problem_index + 2:
+                    problem_id = url_parts[problem_index+1] + url_parts[problem_index+2]
 
             # Extract constraints
             time_limit_elem = problem_div.find('div', class_='time-limit')

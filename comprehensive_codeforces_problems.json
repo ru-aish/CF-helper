@@ -425,5 +425,402 @@
     ],
     "tutorials": [],
     "editorials": []
+  },
+  "2126A": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126A",
+    "problem_title": "2126A - Only One Digit",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int x;\n    cin >> x;\n    int mn = 9;\n    while(x > 0) {\n      mn = min(mn, x % 10);\n      x/=10;\n    }\n    cout << mn << endl;\n  }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int x;\n    cin >> x;\n    int mn = 9;\n    while(x > 0) {\n      mn = min(mn, x % 10);\n      x/=10;\n    }\n    cout << mn << endl;\n  }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126B": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126B",
+    "problem_title": "2126B - No Casino in the Mountains",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n,k;\n    cin >> n >> k;\n    int a[n + 1];\n    for(int i = 1;i <= n;i++) cin >> a[i];\n    int ans = 0;\n    int cnt = 0;\n    for(int i = 1;i <= n;i++) {\n      if(a[i] == 1) {\n        ans+=(cnt + 1)/(k + 1);\n        cnt = 0;\n        continue;\n      }\n      else {\n        cnt++;\n      }\n    }\n    ans+=(cnt + 1)/(k + 1);\n    cout << ans << endl;\n  }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n,k;\n    cin >> n >> k;\n    int a[n + 1];\n    for(int i = 1;i <= n;i++) cin >> a[i];\n    int ans = 0;\n    int cnt = 0;\n    for(int i = 1;i <= n;i++) {\n      if(a[i] == 1) {\n        ans+=(cnt + 1)/(k + 1);\n        cnt = 0;\n        continue;\n      }\n      else {\n        cnt++;\n      }\n    }\n    ans+=(cnt + 1)/(k + 1);\n    cout << ans << endl;\n  }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126C": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126C",
+    "problem_title": "2126C - I Will Definitely Make It",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n,p;\n    cin >> n >> p;\n    int a[n + 1];\n    for(int i = 1;i <= n;i++) cin >> a[i];\n    int cur = a[p];\n    int dist = a[p];\n    sort(a + 1,a + n + 1);\n    bool ans = true;\n    for(int i = 1;i <= n;i++) {\n      if(a[i] < cur) continue;\n      if(a[i] &mdash; cur > dist) {\n        ans = false;\n      }\n      cur = a[i];\n    }\n    if(ans) cout << \"YES\" << endl;\n    else cout << \"NO\" << endl;\n  }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n,p;\n    cin >> n >> p;\n    int a[n + 1];\n    for(int i = 1;i <= n;i++) cin >> a[i];\n    int cur = a[p];\n    int dist = a[p];\n    sort(a + 1,a + n + 1);\n    bool ans = true;\n    for(int i = 1;i <= n;i++) {\n      if(a[i] < cur) continue;\n      if(a[i] &mdash; cur > dist) {\n        ans = false;\n      }\n      cur = a[i];\n    }\n    if(ans) cout << \"YES\" << endl;\n    else cout << \"NO\" << endl;\n  }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126D": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126D",
+    "problem_title": "2126D - This Is the Last Time",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n,k;\n    cin >> n >> k;\n    pair <int,pair <int,int> > p[n + 1];\n    for(int i = 1;i <= n;i++) cin >> p[i].first >> p[ыi].second.first >> p[i].second.second;\n    sort(p + 1,p + n + 1);\n    int cur = k;\n    for(int i = 1;i <= n;i++) {\n      if(p[i].first > cur) break;\n      cur = max(cur,p[i].second.second);\n    }\n    cout << cur << endl;\n  }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n,k;\n    cin >> n >> k;\n    pair <int,pair <int,int> > p[n + 1];\n    for(int i = 1;i <= n;i++) cin >> p[i].first >> p[ыi].second.first >> p[i].second.second;\n    sort(p + 1,p + n + 1);\n    int cur = k;\n    for(int i = 1;i <= n;i++) {\n      if(p[i].first > cur) break;\n      cur = max(cur,p[i].second.second);\n    }\n    cout << cur << endl;\n  }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126E": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126E",
+    "problem_title": "2126E - G-C-D, Unlucky!",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nmain() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n;\n        cin >> n;\n        long long a[n + 1];\n        for (int i = 1; i <= n; i++) {\n            cin >> a[i];\n        }\n        long long b[n + 1];\n        for (int i = 1; i <= n; i++) {\n            cin >> b[i];\n        }\n        long long ans[n + 1];\n        for (int i = n; i >= 1; i--) {\n            ans[i] = lcm(a[i], b[i]);\n        }\n        bool ch = 1;\n        if(ans[1] != a[1]) ch = 0;\n        if(ans[n] != b[n]) ch = 0;\n        for (int i = 2; i <= n; i++) {\n            if (__gcd(a[i &mdash; 1], ans[i]) != a[i]) {\n                ch = 0;\n            }\n        }\n        for (int i = n &mdash; 1; i >= 1; i--) {\n            if (__gcd(b[i + 1], ans[i]) != b[i]) {\n                ch = 0;\n            }\n        }\n        if (ch) {\n            cout << \"YES\" << \"\\n\";\n        } else {\n            cout << \"NO\" << \"\\n\";\n        }\n    }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nmain() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n;\n        cin >> n;\n        long long a[n + 1];\n        for (int i = 1; i <= n; i++) {\n            cin >> a[i];\n        }\n        long long b[n + 1];\n        for (int i = 1; i <= n; i++) {\n            cin >> b[i];\n        }\n        long long ans[n + 1];\n        for (int i = n; i >= 1; i--) {\n            ans[i] = lcm(a[i], b[i]);\n        }\n        bool ch = 1;\n        if(ans[1] != a[1]) ch = 0;\n        if(ans[n] != b[n]) ch = 0;\n        for (int i = 2; i <= n; i++) {\n            if (__gcd(a[i &mdash; 1], ans[i]) != a[i]) {\n                ch = 0;\n            }\n        }\n        for (int i = n &mdash; 1; i >= 1; i--) {\n            if (__gcd(b[i + 1], ans[i]) != b[i]) {\n                ch = 0;\n            }\n        }\n        if (ch) {\n            cout << \"YES\" << \"\\n\";\n        } else {\n            cout << \"NO\" << \"\\n\";\n        }\n    }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126F": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126F",
+    "problem_title": "2126F - 1-1-1, Free Tree!",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nconst int B = 2e5 + 100;\nint n;\nint col[B];\nlong long costt = 0;\nvector <pair <int,int> > reb[B];\nbool was[B];\nmap <int,long long> cnt[B];\nint pred[B];\nlong long zn[B];\nvoid dfs(int v) {\n  was[v] = true;\n  for(auto u:reb[v]) {\n    if(was[u.first]) {\n      pred[v] = u.first;\n      continue;\n    }\n    if(col[v] != col[u.first]) costt+=u.second;\n    dfs(u.first);\n    zn[u.first] = u.second;\n    cnt[v][col[u.first]]+=zn[u.first];\n  }\n}\nvoid update(int v,int x) {\n  if(v != 1) {\n    cnt[pred[v]][col[v]]-=zn[v];\n    if(col[pred[v]] == col[v]) costt+=zn[v];\n    cnt[pred[v]][x]+=zn[v];\n    if(col[pred[v]] == x) costt-=zn[v];\n  }\n  else {\n      \n  }\n  costt+=cnt[v][col[v]];\n  costt-=cnt[v][x];\n  col[v] = x;\n}\nvoid clr() {\n  for(int i = 1;i <= n;i++) {\n    reb[i].clear();\n    was[i] = false;\n    cnt[i].clear();\n    zn[i] = 0;\n  }\n  costt = 0;\n}\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int q;\n    cin >> n >> q;\n    for(int i = 1; i <= n; i++) cin >> col[i];\n    for(int i = 1; i < n; i++) {\n      int u, v, c;\n      cin >> u >> v >> c;\n      reb[v].push_back({u,c});\n      reb[u].push_back({v,c});\n    }\n    dfs(1);\n    while(q--) {\n      int pos,x;\n      cin >> pos >> x;\n      update(pos,x);\n      cout << costt << \"\\n\";\n    }\n    clr();\n  }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nconst int B = 2e5 + 100;\nint n;\nint col[B];\nlong long costt = 0;\nvector <pair <int,int> > reb[B];\nbool was[B];\nmap <int,long long> cnt[B];\nint pred[B];\nlong long zn[B];\nvoid dfs(int v) {\n  was[v] = true;\n  for(auto u:reb[v]) {\n    if(was[u.first]) {\n      pred[v] = u.first;\n      continue;\n    }\n    if(col[v] != col[u.first]) costt+=u.second;\n    dfs(u.first);\n    zn[u.first] = u.second;\n    cnt[v][col[u.first]]+=zn[u.first];\n  }\n}\nvoid update(int v,int x) {\n  if(v != 1) {\n    cnt[pred[v]][col[v]]-=zn[v];\n    if(col[pred[v]] == col[v]) costt+=zn[v];\n    cnt[pred[v]][x]+=zn[v];\n    if(col[pred[v]] == x) costt-=zn[v];\n  }\n  else {\n      \n  }\n  costt+=cnt[v][col[v]];\n  costt-=cnt[v][x];\n  col[v] = x;\n}\nvoid clr() {\n  for(int i = 1;i <= n;i++) {\n    reb[i].clear();\n    was[i] = false;\n    cnt[i].clear();\n    zn[i] = 0;\n  }\n  costt = 0;\n}\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int q;\n    cin >> n >> q;\n    for(int i = 1; i <= n; i++) cin >> col[i];\n    for(int i = 1; i < n; i++) {\n      int u, v, c;\n      cin >> u >> v >> c;\n      reb[v].push_back({u,c});\n      reb[u].push_back({v,c});\n    }\n    dfs(1);\n    while(q--) {\n      int pos,x;\n      cin >> pos >> x;\n      update(pos,x);\n      cout << costt << \"\\n\";\n    }\n    clr();\n  }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126G1": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126G1",
+    "problem_title": "2126G1 - Big Wins! (easy version)",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\nusing namespace std;\nconst int B = 2e5 + 100;\n\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n;\n    cin >> n;\n    int a[n + 1];\n    for(int i = 1;i <= n;i++) cin >> a[i];\n    int ans = 0;\n    for(int i = 1;i <= 100;i++) {\n      int b[n + 1] = {};\n      for(int j = 1;j <= n;j++) {\n        if(a[j] >= i) b[j] = 1;\n        else b[j] = -1;\n      }\n      int pref[n + 1] = {};\n      for(int j = 1; j <= n; j++) {\n        pref[j] = pref[j - 1] + b[j]; \n      }\n      int prefmn[n + 2] = {},suffmx[n + 1] = {};\n      prefmn[0] = 0,suffmx[n] = pref[n];\n      for(int j = 1; j <= n; j++) {\n        prefmn[j] = min(prefmn[j - 1],pref[j]);\n      }\n      for(int j = n - 1; j >= 1; j--) {\n        suffmx[j] = max(suffmx[j + 1],pref[j]);\n      }\n      for(int j = 1; j <= n; j++) {\n        if(prefmn[j - 1] <= pref[j] || pref[j - 1] <= suffmx[j]) {\n          ans = max(ans,i - a[j]);\n        }\n      }\n    } \n    cout << ans << endl;\n  }\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\nusing namespace std;\nconst int B = 2e5 + 100;\n\nint main() {\n  int t;\n  cin >> t;\n  while(t--) {\n    int n;\n    cin >> n;\n    int a[n + 1];\n    for(int i = 1;i <= n;i++) cin >> a[i];\n    int ans = 0;\n    for(int i = 1;i <= 100;i++) {\n      int b[n + 1] = {};\n      for(int j = 1;j <= n;j++) {\n        if(a[j] >= i) b[j] = 1;\n        else b[j] = -1;\n      }\n      int pref[n + 1] = {};\n      for(int j = 1; j <= n; j++) {\n        pref[j] = pref[j - 1] + b[j]; \n      }\n      int prefmn[n + 2] = {},suffmx[n + 1] = {};\n      prefmn[0] = 0,suffmx[n] = pref[n];\n      for(int j = 1; j <= n; j++) {\n        prefmn[j] = min(prefmn[j - 1],pref[j]);\n      }\n      for(int j = n - 1; j >= 1; j--) {\n        suffmx[j] = max(suffmx[j + 1],pref[j]);\n      }\n      for(int j = 1; j <= n; j++) {\n        if(prefmn[j - 1] <= pref[j] || pref[j - 1] <= suffmx[j]) {\n          ans = max(ans,i - a[j]);\n        }\n      }\n    } \n    cout << ans << endl;\n  }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "2126G2": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "2126G2",
+    "problem_title": "G2. Big Wins! (hard version)",
+    "time_limit": "4 seconds",
+    "memory_limit": "256 megabytes",
+    "statement": "This is the hard version of the problem. The difference between the versions is that in this version $$$a_i \\leq n$$$.You are given an array of $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$.Your task is to find a subarray $$$a[l, r]$$$ (a continuous sequence of elements $$$a_l, a_{l + 1}, \\dots, a_r$$$) for which the value of the expression $$$\\text{med}(a[l, r]) - \\min(a[l, r])$$$ is maximized.Here:$$$\\text{med}$$$ is the median of the subarray, that is, the element at position $$$\\left\\lceil \\frac{k + 1}{2} \\right\\rceil$$$ after sorting the subarray, where $$$k$$$ is its length;$$$\\min$$$ is the minimum element of this subarray.For example, consider the array $$$a=[1, 4, 1, 5, 3, 3]$$$ and choose the subarray $$$a[2, 5] = [4, 1, 5, 3]$$$. In sorted form, it looks like $$$[1, 3, 4, 5]$$$.$$$\\text{med}(a[2, 5]) = 4$$$, since $$$\\left\\lceil \\frac{4 + 1}{2} \\right\\rceil = $$$ the third element in the sorted subarray is $$$4$$$;$$$\\min(a[2, 5]) = 1$$$, since the minimum element is $$$1$$$.In this example, the value $$$\\text{med} - \\min = 4 - 1 = 3$$$.\n\nInputThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.The first line of each test case contains one integer $$$n$$$ ($$$1 \\leq n \\leq 2 \\cdot 10^5$$$) — the length of the array.The second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$ ($$$1 \\leq a_i \\leq n$$$) — the elements of the array.It is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.\n\nOutputFor each test case, output one integer — the maximum possible value of $$$\\text{med} - \\min$$$ among all subarrays of the array.",
+    "sample_inputs": [
+      "553 2 5 3 144 1 1 376 1 3 4 6 2 744 2 3 151 2 3 4 5"
+    ],
+    "sample_outputs": [
+      "3\n3\n5\n2\n2"
+    ],
+    "notes": "NoteIn the first example, consider the array: $$$a=[3,\\ 2,\\ 5,\\ 3,\\ 1]$$$ you can choose the subarray $$$a[2,\\ 3]$$$, that is, the elements $$$[2,\\ 5]$$$.The length of the subarray is $$$2$$$.The median is the element at position $$$\\left\\lceil \\dfrac{3}{2} \\right\\rceil = 2$$$ in the sorted subarray. After sorting, we get $$$[2,\\ 5]$$$, $$$\\text{med} = 5$$$.The minimum element of the subarray: $$$\\min = 2$$$.Therefore, $$$\\text{med} - \\min = 5 - 2 = 3$$$, which is the maximum answer.In the second test, the array: $$$a=[4,\\ 1,\\ 1,\\ 3]$$$ you can choose the subarray $$$a[1,\\ 2]$$$, that is, the elements $$$[4,\\ 1]$$$.The length of the subarray is $$$2$$$.The median is the element at position $$$\\left\\lceil \\dfrac{3}{2} \\right\\rceil = 2$$$ in the sorted subarray. After sorting, we get $$$[1,\\ 4]$$$, $$$\\text{med} = 4$$$.The minimum element of the subarray: $$$\\min = 1$$$.Therefore, $$$\\text{med} - \\min = 4 - 1 = 3$$$.It can be proven that both of these subarrays are optimal and yield the maximum value of the expression $$$\\text{med} - \\min$$$.",
+    "tags": [
+      "binary search",
+      "data structures",
+      "divide and conquer",
+      "dsu",
+      "trees",
+      "two pointers",
+      "*2400"
+    ],
+    "url": "https://codeforces.com/contest/2126/problem/G2",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include<bits/stdc++.h>\nusing namespace std;\nint n;\nint a[200005 + 2];\narray<int, 4> t[800005];\narray<int, 4> merge(array<int, 4>a, array<int, 4>b) {\n    int ans = max(a[0], b[0]);\n    int mxpref = max(a[1], a[3] + b[1]);\n    int mxsuff = max(b[2], a[2] + b[3]);\n    ans = max({ans, mxpref, mxsuff});\n    int sum = a[3] + b[3];\n    return {ans, mxpref, mxsuff, sum};\n}\nvoid update(int v, int tl, int tr, int pos, int val) {\n    if (tl == tr) {\n        t[v] = {max(val, 0), max(val, 0), max(val, 0), val};\n    } else {\n        int tm = (tl + tr) >> 1;\n        if (pos <= tm) {\n            update(v * 2, tl, tm, pos, val);\n        } else {\n            update(v * 2 + 1, tm + 1, tr, pos, val);\n        }\n        t[v] = merge(t[v * 2], t[v * 2 + 1]);\n    }\n}\narray<int, 4> get(int v, int tl, int tr, int l, int r) {\n    if (tl == l && tr == r) {\n        return t[v];\n    } else if (l > r) {\n        return {0, 0, 0, 0};\n    } else {\n        int tm = (tl + tr) >> 1;\n        return merge(get(v * 2, tl, tm, l, min(r, tm)), get(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r));\n    }\n}\nint solve(int n, vector<int>A) {\n    int m = 0;\n    for (int i = 1; i <= n; i++) {\n        a[i] = A[i &mdash; 1];\n        m = max(m, a[i]);\n    }\n    vector<int>ind[m + 1];\n    for (int i = 1; i <= n; i++) {\n        ind[a[i]].push_back(i);\n    }\n    stack<int>s;\n    s.push(0);\n    a[0] = -INT_MAX;\n    int l[n + 1];\n    for (int i = 1; i <= n; i++) {\n        while (a[s.top()] >= a[i]) {\n            s.pop();\n        }\n        l[i] = s.top() + 1;\n        s.push(i);\n    }\n    a[n + 1] = -INT_MAX;\n    s.push(n + 1);\n    int r[n + 1];\n    for (int i = n; i >= 1; i--) {\n        while (a[s.top()] >= a[i]) {\n            s.pop();\n        }\n        r[i] = s.top() &mdash; 1;\n        s.push(i);\n    }\n    int med = 1;\n    for (int i = 1; i <= n; i++) {\n        update(1, 1, n, i, 1);\n    }\n    for (auto u : ind[1]) {\n        update(1, 1, n, u, -1);\n    }\n    int ans = 0;\n    for (int mn = 1; mn <= m; mn++) {\n        for (auto u : ind[mn]) {\n            int lg = l[u], rg = r[u];\n            while (med < m && get(1, 1, n, lg, u &mdash; 1)[2] + get(1, 1, n, u + 1, rg)[1] + (a[u] < (med) ? -1 : 1) >= 0) {\n                med++;\n                for (auto u : ind[med]) {\n                    update(1, 1, n, u, -1);\n                }\n            }\n        }\n        // cout << med << ' ' << mn << endl;\n        ans = max(ans, med &mdash; mn);\n    }\n    return ans;\n}\nint solveslow(int n, vector<int>A) {\n    for (int i = 1; i <= n; i++) {\n        a[i] = A[i &mdash; 1];\n    }\n    int mx = 0;\n    for (int i = 1; i <= n; i++) {\n        vector<int>v;\n        for (int j = i; j <= n; j++) {\n            v.push_back(a[j]);\n            sort(v.begin(), v.end());\n            mx = max(mx, v[v.size() / 2] &mdash; v[0]);\n        }\n    }\n    return mx;\n}\nint rnd() {\n    return (rand() + rand() * RAND_MAX);\n}\nmain() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(0);\n    int tt;\n    cin >> tt;\n    while(tt--) {\n        int n;\n        cin >> n;\n        vector<int>v;\n        for (int i = 1; i <= n; i++) {\n            int x;\n            cin >> x;\n            v.push_back(x);\n        }\n        cout << solve(n, v) << endl;\n        // cout << solveslow(n, v) << endl;\n        for(int i = 0;i <= n*4;i++) {\n            t[i][0] = 0;\n            t[i][1] = 0;\n            t[i][2] = 0;\n            t[i][3] = 0;\n        }\n    }\n}",
+        "codes": [
+          "#include<bits/stdc++.h>\nusing namespace std;\nint n;\nint a[200005 + 2];\narray<int, 4> t[800005];\narray<int, 4> merge(array<int, 4>a, array<int, 4>b) {\n    int ans = max(a[0], b[0]);\n    int mxpref = max(a[1], a[3] + b[1]);\n    int mxsuff = max(b[2], a[2] + b[3]);\n    ans = max({ans, mxpref, mxsuff});\n    int sum = a[3] + b[3];\n    return {ans, mxpref, mxsuff, sum};\n}\nvoid update(int v, int tl, int tr, int pos, int val) {\n    if (tl == tr) {\n        t[v] = {max(val, 0), max(val, 0), max(val, 0), val};\n    } else {\n        int tm = (tl + tr) >> 1;\n        if (pos <= tm) {\n            update(v * 2, tl, tm, pos, val);\n        } else {\n            update(v * 2 + 1, tm + 1, tr, pos, val);\n        }\n        t[v] = merge(t[v * 2], t[v * 2 + 1]);\n    }\n}\narray<int, 4> get(int v, int tl, int tr, int l, int r) {\n    if (tl == l && tr == r) {\n        return t[v];\n    } else if (l > r) {\n        return {0, 0, 0, 0};\n    } else {\n        int tm = (tl + tr) >> 1;\n        return merge(get(v * 2, tl, tm, l, min(r, tm)), get(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r));\n    }\n}\nint solve(int n, vector<int>A) {\n    int m = 0;\n    for (int i = 1; i <= n; i++) {\n        a[i] = A[i &mdash; 1];\n        m = max(m, a[i]);\n    }\n    vector<int>ind[m + 1];\n    for (int i = 1; i <= n; i++) {\n        ind[a[i]].push_back(i);\n    }\n    stack<int>s;\n    s.push(0);\n    a[0] = -INT_MAX;\n    int l[n + 1];\n    for (int i = 1; i <= n; i++) {\n        while (a[s.top()] >= a[i]) {\n            s.pop();\n        }\n        l[i] = s.top() + 1;\n        s.push(i);\n    }\n    a[n + 1] = -INT_MAX;\n    s.push(n + 1);\n    int r[n + 1];\n    for (int i = n; i >= 1; i--) {\n        while (a[s.top()] >= a[i]) {\n            s.pop();\n        }\n        r[i] = s.top() &mdash; 1;\n        s.push(i);\n    }\n    int med = 1;\n    for (int i = 1; i <= n; i++) {\n        update(1, 1, n, i, 1);\n    }\n    for (auto u : ind[1]) {\n        update(1, 1, n, u, -1);\n    }\n    int ans = 0;\n    for (int mn = 1; mn <= m; mn++) {\n        for (auto u : ind[mn]) {\n            int lg = l[u], rg = r[u];\n            while (med < m && get(1, 1, n, lg, u &mdash; 1)[2] + get(1, 1, n, u + 1, rg)[1] + (a[u] < (med) ? -1 : 1) >= 0) {\n                med++;\n                for (auto u : ind[med]) {\n                    update(1, 1, n, u, -1);\n                }\n            }\n        }\n        // cout << med << ' ' << mn << endl;\n        ans = max(ans, med &mdash; mn);\n    }\n    return ans;\n}\nint solveslow(int n, vector<int>A) {\n    for (int i = 1; i <= n; i++) {\n        a[i] = A[i &mdash; 1];\n    }\n    int mx = 0;\n    for (int i = 1; i <= n; i++) {\n        vector<int>v;\n        for (int j = i; j <= n; j++) {\n            v.push_back(a[j]);\n            sort(v.begin(), v.end());\n            mx = max(mx, v[v.size() / 2] &mdash; v[0]);\n        }\n    }\n    return mx;\n}\nint rnd() {\n    return (rand() + rand() * RAND_MAX);\n}\nmain() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(0);\n    int tt;\n    cin >> tt;\n    while(tt--) {\n        int n;\n        cin >> n;\n        vector<int>v;\n        for (int i = 1; i <= n; i++) {\n            int x;\n            cin >> x;\n            v.push_back(x);\n        }\n        cout << solve(n, v) << endl;\n        // cout << solveslow(n, v) << endl;\n        for(int i = 0;i <= n*4;i++) {\n            t[i][0] = 0;\n            t[i][1] = 0;\n            t[i][2] = 0;\n            t[i][3] = 0;\n        }\n    }\n}"
+        ]
+      }
+    ],
+    "tutorials": [
+      {
+        "title": "tutorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ],
+    "editorials": []
+  },
+  "problemG2": {
+    "contest_title": "Codeforces Round 1037 (Div. 3)",
+    "problem_id": "problemG2",
+    "problem_title": "G2. Big Wins! (hard version)",
+    "time_limit": "4 seconds",
+    "memory_limit": "256 megabytes",
+    "statement": "This is the hard version of the problem. The difference between the versions is that in this version $$$a_i \\leq n$$$.You are given an array of $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$.Your task is to find a subarray $$$a[l, r]$$$ (a continuous sequence of elements $$$a_l, a_{l + 1}, \\dots, a_r$$$) for which the value of the expression $$$\\text{med}(a[l, r]) - \\min(a[l, r])$$$ is maximized.Here:$$$\\text{med}$$$ is the median of the subarray, that is, the element at position $$$\\left\\lceil \\frac{k + 1}{2} \\right\\rceil$$$ after sorting the subarray, where $$$k$$$ is its length;$$$\\min$$$ is the minimum element of this subarray.For example, consider the array $$$a=[1, 4, 1, 5, 3, 3]$$$ and choose the subarray $$$a[2, 5] = [4, 1, 5, 3]$$$. In sorted form, it looks like $$$[1, 3, 4, 5]$$$.$$$\\text{med}(a[2, 5]) = 4$$$, since $$$\\left\\lceil \\frac{4 + 1}{2} \\right\\rceil = $$$ the third element in the sorted subarray is $$$4$$$;$$$\\min(a[2, 5]) = 1$$$, since the minimum element is $$$1$$$.In this example, the value $$$\\text{med} - \\min = 4 - 1 = 3$$$.\n\nInputThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.The first line of each test case contains one integer $$$n$$$ ($$$1 \\leq n \\leq 2 \\cdot 10^5$$$) — the length of the array.The second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$ ($$$1 \\leq a_i \\leq n$$$) — the elements of the array.It is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.\n\nOutputFor each test case, output one integer — the maximum possible value of $$$\\text{med} - \\min$$$ among all subarrays of the array.",
+    "sample_inputs": [
+      "553 2 5 3 144 1 1 376 1 3 4 6 2 744 2 3 151 2 3 4 5"
+    ],
+    "sample_outputs": [
+      "3\n3\n5\n2\n2"
+    ],
+    "notes": "NoteIn the first example, consider the array: $$$a=[3,\\ 2,\\ 5,\\ 3,\\ 1]$$$ you can choose the subarray $$$a[2,\\ 3]$$$, that is, the elements $$$[2,\\ 5]$$$.The length of the subarray is $$$2$$$.The median is the element at position $$$\\left\\lceil \\dfrac{3}{2} \\right\\rceil = 2$$$ in the sorted subarray. After sorting, we get $$$[2,\\ 5]$$$, $$$\\text{med} = 5$$$.The minimum element of the subarray: $$$\\min = 2$$$.Therefore, $$$\\text{med} - \\min = 5 - 2 = 3$$$, which is the maximum answer.In the second test, the array: $$$a=[4,\\ 1,\\ 1,\\ 3]$$$ you can choose the subarray $$$a[1,\\ 2]$$$, that is, the elements $$$[4,\\ 1]$$$.The length of the subarray is $$$2$$$.The median is the element at position $$$\\left\\lceil \\dfrac{3}{2} \\right\\rceil = 2$$$ in the sorted subarray. After sorting, we get $$$[1,\\ 4]$$$, $$$\\text{med} = 4$$$.The minimum element of the subarray: $$$\\min = 1$$$.Therefore, $$$\\text{med} - \\min = 4 - 1 = 3$$$.It can be proven that both of these subarrays are optimal and yield the maximum value of the expression $$$\\text{med} - \\min$$$.",
+    "tags": [
+      "binary search",
+      "data structures",
+      "divide and conquer",
+      "dsu",
+      "trees",
+      "two pointers",
+      "*2400"
+    ],
+    "url": "https://codeforces.com/contest/2126/problem/G2",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "144845",
+          "url": "/blog/entry/144845",
+          "full_url": "https://codeforces.com/blog/entry/144845"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [],
+    "tutorials": [],
+    "editorials": []
   }
 }
