@@ -8,112 +8,124 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1><i class="fas fa-graduation-cap"></i> Codeforces AI Tutor</h1>
-            <p>Your intelligent companion for competitive programming mastery</p>
-        </header>
-
-        <!-- URL Input Section -->
-        <section id="url-section" class="section">
-            <div class="card">
-                <h2><i class="fas fa-link"></i> Enter Problem URL</h2>
-                <div class="input-group">
-                    <input type="url" id="problem-url" placeholder="https://codeforces.com/contest/2135/problem/C" class="url-input">
-                    <button id="extract-btn" class="btn btn-primary">
-                        <i class="fas fa-download"></i> Extract Problem
-                    </button>
-                </div>
-                <div id="url-loading" class="loading hidden">
-                    <i class="fas fa-spinner fa-spin"></i> Extracting problem data...
-                </div>
-                <div id="url-error" class="error hidden"></div>
-            </div>
-        </section>
-
-        <!-- Problem Overview Section -->
-        <section id="problem-section" class="section hidden">
-            <div class="card">
-                <h2><i class="fas fa-code"></i> Problem Overview</h2>
-                <div id="problem-info">
-                    <div class="problem-header">
-                        <h3 id="problem-title"></h3>
-                        <p id="problem-contest"></p>
-                    </div>
-                    <div class="problem-meta">
-                        <span id="time-limit" class="meta-item"></span>
-                        <span id="memory-limit" class="meta-item"></span>
-                        <div id="tags" class="tags"></div>
-                    </div>
-                    <div id="problem-statement" class="problem-statement"></div>
-                    <div id="sample-tests" class="sample-tests"></div>
-                </div>
-                <button id="start-session-btn" class="btn btn-success">
-                    <i class="fas fa-play"></i> Start Tutoring Session
+<body class="theme-dark">
+    <div class="app-shell">
+        <!-- Sidebar (ChatGPT-like) -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <button id="new-chat-btn" class="sidebar-btn primary">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New Chat</span>
                 </button>
             </div>
-        </section>
-
-        <!-- Tutoring Session Section -->
-        <section id="session-section" class="section hidden">
-            <div class="session-layout">
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <h3><i class="fas fa-comments"></i> AI Tutor Chat</h3>
-                        <div class="session-info">
-                            <span id="session-id-display"></span>
-                            <span id="hints-counter">Hints given: 0</span>
-                        </div>
-                    </div>
-                    <div id="chat-messages" class="chat-messages">
-                        <!-- Messages will be added here -->
-                    </div>
-                    <div class="chat-input-container">
-                        <div class="input-group">
-                            <textarea id="chat-input" placeholder="Ask a question, share your approach, or request help..." rows="2"></textarea>
-                            <button id="send-btn" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i> Send
-                            </button>
-                        </div>
-                    </div>
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Conversations</div>
+                <div id="conversations-list" class="conversations-list">
+                    <!-- Conversations rendered here -->
                 </div>
-                
-                <div class="actions-panel">
-                    <h3><i class="fas fa-tools"></i> Quick Actions</h3>
-                    <button id="get-hint-btn" class="btn btn-info">
-                        <i class="fas fa-lightbulb"></i> Get Progressive Hint
+            </div>
+            <div class="sidebar-bottom">
+                <button id="theme-toggle" class="icon-btn" title="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="https://codeforces.com" target="_blank" class="icon-btn" title="Open Codeforces">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main area -->
+        <main class="main">
+            <!-- Topbar with URL input (ChatGPT-like header) -->
+            <header class="topbar">
+                <div class="brand">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Codeforces AI Tutor</span>
+                </div>
+                <div class="url-bar">
+                    <input type="url" id="problem-url" class="url-input" placeholder="Paste Codeforces URL e.g. https://codeforces.com/contest/2135/problem/C">
+                    <button id="extract-btn" class="btn btn-primary"><i class="fa-solid fa-download"></i> Extract</button>
+                    <button id="start-session-btn" class="btn btn-success" disabled>
+                        <i class="fa-solid fa-play"></i> Start Session
                     </button>
-                    <button id="get-solution-btn" class="btn btn-warning">
-                        <i class="fas fa-key"></i> Show Complete Solution
-                    </button>
-                    <button id="analyze-code-btn" class="btn btn-secondary">
-                        <i class="fas fa-search"></i> Analyze My Code
-                    </button>
-                    <button id="new-problem-btn" class="btn btn-outline">
-                        <i class="fas fa-plus"></i> New Problem
-                    </button>
-                    
-                    <div id="code-input-modal" class="modal hidden">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h3>Submit Your Code for Analysis</h3>
-                            <textarea id="student-code" placeholder="Paste your code here..." rows="15"></textarea>
-                            <div class="modal-actions">
-                                <button id="submit-code-btn" class="btn btn-primary">Submit for Analysis</button>
-                                <button id="cancel-code-btn" class="btn btn-secondary">Cancel</button>
-                            </div>
+                </div>
+                <div class="topbar-right">
+                    <span id="session-id-display" class="subtle"></span>
+                </div>
+            </header>
+
+            <!-- Problem quick bar (appears after extraction) -->
+            <section id="problem-bar" class="problem-bar hidden">
+                <div class="problem-meta-left">
+                    <div class="problem-title-row">
+                        <span id="problem-title" class="problem-title"></span>
+                        <a id="problem-open-link" href="#" target="_blank" class="icon-link" title="Open on Codeforces"><i class="fa-solid fa-up-right-from-square"></i></a>
+                    </div>
+                    <div id="problem-contest" class="problem-contest"></div>
+                </div>
+                <div class="problem-meta-right">
+                    <span id="time-limit" class="pill"></span>
+                    <span id="memory-limit" class="pill"></span>
+                    <div id="tags" class="tags"></div>
+                    <button id="view-problem-btn" class="chip" title="View statement and samples"><i class="fa-regular fa-file-lines"></i></button>
+                </div>
+            </section>
+
+            <!-- Chat thread -->
+            <section class="chat-thread" id="session-section">
+                <div id="chat-messages" class="chat-messages"></div>
+
+                <!-- Composer -->
+                <div class="composer">
+                    <div class="composer-row">
+                        <textarea id="chat-input" rows="1" placeholder="Message Codeforces Tutor… (Shift+Enter = newline)"></textarea>
+                        <div class="composer-actions">
+                            <button id="get-hint-btn" class="chip" title="Get progressive hint"><i class="fa-regular fa-lightbulb"></i></button>
+                            <button id="get-solution-btn" class="chip" title="Reveal solution"><i class="fa-solid fa-key"></i></button>
+                            <button id="analyze-code-btn" class="chip" title="Analyze my code"><i class="fa-solid fa-code"></i></button>
+                            <button id="regenerate-btn" class="chip" title="Regenerate answer"><i class="fa-solid fa-rotate-right"></i></button>
+                            <button id="stop-btn" class="chip danger" title="Stop generating" disabled><i class="fa-solid fa-stop"></i></button>
+                            <button id="send-btn" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
                         </div>
+                    </div>
+                    <div class="composer-hint" id="hints-counter">Hints given: 0</div>
+                </div>
+            </section>
+
+            <!-- Hidden legacy containers required by JS (kept for compatibility) -->
+            <section id="url-section" class="hidden"></section>
+            <section id="problem-section" class="hidden"></section>
+
+            <!-- Modals -->
+            <div id="code-input-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Submit Your Code for Analysis</h3>
+                    <textarea id="student-code" placeholder="Paste your code here..." rows="15"></textarea>
+                    <div class="modal-actions">
+                        <button id="submit-code-btn" class="btn btn-primary">Submit for Analysis</button>
+                        <button id="cancel-code-btn" class="btn btn-secondary">Cancel</button>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Loading and Error States -->
-        <div id="global-loading" class="loading hidden">
-            <i class="fas fa-spinner fa-spin"></i> Processing...
-        </div>
-        <div id="global-error" class="error hidden"></div>
+            <div id="problem-details-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3 id="pd-title">Problem Details</h3>
+                    <div id="pd-body">
+                        <div id="pd-statement" class="problem-statement"></div>
+                        <div id="pd-samples" class="sample-tests"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading and Error States -->
+            <div id="url-loading" class="loading hidden"><i class="fas fa-spinner fa-spin"></i> Extracting problem data...</div>
+            <div id="url-error" class="error hidden"></div>
+            <div id="global-loading" class="loading hidden"><i class="fas fa-spinner fa-spin"></i> Processing...</div>
+            <div id="global-error" class="error hidden"></div>
+        </main>
     </div>
 
     <!-- Scripts -->

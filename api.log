@@ -124,3 +124,155 @@
 2025-09-08 23:08:46,734 - app - INFO - Duration: 10.538s
 2025-09-08 23:08:46,734 - app - INFO - === API CALL END: chat ===
 2025-09-08 23:08:46,736 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:08:46] "POST /api/chat HTTP/1.1" 200 -
+2025-09-08 23:36:46,412 - app - INFO - === API CALL START: get_solution ===
+2025-09-08 23:36:46,412 - app - INFO - Method: POST
+2025-09-08 23:36:46,412 - app - INFO - URL: http://127.0.0.1:5000/api/get-solution
+2025-09-08 23:36:46,413 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '39', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-08 23:36:46,413 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20250908_230823"
+}
+2025-09-08 23:36:46,414 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-08 23:37:17,073 - app - INFO - === API CALL START: get_hint ===
+2025-09-08 23:37:17,074 - app - INFO - Method: POST
+2025-09-08 23:37:17,074 - app - INFO - URL: http://127.0.0.1:5000/api/get-hint
+2025-09-08 23:37:17,074 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '39', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-08 23:37:17,075 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20250908_230823"
+}
+2025-09-08 23:37:17,075 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-08 23:37:19,440 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:37:19] "[36mGET / HTTP/1.1[0m" 304 -
+2025-09-08 23:37:19,488 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:37:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-09-08 23:37:19,489 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:37:19] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-09-08 23:38:09,739 - app - INFO - === API CALL START: extract_problem ===
+2025-09-08 23:38:09,739 - app - INFO - Method: POST
+2025-09-08 23:38:09,739 - app - INFO - URL: http://127.0.0.1:5000/api/extract-problem
+2025-09-08 23:38:09,740 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-08 23:38:09,740 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2129/E"
+}
+2025-09-08 23:38:21,117 - app - INFO - Response Status: 200
+2025-09-08 23:38:21,118 - app - INFO - Duration: 11.378s
+2025-09-08 23:38:21,118 - app - INFO - === API CALL END: extract_problem ===
+2025-09-08 23:38:21,118 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:38:21] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-09-08 23:38:24,280 - app - INFO - === API CALL START: start_session ===
+2025-09-08 23:38:24,281 - app - INFO - Method: POST
+2025-09-08 23:38:24,281 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-09-08 23:38:24,282 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '22', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-08 23:38:24,282 - app - INFO - Request JSON: {
+  "problem_id": "2129E"
+}
+2025-09-08 23:38:24,283 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-08 23:38:27,440 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-08 23:38:27,443 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-08 23:38:27,443 - app - INFO - Response Status: 200
+2025-09-08 23:38:27,444 - app - INFO - Duration: 3.163s
+2025-09-08 23:38:27,444 - app - INFO - === API CALL END: start_session ===
+2025-09-08 23:38:27,445 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:38:27] "POST /api/start-session HTTP/1.1" 200 -
+2025-09-08 23:38:32,625 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-08 23:38:32,627 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-08 23:38:32,628 - app - INFO - Response Status: 200
+2025-09-08 23:38:32,628 - app - INFO - Duration: 75.554s
+2025-09-08 23:38:32,628 - app - INFO - === API CALL END: get_hint ===
+2025-09-08 23:38:32,629 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:38:32] "POST /api/get-hint HTTP/1.1" 200 -
+2025-09-08 23:38:53,221 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-08 23:38:53,223 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-08 23:38:53,223 - app - INFO - Response Status: 200
+2025-09-08 23:38:53,223 - app - INFO - Duration: 126.812s
+2025-09-08 23:38:53,223 - app - INFO - === API CALL END: get_solution ===
+2025-09-08 23:38:53,224 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 23:38:53] "POST /api/get-solution HTTP/1.1" 200 -
+2025-09-09 00:02:12,661 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:02:12] "GET / HTTP/1.1" 200 -
+2025-09-09 00:02:12,727 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:02:12] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-09-09 00:02:12,731 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:02:12] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-09-09 00:02:37,976 - app - INFO - === API CALL START: extract_problem ===
+2025-09-09 00:02:37,976 - app - INFO - Method: POST
+2025-09-09 00:02:37,976 - app - INFO - URL: http://127.0.0.1:5000/api/extract-problem
+2025-09-09 00:02:37,979 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:02:37,979 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2132/A"
+}
+2025-09-09 00:02:43,014 - app - INFO - Response Status: 200
+2025-09-09 00:02:43,015 - app - INFO - Duration: 5.038s
+2025-09-09 00:02:43,015 - app - INFO - === API CALL END: extract_problem ===
+2025-09-09 00:02:43,016 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:02:43] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-09-09 00:02:47,032 - app - INFO - === API CALL START: start_session ===
+2025-09-09 00:02:47,034 - app - INFO - Method: POST
+2025-09-09 00:02:47,034 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-09-09 00:02:47,035 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '22', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:02:47,035 - app - INFO - Request JSON: {
+  "problem_id": "2132A"
+}
+2025-09-09 00:02:47,035 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-09 00:02:50,599 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-09 00:02:50,601 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-09 00:02:50,601 - app - INFO - Response Status: 200
+2025-09-09 00:02:50,601 - app - INFO - Duration: 3.569s
+2025-09-09 00:02:50,601 - app - INFO - === API CALL END: start_session ===
+2025-09-09 00:02:50,602 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:02:50] "POST /api/start-session HTTP/1.1" 200 -
+2025-09-09 00:03:15,343 - app - INFO - === API CALL START: chat ===
+2025-09-09 00:03:15,343 - app - INFO - Method: POST
+2025-09-09 00:03:15,343 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-09-09 00:03:15,343 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '69', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:03:15,343 - app - INFO - Request JSON: {
+  "session_id": "2132A_20250909_000247",
+  "message": "give me the hint 1"
+}
+2025-09-09 00:03:15,343 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-09 00:03:19,010 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-09 00:03:19,032 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-09 00:03:19,033 - app - INFO - Response Status: 200
+2025-09-09 00:03:19,033 - app - INFO - Duration: 3.690s
+2025-09-09 00:03:19,033 - app - INFO - === API CALL END: chat ===
+2025-09-09 00:03:19,033 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:03:19] "POST /api/chat HTTP/1.1" 200 -
+2025-09-09 00:24:08,030 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:24:08] "[36mGET / HTTP/1.1[0m" 304 -
+2025-09-09 00:24:08,066 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:24:08] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-09-09 00:24:08,067 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:24:08] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-09-09 00:24:35,005 - app - INFO - === API CALL START: extract_problem ===
+2025-09-09 00:24:35,005 - app - INFO - Method: POST
+2025-09-09 00:24:35,005 - app - INFO - URL: http://127.0.0.1:5000/api/extract-problem
+2025-09-09 00:24:35,005 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:24:35,006 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2132/A"
+}
+2025-09-09 00:24:38,625 - app - INFO - Response Status: 200
+2025-09-09 00:24:38,625 - app - INFO - Duration: 3.620s
+2025-09-09 00:24:38,625 - app - INFO - === API CALL END: extract_problem ===
+2025-09-09 00:24:38,626 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:24:38] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-09-09 00:24:52,684 - app - INFO - === API CALL START: start_session ===
+2025-09-09 00:24:52,688 - app - INFO - Method: POST
+2025-09-09 00:24:52,688 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-09-09 00:24:52,689 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '22', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:24:52,689 - app - INFO - Request JSON: {
+  "problem_id": "2132A"
+}
+2025-09-09 00:24:52,689 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-09 00:24:56,053 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-09 00:24:56,054 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-09 00:24:56,054 - app - INFO - Response Status: 200
+2025-09-09 00:24:56,054 - app - INFO - Duration: 3.370s
+2025-09-09 00:24:56,054 - app - INFO - === API CALL END: start_session ===
+2025-09-09 00:24:56,055 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:24:56] "POST /api/start-session HTTP/1.1" 200 -
+2025-09-09 00:25:29,248 - app - INFO - === API CALL START: extract_problem ===
+2025-09-09 00:25:29,248 - app - INFO - Method: POST
+2025-09-09 00:25:29,248 - app - INFO - URL: http://127.0.0.1:5000/api/extract-problem
+2025-09-09 00:25:29,248 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '59', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:25:29,249 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2138/C1"
+}
+2025-09-09 00:25:30,072 - app - INFO - Response Status: 200
+2025-09-09 00:25:30,072 - app - INFO - Duration: 0.825s
+2025-09-09 00:25:30,073 - app - INFO - === API CALL END: extract_problem ===
+2025-09-09 00:25:30,073 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:25:30] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-09-09 00:25:33,390 - app - INFO - === API CALL START: start_session ===
+2025-09-09 00:25:33,390 - app - INFO - Method: POST
+2025-09-09 00:25:33,390 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-09-09 00:25:33,391 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '23', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.6', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd'}
+2025-09-09 00:25:33,391 - app - INFO - Request JSON: {
+  "problem_id": "2138C1"
+}
+2025-09-09 00:25:33,391 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-09-09 00:25:36,955 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-09-09 00:25:36,957 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-09-09 00:25:36,957 - app - INFO - Response Status: 200
+2025-09-09 00:25:36,958 - app - INFO - Duration: 3.567s
+2025-09-09 00:25:36,958 - app - INFO - === API CALL END: start_session ===
+2025-09-09 00:25:36,958 - werkzeug - INFO - 127.0.0.1 - - [09/Sep/2025 00:25:36] "POST /api/start-session HTTP/1.1" 200 -

@@ -822,5 +822,548 @@
     "solutions": [],
     "tutorials": [],
     "editorials": []
+  },
+  "2129E": {
+    "contest_title": "Codeforces Round 1040 (Div. 1)",
+    "problem_id": "2129E",
+    "problem_title": "E. Induced Subgraph Queries",
+    "time_limit": "5 seconds",
+    "memory_limit": "512 megabytes",
+    "statement": "You are given an unweighted, undirected graph $$$G$$$ with $$$n$$$ nodes and $$$m$$$ edges. The graph $$$G$$$ contains no self-loops or multiple edges.We denote the node set of $$$G$$$ as $$$V$$$. For any node subset $$$V' \\subseteq V$$$, the corresponding induced subgraph, denoted by $$$G[V']$$$, is defined as follows:$$$G[V']$$$ is the graph whose node set is $$$V'$$$, and whose edge set consists of all edges in $$$G$$$ with both endpoints in $$$V'$$$.Your task is to answer $$$q$$$ queries. Each query provides three integers $$$l$$$, $$$r$$$, and $$$k$$$. Denoting $$$V'=\\{l,l+1,\\ldots,r\\}$$$, you need to find the $$$k$$$-th smallest value among $$$f(l,G[V'])$$$, $$$f(l+1,G[V'])$$$, $$$\\ldots$$$ , $$$f(r,G[V'])$$$ (i.e., the $$$k$$$-th value in increasing order; repeated values are counted multiple times).Here, $$$f(u,G[V'])=\\bigoplus_{(u,v)\\in G[V']}v$$$. In other words, it is thebitwise XORvalue of the labels of all adjacent nodes of node $$$u$$$ in graph $$$G[V']$$$.You might want to read the notes for a better understanding.\n\nInputEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1.5 \\cdot 10^4$$$). The description of the test cases follows.Each test case begins with two integers $$$n$$$ and $$$m$$$ ($$$2 \\leq n \\leq 1.5 \\cdot 10^5$$$, $$$1 \\leq m \\leq 1.5 \\cdot 10^5$$$) — the number of nodes and edges, respectively.The next $$$m$$$ lines each contain two integers $$$u_i$$$ and $$$v_i$$$ ($$$1 \\leq u_i, v_i \\leq n$$$, $$$u_i \\neq v_i$$$), representing an undirected edge between nodes $$$u_i$$$ and $$$v_i$$$.The next line contains a single integer $$$q$$$ ($$$1 \\leq q \\leq 1.5 \\cdot 10^5$$$) — the number of queries.Each of the next $$$q$$$ lines contains three integers $$$l$$$, $$$r$$$, and $$$k$$$ ($$$1 \\leq l \\leq r \\leq n$$$, $$$1 \\le k \\le r-l+1$$$), defining a query about the induced subgraph $$$G[\\{l,\\ldots,r\\}]$$$.It is guaranteed that the graph contains no self-loops or multiple edges.It is guaranteed that the sum of $$$n$$$,$$$m$$$, and $$$q$$$ over all test cases does not exceed $$$1.5 \\cdot 10^5$$$, respectively.\n\nOutputFor each test case, output $$$q$$$ integers, representing the answer for each query.",
+    "sample_inputs": [
+      "24 51 31 42 32 43 431 2 21 3 12 4 32 12 131 1 12 2 11 2 2"
+    ],
+    "sample_outputs": [
+      "0\n3\n7\n0\n0\n2"
+    ],
+    "notes": "NoteIn the first test case, the input graph $$$G$$$ is the one in the following picture.The given graph $$$G$$$.In the first query, the induced subgraph $$$G[\\{1,2\\}]$$$ is the one in the following picture. We can see that nodes $$$1$$$ and $$$2$$$ have no adjacent nodes. Thus, $$$f(1,G[\\{1,2\\}])=f(2,G[\\{1,2\\}])=0$$$. The $$$2$$$-nd smallest value is $$$0$$$.$$$G[\\{1,2\\}]$$$.In the second query, the induced subgraph $$$G[\\{1,2,3\\}]$$$ is the one in the following picture. We can see that $$$f(1,G[\\{1,2,3\\}])=3$$$, $$$f(2,G[\\{1,2,3\\}])=3$$$, and $$$f(3,G[\\{1,2,3\\}])=1 \\oplus 2=3$$$. The $$$1$$$-st smallest value is $$$3$$$.$$$G[\\{1,2,3\\}]$$$.In the third query, the induced subgraph $$$G[\\{2,3,4\\}]$$$ is the one in the following picture. We can see that $$$f(2,G[\\{2,3,4\\}])=3 \\oplus 4=7$$$, $$$f(3,G[\\{2,3,4\\}])=2 \\oplus 4=6$$$, and $$$f(4,G[\\{2,3,4\\}])=2 \\oplus 3=1$$$. The $$$3$$$-rd smallest value is $$$7$$$.$$$G[\\{2,3,4\\}]$$$.",
+    "tags": [
+      "data structures",
+      "graphs",
+      "sortings",
+      "*3000"
+    ],
+    "url": "https://codeforces.com/problemset/problem/2129/E",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial(en)",
+          "title": "Codeforces Round 1040 (Div. 1, Div. 2) Editorial",
+          "url": "/blog/entry/145152",
+          "full_url": "https://codeforces.com/blog/entry/145152"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [],
+    "tutorials": [],
+    "editorials": []
+  },
+  "2132B": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132B",
+    "problem_title": "2132B - The Secret Number",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint",
+        "text": "If Vadim appends $$$k$$$ zeros to the number $$$x$$$, what will be the ratio between $$$n$$$ and $$$x$$$? Answer$$$n = x \\cdot (10^k + 1)$$$",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    int t;\n    cin >> t;\n    \n    while (t--) {\n        long long r;\n        cin >> r;\n        \n        long long d = 11;\n        vector <long long> ans;\n        while (r >= d) {\n            if (r % d == 0)\n                ans.push_back(r / d);\n            d = (d - 1) * 10 + 1;\n        }\n        \n        cout << (int)ans.size() << '\\n';\n        for (int i = (int)ans.size() - 1; i >= 0; --i)\n            cout << ans[i] << ' ';\n        cout << '\\n';\n    }\n    \n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    int t;\n    cin >> t;\n    \n    while (t--) {\n        long long r;\n        cin >> r;\n        \n        long long d = 11;\n        vector <long long> ans;\n        while (r >= d) {\n            if (r % d == 0)\n                ans.push_back(r / d);\n            d = (d - 1) * 10 + 1;\n        }\n        \n        cout << (int)ans.size() << '\\n';\n        for (int i = (int)ans.size() - 1; i >= 0; --i)\n            cout << ans[i] << ' ';\n        cout << '\\n';\n    }\n    \n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132C1": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132C1",
+    "problem_title": "2132C1 - The Cunning Seller (easy version)",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint 1",
+        "text": "Does it make sense to use the same type of deal more than 2 times?",
+        "codes": []
+      },
+      {
+        "title": "hint 2",
+        "text": "The solution with the minimum number of deals is unique.",
+        "codes": []
+      },
+      {
+        "title": "hint 3",
+        "text": "Ternary numeral system.",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    vector <long long> cost;\n    long long c = 3;\n    long long cnt = 1;\n    for (int i = 0; i < 21; ++i) {\n        cost.push_back(c);\n        c = 3 * c + cnt;\n        cnt *= 3;\n    }\n\n    int t;\n    cin >> t;\n    while (t--) {\n        long long n;\n        cin >> n;\n        long long min_k = 0;\n        long long min_cost = 0;\n        int sz = 0;\n        while (n) {\n            min_k += n % 3;\n            min_cost += (n % 3) * cost[sz];\n            n /= 3;\n            sz++;\n        }\n        cout << min_cost << '\\n';\n    }\n    \n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    vector <long long> cost;\n    long long c = 3;\n    long long cnt = 1;\n    for (int i = 0; i < 21; ++i) {\n        cost.push_back(c);\n        c = 3 * c + cnt;\n        cnt *= 3;\n    }\n\n    int t;\n    cin >> t;\n    while (t--) {\n        long long n;\n        cin >> n;\n        long long min_k = 0;\n        long long min_cost = 0;\n        int sz = 0;\n        while (n) {\n            min_k += n % 3;\n            min_cost += (n % 3) * cost[sz];\n            n /= 3;\n            sz++;\n        }\n        cout << min_cost << '\\n';\n    }\n    \n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132C2": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132C2",
+    "problem_title": "2132C2 - The Cunning Seller (hard version)",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint 1",
+        "text": "What is more profitable: 3 deals for $$$3^x$$$ watermelons each, or 1 deal for $$$3^{x+1}$$$ watermelons?",
+        "codes": []
+      },
+      {
+        "title": "hint 2",
+        "text": "Recall the solution to problem C1.",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    vector <long long> cost;\n    long long c = 3;\n    long long cnt = 1;\n    for (int i = 0; i < 21; ++i) {\n        cost.push_back(c);\n        c = 3 * c + cnt;\n        cnt *= 3;\n    }\n\n    int t;\n    cin >> t;\n    while (t--) {\n        long long n, k;\n        cin >> n >> k;\n        vector <long long> tr;\n        long long min_k = 0;\n        while (n) {\n            tr.push_back(n % 3);\n            min_k += n % 3;\n            n /= 3;\n        }\n        if (min_k > k) {\n            cout << -1 << '\\n';\n            continue;\n        }\n        k -= min_k;\n        k /= 2;\n        for (int i = (int)tr.size() - 1; i >= 1; --i) {\n            if (tr[i] <= k) {\n                tr[i - 1] += 3 * tr[i];\n                k -= tr[i];\n                tr[i] = 0;\n            } else {\n                tr[i - 1] += k * 3;\n                tr[i] -= k;\n                break;\n            }\n        }\n        ll an = 0;\n        for (int i = (int)tr.size() - 1; i >= 0; --i)\n            an += cost[i] * tr[i];\n        cout << an << '\\n';\n    }\n    \n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    vector <long long> cost;\n    long long c = 3;\n    long long cnt = 1;\n    for (int i = 0; i < 21; ++i) {\n        cost.push_back(c);\n        c = 3 * c + cnt;\n        cnt *= 3;\n    }\n\n    int t;\n    cin >> t;\n    while (t--) {\n        long long n, k;\n        cin >> n >> k;\n        vector <long long> tr;\n        long long min_k = 0;\n        while (n) {\n            tr.push_back(n % 3);\n            min_k += n % 3;\n            n /= 3;\n        }\n        if (min_k > k) {\n            cout << -1 << '\\n';\n            continue;\n        }\n        k -= min_k;\n        k /= 2;\n        for (int i = (int)tr.size() - 1; i >= 1; --i) {\n            if (tr[i] <= k) {\n                tr[i - 1] += 3 * tr[i];\n                k -= tr[i];\n                tr[i] = 0;\n            } else {\n                tr[i - 1] += k * 3;\n                tr[i] -= k;\n                break;\n            }\n        }\n        ll an = 0;\n        for (int i = (int)tr.size() - 1; i >= 0; --i)\n            an += cost[i] * tr[i];\n        cout << an << '\\n';\n    }\n    \n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132D": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132D",
+    "problem_title": "2132D - From 1 to Infinity",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint 1",
+        "text": "Find out which number the $$$k$$$-th digit belongs to in the infinite sequence. Let this number be $$$n$$$. Instead of analyzing the sequence, we can calculate the sum of the sums of the digits of all integers from $$$0$$$ to $$$n - 1$$$ and add to this the sum of the required digits of the number $$$n$$$.",
+        "codes": []
+      },
+      {
+        "title": "hint 2",
+        "text": "Mentally add leading zeros to all numbers from $$$0$$$ to $$$n - 1$$$ so that their lengths become the same. The sum of the sums of the digits will not change, but it will be more convenient to determine the formulas in this case.",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    int t;\n    cin >> t;\n    \n    while (t--) {\n        long long k;\n        cin >> k;\n        long long cur = 9, len = 1;\n        while (k - cur * len > 0) {\n            k -= cur * len;\n            cur *= 10;\n            len++;\n        }\n        string s = to_string(cur / 9 + (k - 1) / len);\n        long long ans = 0;\n        for (int i = 0; i < (k - 1) % len + 1; i++)\n            ans += s[i] - '0';\n        long long pr_s = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int curd = s[i] - '0';\n            if (curd)\n                ans += curd * (len - 1) * cur / 2 + curd * (2 * pr_s + curd - 1) / 2 * cur / 9;\n            cur /= 10, len--;\n            pr_s += curd;\n        }\n        cout << ans << '\\n';\n    }\n    \n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nint main() {\n    int t;\n    cin >> t;\n    \n    while (t--) {\n        long long k;\n        cin >> k;\n        long long cur = 9, len = 1;\n        while (k - cur * len > 0) {\n            k -= cur * len;\n            cur *= 10;\n            len++;\n        }\n        string s = to_string(cur / 9 + (k - 1) / len);\n        long long ans = 0;\n        for (int i = 0; i < (k - 1) % len + 1; i++)\n            ans += s[i] - '0';\n        long long pr_s = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int curd = s[i] - '0';\n            if (curd)\n                ans += curd * (len - 1) * cur / 2 + curd * (2 * pr_s + curd - 1) / 2 * cur / 9;\n            cur /= 10, len--;\n            pr_s += curd;\n        }\n        cout << ans << '\\n';\n    }\n    \n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132E": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132E",
+    "problem_title": "2132E - Arithmetics Competition",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint 1",
+        "text": "If we know how many specific cards Vadim should take, and how many should take Kostya (for example when $$$x + y = z$$$). How can we then obtain the maximum possible sum?",
+        "codes": []
+      },
+      {
+        "title": "hint 2",
+        "text": "We need to quickly compute the sum of the $$$x$$$ maximum elements in array $$$a$$$ and the sum of the $$$y$$$ maximum elements in array $$$b$$$. What should we do to be able to compute this for arbitrary $$$x$$$ and $$$y$$$ in $$$O(1)$$$?",
+        "codes": []
+      },
+      {
+        "title": "hint 3",
+        "text": "How can we solve this problem if $$$x = n$$$ and $$$y = m$$$ — that is, each person can choose any number of cards, as long as their total is $$$z$$$?",
+        "codes": []
+      },
+      {
+        "title": "hint 4",
+        "text": "If $$$x = n$$$ and $$$y = m$$$, then the optimal set of $$$z$$$ cards consists of $$$x'$$$ maximum cards from Vadim and $$$y'$$$ maximum cards from Kostya (where $$$x' + y' = z$$$). How should we adjust this optimal answer if the optimal number for Vadim or Kostya exceeds their limits (that is, if $$$x < x'$$$ or $$$y < y'$$$)?",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution 1",
+        "text": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nvoid solve() {\n    int n, m, q;\n    cin >> n >> m >> q;\n    vector <int> a(n), b(m);\n    for (int i = 0; i < n; i++)\n        cin >> a[i];\n    for (int i = 0; i < m; i++)\n        cin >> b[i];\n    sort(a.rbegin(), a.rend());\n    sort(b.rbegin(), b.rend());\n\n    vector <long long> pa(n + 1), pb(m + 1);\n    for (int i = 0; i < n; i++)\n        pa[i + 1] = pa[i] + a[i];\n    for (int i = 0; i < m; i++)\n        pb[i + 1] = pb[i] + b[i];\n\n    vector <pair <int, int>> ans(n + m + 1);\n    int l = 0, r = 0;\n    for (int i = 1; i < ans.size(); i++) {\n        if (l < n && r < m) {\n            if (a[l] < b[r])\n                r++;\n            else\n                l++;\n        }\n        else if (l == n)\n            r++;\n        else if (r == m)\n            l++;\n        ans[i] = { l, r };\n    }\n\n    for (int i = 0; i < q; i++) {\n        int x, y, z;\n        cin >> x >> y >> z;\n        l = ans[z].first, r = ans[z].second;\n        if (l > x)\n            cout << pa[x] + pb[z - x] << '\\n';\n        else if (r > y)\n            cout << pa[z - y] + pb[y] << '\\n';\n        else\n            cout << pa[l] + pb[r] << '\\n';\n    }\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n\nusing namespace std;\n\nvoid solve() {\n    int n, m, q;\n    cin >> n >> m >> q;\n    vector <int> a(n), b(m);\n    for (int i = 0; i < n; i++)\n        cin >> a[i];\n    for (int i = 0; i < m; i++)\n        cin >> b[i];\n    sort(a.rbegin(), a.rend());\n    sort(b.rbegin(), b.rend());\n\n    vector <long long> pa(n + 1), pb(m + 1);\n    for (int i = 0; i < n; i++)\n        pa[i + 1] = pa[i] + a[i];\n    for (int i = 0; i < m; i++)\n        pb[i + 1] = pb[i] + b[i];\n\n    vector <pair <int, int>> ans(n + m + 1);\n    int l = 0, r = 0;\n    for (int i = 1; i < ans.size(); i++) {\n        if (l < n && r < m) {\n            if (a[l] < b[r])\n                r++;\n            else\n                l++;\n        }\n        else if (l == n)\n            r++;\n        else if (r == m)\n            l++;\n        ans[i] = { l, r };\n    }\n\n    for (int i = 0; i < q; i++) {\n        int x, y, z;\n        cin >> x >> y >> z;\n        l = ans[z].first, r = ans[z].second;\n        if (l > x)\n            cout << pa[x] + pb[z - x] << '\\n';\n        else if (r > y)\n            cout << pa[z - y] + pb[y] << '\\n';\n        else\n            cout << pa[l] + pb[r] << '\\n';\n    }\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n    return 0;\n}"
+        ]
+      },
+      {
+        "title": "solution 2",
+        "text": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nvoid solve() {\n    int n, m, q;\n    cin >> n >> m >> q;\n    vector <int> a(n), b(m);\n    for (int i = 0; i < n; i++)\n        cin >> a[i];\n    for (int i = 0; i < m; i++)\n        cin >> b[i];\n    sort(a.rbegin(), a.rend());\n    sort(b.rbegin(), b.rend());\n \n    vector <long long> pa(n + 1), pb(m + 1);\n    for (int i = 0; i < n; i++)\n        pa[i + 1] = pa[i] + a[i];\n    for (int i = 0; i < m; i++)\n        pb[i + 1] = pb[i] + b[i];\n \n    for (int i = 0; i < q; i++) {\n        int x, y, z;\n        cin >> x >> y >> z;\n \n        int l = max(0, z - y);\n        int r = min(z, x);\n        while (l + 2 < r) {\n            int m1 = (l + l + r) / 3;\n            int m2 = (l + r + r) / 3;\n            if (pa[m1] + pb[z - m1] > pa[m2] + pb[z - m2]) {\n                r = m2;\n            } else {\n                l = m1;\n            }\n        }\n \n        long long s = 0;\n        for (int i = l; i <= r; i++)\n            s = max(s, pa[i] + pb[z - i]);\n \n        cout << s << '\\n';\n    }\n}\n \nint main() {\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n\nusing namespace std;\n\nvoid solve() {\n    int n, m, q;\n    cin >> n >> m >> q;\n    vector <int> a(n), b(m);\n    for (int i = 0; i < n; i++)\n        cin >> a[i];\n    for (int i = 0; i < m; i++)\n        cin >> b[i];\n    sort(a.rbegin(), a.rend());\n    sort(b.rbegin(), b.rend());\n \n    vector <long long> pa(n + 1), pb(m + 1);\n    for (int i = 0; i < n; i++)\n        pa[i + 1] = pa[i] + a[i];\n    for (int i = 0; i < m; i++)\n        pb[i + 1] = pb[i] + b[i];\n \n    for (int i = 0; i < q; i++) {\n        int x, y, z;\n        cin >> x >> y >> z;\n \n        int l = max(0, z - y);\n        int r = min(z, x);\n        while (l + 2 < r) {\n            int m1 = (l + l + r) / 3;\n            int m2 = (l + r + r) / 3;\n            if (pa[m1] + pb[z - m1] > pa[m2] + pb[z - m2]) {\n                r = m2;\n            } else {\n                l = m1;\n            }\n        }\n \n        long long s = 0;\n        for (int i = l; i <= r; i++)\n            s = max(s, pa[i] + pb[z - i]);\n \n        cout << s << '\\n';\n    }\n}\n \nint main() {\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132F": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132F",
+    "problem_title": "2132F - Rada and the Chamomile Valley",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint 1",
+        "text": "Recall or learn what bridges are and understand how this is related to the lanes that lie on all paths from $$$1$$$ to $$$n$$$.",
+        "codes": []
+      },
+      {
+        "title": "hint 2",
+        "text": "How to find all the bridges that lie on every path from $$$1$$$ to $$$n$$$?",
+        "codes": []
+      },
+      {
+        "title": "hint 3",
+        "text": "Solve the problem for the case where $$$n = q$$$ and $$$c_i = i$$$.",
+        "codes": []
+      },
+      {
+        "title": "hint 4",
+        "text": "How to find the nearest vertex from a given set of vertices $$$S$$$ for each vertex?",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nvector <vector <int>> g;\nvector <bool> used;\nvector <int> d, h;\nvector <pair <int, int>> edges;\nvector <int> cut, path;\nint mark = 1;\n\nvoid dfs(int v, int p, int n) {\n    used[v] = true;\n    d[v] = h[v] = (p == -1 ? 0 : d[p] + 1);\n    if (v == n) mark = 0;\n    for (auto e : g[v]) {\n        int to = edges[e].first + edges[e].second - v;\n        if (to == p) continue;\n        if (used[to])\n            h[v] = min(h[v], d[to]);\n        else {\n            path[e] ^= mark;\n            dfs(to, v, n);\n            path[e] ^= mark;\n            h[v] = min(h[v], h[to]);\n            if (h[to] > d[v]) cut[e] = 1;\n        }\n    }\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n, m;\n        cin >> n >> m;\n        \n        g.assign(n + 1, {});\n        used.assign(n + 1, false);\n        d.assign(n + 1, 0);\n        h.assign(n + 1, 0);\n        edges = {};\n        cut.assign(m, false);\n        path.assign(m, false);\n        mark = 1;\n        for (int i = 0; i < m; ++i) {\n            int a, b;\n            cin >> a >> b;\n            edges.push_back({a, b});\n            g[a].push_back(i);\n            g[b].push_back(i);\n        }\n        \n        dfs(1, -1, n);\n        \n        vector <int> ans(n + 1, n + m);\n        vector <int> dist(n + 1, n + m);\n        queue <int> q;\n        for (int i = 0; i < m; ++i) {\n            if (cut[i] && path[i]) {\n                ans[edges[i].first] = min(ans[edges[i].first], i + 1);\n                ans[edges[i].second] = min(ans[edges[i].second], i + 1);\n                if (dist[edges[i].first]) {\n                    dist[edges[i].first] = 0;\n                    q.push(edges[i].first);\n                }\n                if (dist[edges[i].second]) {\n                    dist[edges[i].second] = 0;\n                    q.push(edges[i].second);\n                }\n            }\n        }\n        \n        while (!q.empty()) {\n            int v = q.front();\n            q.pop();\n            for (auto e : g[v]) {\n                int to = edges[e].first + edges[e].second - v;\n                if (dist[to] > dist[v] + 1) {\n                    dist[to] = dist[v] + 1;\n                    ans[to] = ans[v];\n                    q.push(to);\n                }\n                else if (dist[to] == dist[v] + 1)\n                    ans[to] = min(ans[to], ans[v]);\n            }\n        }\n        \n        int Q;\n        cin >> Q;\n        while (Q--) {\n            int v;\n            cin >> v;\n            if (ans[v] == n + m) cout << -1;\n            else cout << ans[v];\n            if (t || Q) cout << '\\n';\n        }\n    }\n    \n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nvector <vector <int>> g;\nvector <bool> used;\nvector <int> d, h;\nvector <pair <int, int>> edges;\nvector <int> cut, path;\nint mark = 1;\n\nvoid dfs(int v, int p, int n) {\n    used[v] = true;\n    d[v] = h[v] = (p == -1 ? 0 : d[p] + 1);\n    if (v == n) mark = 0;\n    for (auto e : g[v]) {\n        int to = edges[e].first + edges[e].second - v;\n        if (to == p) continue;\n        if (used[to])\n            h[v] = min(h[v], d[to]);\n        else {\n            path[e] ^= mark;\n            dfs(to, v, n);\n            path[e] ^= mark;\n            h[v] = min(h[v], h[to]);\n            if (h[to] > d[v]) cut[e] = 1;\n        }\n    }\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n, m;\n        cin >> n >> m;\n        \n        g.assign(n + 1, {});\n        used.assign(n + 1, false);\n        d.assign(n + 1, 0);\n        h.assign(n + 1, 0);\n        edges = {};\n        cut.assign(m, false);\n        path.assign(m, false);\n        mark = 1;\n        for (int i = 0; i < m; ++i) {\n            int a, b;\n            cin >> a >> b;\n            edges.push_back({a, b});\n            g[a].push_back(i);\n            g[b].push_back(i);\n        }\n        \n        dfs(1, -1, n);\n        \n        vector <int> ans(n + 1, n + m);\n        vector <int> dist(n + 1, n + m);\n        queue <int> q;\n        for (int i = 0; i < m; ++i) {\n            if (cut[i] && path[i]) {\n                ans[edges[i].first] = min(ans[edges[i].first], i + 1);\n                ans[edges[i].second] = min(ans[edges[i].second], i + 1);\n                if (dist[edges[i].first]) {\n                    dist[edges[i].first] = 0;\n                    q.push(edges[i].first);\n                }\n                if (dist[edges[i].second]) {\n                    dist[edges[i].second] = 0;\n                    q.push(edges[i].second);\n                }\n            }\n        }\n        \n        while (!q.empty()) {\n            int v = q.front();\n            q.pop();\n            for (auto e : g[v]) {\n                int to = edges[e].first + edges[e].second - v;\n                if (dist[to] > dist[v] + 1) {\n                    dist[to] = dist[v] + 1;\n                    ans[to] = ans[v];\n                    q.push(to);\n                }\n                else if (dist[to] == dist[v] + 1)\n                    ans[to] = min(ans[to], ans[v]);\n            }\n        }\n        \n        int Q;\n        cin >> Q;\n        while (Q--) {\n            int v;\n            cin >> v;\n            if (ans[v] == n + m) cout << -1;\n            else cout << ans[v];\n            if (t || Q) cout << '\\n';\n        }\n    }\n    \n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132G": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132G",
+    "problem_title": "2132G - Famous Choreographer",
+    "time_limit": "",
+    "memory_limit": "",
+    "statement": "",
+    "sample_inputs": [],
+    "sample_outputs": [],
+    "notes": "",
+    "tags": [],
+    "url": "",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [
+      {
+        "title": "hint 1",
+        "text": "There is no point in adding new symbols both above and below the original table simultaneously. Similarly, there is no point in adding symbols both to the left and to the right of the table at the same time.",
+        "codes": []
+      },
+      {
+        "title": "hint 2",
+        "text": "The center of the optimal answer table lies within the original one.",
+        "codes": []
+      },
+      {
+        "title": "hint 3",
+        "text": "We do not need to construct the answer; it is sufficient to check that an answer exists for the current center. Think about how to do this.",
+        "codes": []
+      },
+      {
+        "title": "hint 4",
+        "text": "An answer exists for the current center if the subtable, which is the intersection of the original table and the one rotated around the center by $$$180^{\\circ}$$$, becomes identical to the original when rotated by $$$180^{\\circ}$$$. This subtable must contain at least one of the corners of the original table.",
+        "codes": []
+      },
+      {
+        "title": "hint 5",
+        "text": "The checking of centers can be replaced by the checking of subtables that contain at least one of the corners of the original table.",
+        "codes": []
+      },
+      {
+        "title": "hint 6",
+        "text": "To check the subtables to see if they become identical to the original when rotated by $$$180^{\\circ}$$$, we can use hashing.",
+        "codes": []
+      }
+    ],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nconst int MOD = 998244353;\nconst int P[2] = { 107, 61 };\nint BP[2];\n\nlong long bin_pow(long long a, int n) {\n    long long ret = 1;\n    while (n) {\n        if (n & 1) ret = (ret * a) % MOD;\n        a = (a * a) % MOD;\n        n >>= 1;\n    }\n    return ret;\n}\n\ninline int add(int a, int b) {\n    int res = a + b;\n    if (res >= MOD) return res - MOD;\n    return res;\n}\n\ninline int sub(int a, int b) {\n    int res = a - b;\n    if (res < 0) return res + MOD;\n    return res;\n}\n\ninline int mult(int a, int b) {\n    long long res = (long long)a * b;\n    if (res >= MOD) return res % MOD;\n    return res;\n}\n\nint main() {\n    int t;\n    cin >> t;\n    \n    BP[0] = bin_pow(P[0], MOD - 2);\n    BP[1] = bin_pow(P[1], MOD - 2);\n    vector <int> pows[2];\n    vector <int> bpows[2];\n    for (int j = 0; j < 2; j++) {\n        pows[j].resize(1e6, 1);\n        bpows[j].resize(1e6, 1);\n        for (int i = 1; i < 1e6; i++) {\n            pows[j][i] = mult(pows[j][i - 1], P[j]);\n            bpows[j][i] = mult(bpows[j][i - 1], BP[j]);\n        }\n    }\n    \n    while (t--) {\n        int n, m;\n        cin >> n >> m;\n        \n        vector <string> f(n);\n        for (int i = 0; i < n; i++)\n            cin >> f[i];\n        \n        vector <vector <int>> hash(n + 2, vector <int> (m + 2, 0));\n        vector <vector <int>> bhash(n + 2, vector <int> (m + 2, 0));\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                int cur = mult((f[i - 1][j - 1] - 'a' + 1), mult(pows[0][i - 1], pows[1][j - 1]));\n                hash[i][j] = add(sub(add(hash[i - 1][j], hash[i][j - 1]), hash[i - 1][j - 1]), cur);\n            }\n        }\n        for (int i = n; i >= 1; i--) {\n            for (int j = m; j >= 1; j--) {\n                int cur = mult((f[i - 1][j - 1] - 'a' + 1), mult(pows[0][n - i], pows[1][m - j]));\n                bhash[i][j] = add(sub(add(bhash[i + 1][j], bhash[i][j + 1]), bhash[i + 1][j + 1]), cur);\n            }\n        }\n        \n        auto isp = [&](int x1, int y1, int x2, int y2) {\n            int hsh = add(sub(sub(hash[x2][y2], hash[x1-1][y2]), hash[x2][y1-1]), hash[x1-1][y1-1]);\n            int bhsh = add(sub(sub(bhash[x1][y1], bhash[x2+1][y1]), bhash[x1][y2+1]), bhash[x2+1][y2+1]);\n            hsh = mult(hsh, mult(bpows[0][x1 - 1], bpows[1][y1 - 1]));\n            bhsh = mult(bhsh, mult(bpows[0][n - x2], bpows[1][m - y2]));\n            return hsh == bhsh;\n        };\n        \n        int mn = n * m * 4;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (isp(1, 1, i, j)) mn = min(mn, (2 * n - i) * (2 * m - j));\n                if (isp(1, j, i, m)) mn = min(mn, (2 * n - i) * (m + j - 1));\n                if (isp(i, 1, n, j)) mn = min(mn, (n + i - 1) * (2 * m - j));\n                if (isp(i, j, n, m)) mn = min(mn, (n + i - 1) * (m + j - 1));\n            }\n        }\n        \n        cout << mn - m * n << '\\n';\n    }\n    \n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nconst int MOD = 998244353;\nconst int P[2] = { 107, 61 };\nint BP[2];\n\nlong long bin_pow(long long a, int n) {\n    long long ret = 1;\n    while (n) {\n        if (n & 1) ret = (ret * a) % MOD;\n        a = (a * a) % MOD;\n        n >>= 1;\n    }\n    return ret;\n}\n\ninline int add(int a, int b) {\n    int res = a + b;\n    if (res >= MOD) return res - MOD;\n    return res;\n}\n\ninline int sub(int a, int b) {\n    int res = a - b;\n    if (res < 0) return res + MOD;\n    return res;\n}\n\ninline int mult(int a, int b) {\n    long long res = (long long)a * b;\n    if (res >= MOD) return res % MOD;\n    return res;\n}\n\nint main() {\n    int t;\n    cin >> t;\n    \n    BP[0] = bin_pow(P[0], MOD - 2);\n    BP[1] = bin_pow(P[1], MOD - 2);\n    vector <int> pows[2];\n    vector <int> bpows[2];\n    for (int j = 0; j < 2; j++) {\n        pows[j].resize(1e6, 1);\n        bpows[j].resize(1e6, 1);\n        for (int i = 1; i < 1e6; i++) {\n            pows[j][i] = mult(pows[j][i - 1], P[j]);\n            bpows[j][i] = mult(bpows[j][i - 1], BP[j]);\n        }\n    }\n    \n    while (t--) {\n        int n, m;\n        cin >> n >> m;\n        \n        vector <string> f(n);\n        for (int i = 0; i < n; i++)\n            cin >> f[i];\n        \n        vector <vector <int>> hash(n + 2, vector <int> (m + 2, 0));\n        vector <vector <int>> bhash(n + 2, vector <int> (m + 2, 0));\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                int cur = mult((f[i - 1][j - 1] - 'a' + 1), mult(pows[0][i - 1], pows[1][j - 1]));\n                hash[i][j] = add(sub(add(hash[i - 1][j], hash[i][j - 1]), hash[i - 1][j - 1]), cur);\n            }\n        }\n        for (int i = n; i >= 1; i--) {\n            for (int j = m; j >= 1; j--) {\n                int cur = mult((f[i - 1][j - 1] - 'a' + 1), mult(pows[0][n - i], pows[1][m - j]));\n                bhash[i][j] = add(sub(add(bhash[i + 1][j], bhash[i][j + 1]), bhash[i + 1][j + 1]), cur);\n            }\n        }\n        \n        auto isp = [&](int x1, int y1, int x2, int y2) {\n            int hsh = add(sub(sub(hash[x2][y2], hash[x1-1][y2]), hash[x2][y1-1]), hash[x1-1][y1-1]);\n            int bhsh = add(sub(sub(bhash[x1][y1], bhash[x2+1][y1]), bhash[x1][y2+1]), bhash[x2+1][y2+1]);\n            hsh = mult(hsh, mult(bpows[0][x1 - 1], bpows[1][y1 - 1]));\n            bhsh = mult(bhsh, mult(bpows[0][n - x2], bpows[1][m - y2]));\n            return hsh == bhsh;\n        };\n        \n        int mn = n * m * 4;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (isp(1, 1, i, j)) mn = min(mn, (2 * n - i) * (2 * m - j));\n                if (isp(1, j, i, m)) mn = min(mn, (2 * n - i) * (m + j - 1));\n                if (isp(i, 1, n, j)) mn = min(mn, (n + i - 1) * (2 * m - j));\n                if (isp(i, j, n, m)) mn = min(mn, (n + i - 1) * (m + j - 1));\n            }\n        }\n        \n        cout << mn - m * n << '\\n';\n    }\n    \n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2132A": {
+    "contest_title": "Codeforces Round 1043 (Div. 3)",
+    "problem_id": "2132A",
+    "problem_title": "A. Homework",
+    "time_limit": "1 second",
+    "memory_limit": "256 megabytes",
+    "statement": "Vlad and Dima have been assigned a task in school for their English class. They were given two strings $$$a$$$ and $$$b$$$ and asked to append all characters from $$$b$$$ to string $$$a$$$ in any order. The guys decided to divide the work between themselves and, after lengthy negotiations, determined who would add each character from string $$$b$$$ to $$$a$$$.Due to his peculiarities, Vlad can only add characters to the beginning of the word, while Dima can only add them to the end. They add characters in the order they appear in string $$$b$$$. Your task is to determine what string Vlad and Dima will end up with.\n\nInputEach test consists of several test cases. The first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 1000$$$) — the number of test cases. The description of the test cases follows.The first line contains an integer $$$n$$$ ($$$1 \\le n \\le 10$$$) — the length of the string $$$a$$$.The second line contains the string $$$a$$$, consisting of lowercase letters of the English alphabet.The third line contains an integer $$$m$$$ ($$$1 \\le m \\le 10$$$) — the length of the strings $$$b$$$ and $$$c$$$.The fourth line contains the string $$$b$$$, consisting of lowercase letters of the English alphabet.The fifth line contains the string $$$c$$$, consisting of the characters'V'and'D'— the distribution of the characters of string $$$b$$$ between Dima and Vlad. If $$$c_i$$$ ='V', then the $$$i$$$-th letter is added by Vlad; otherwise, it is added by Dima.\n\nOutputFor each test case, output the string that will result from Dima and Vlad's work.",
+    "sample_inputs": [
+      "42ot2adDV3efo7rdcoecsDVDVDVD3aca4bbaaDVDV3biz4abonVVDD"
+    ],
+    "sample_outputs": [
+      "dota\ncodeforces\nabacaba\nbabizon"
+    ],
+    "notes": "NoteIn the first test case, there is initially a string $$$ot$$$. Then Dima appends the character $$$a$$$ to the end of the string, resulting in $$$ota$$$, and Vlad appends the last character, resulting in $$$dota$$$.In the second test case, the string will change as follows: $$$efo \\rightarrow efor \\rightarrow defor \\rightarrow deforc \\rightarrow odeforc \\rightarrow odeforce \\rightarrow codeforce \\rightarrow codeforces$$$In the third test case: $$$aca \\rightarrow acab \\rightarrow bacab \\rightarrow bacaba \\rightarrow abacaba$$$In the fourth test case: $$$biz \\rightarrow abiz \\rightarrow babiz \\rightarrow babizo \\rightarrow babizon$$$",
+    "tags": [
+      "brute force",
+      "implementation",
+      "strings",
+      "*800"
+    ],
+    "url": "https://codeforces.com/problemset/problem/2132/A",
+    "tutorial_info": {
+      "has_tutorial": true,
+      "tutorial_links": [
+        {
+          "text": "Tutorial",
+          "title": "Codeforces Round 1043 (Div. 3) Editorial",
+          "url": "/blog/entry/145692",
+          "full_url": "https://codeforces.com/blog/entry/145692"
+        }
+      ],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [
+      {
+        "title": "solution",
+        "text": "#include <bits/stdc++.h>\n \nusing namespace std;\n \nvoid solve() {\n    string a, b, c;\n    int n, m;\n    cin >> n >> a;\n    cin >> m >> b >> c;\n    string add_left = \"\";\n    for (int i = 0; i < m; ++i) {\n        if (c[i] == 'V') {\n            add_left += b[i];\n        } else {\n            a += b[i];\n        }\n    }\n    reverse(add_left.begin(), add_left.end());\n    cout << add_left + a << '\\n';\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n    return 0;\n}",
+        "codes": [
+          "#include <bits/stdc++.h>\n \nusing namespace std;\n \nvoid solve() {\n    string a, b, c;\n    int n, m;\n    cin >> n >> a;\n    cin >> m >> b >> c;\n    string add_left = \"\";\n    for (int i = 0; i < m; ++i) {\n        if (c[i] == 'V') {\n            add_left += b[i];\n        } else {\n            a += b[i];\n        }\n    }\n    reverse(add_left.begin(), add_left.end());\n    cout << add_left + a << '\\n';\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--)\n        solve();\n    return 0;\n}"
+        ]
+      }
+    ],
+    "tutorials": [],
+    "editorials": [
+      {
+        "title": "editorial",
+        "text": "Tutorial is loading...",
+        "codes": []
+      }
+    ]
+  },
+  "2138C1": {
+    "contest_title": "Codeforces Round 1048 (Div. 1)",
+    "problem_id": "2138C1",
+    "problem_title": "C1. Maple and Tree Beauty (Easy Version)",
+    "time_limit": "3 seconds",
+    "memory_limit": "1024 megabytes",
+    "statement": "This is the easy version of the problem. The difference between the versions is that in this version, the constraints on $$$t$$$ and $$$n$$$ are smaller. You can hack only if you solved all versions of this problem.Maple is given a rooted tree consisting of $$$n$$$ vertices numbered from $$$1$$$ to $$$n$$$, where the root has index $$$1$$$. Each vertex of the tree is labeled either zero or one. Unfortunately, Maple forgot how the vertices are labeled and only remembers that there are exactly $$$k$$$ zeros and $$$n - k$$$ ones.For each vertex, we define thenameof the vertex as the binary string formed by concatenating the labels of the vertices from the root to the vertex. More formally, $$$\\text{name}_1 = \\text{label}_1$$$ and $$$\\text{name}_u = \\text{name}_{p_u} + \\text{label}_u$$$ for all $$$2\\le u\\le n$$$, where $$$p_u$$$ is the parent of vertex $$$u$$$ and $$$+$$$ represents string concatenation.Thebeautyof the tree is equal to the length of the longest common subsequence$$$^{\\text{∗}}$$$ of the names of all theleaves$$$^{\\text{†}}$$$. Your task is to determine the maximum beauty among all labelings of the tree with exactly $$$k$$$ zeros and $$$n - k$$$ ones.$$$^{\\text{∗}}$$$A sequence $$$a$$$ is a subsequence of a sequence $$$b$$$ if $$$a$$$ can be obtained from $$$b$$$ by the deletion of several (possibly, zero or all) element from arbitrary positions.  The longest common subsequence of strings $$$s_1, s_2, \\ldots s_m$$$ is the longest string that is a subsequence of all of $$$s_1, s_2, \\ldots, s_m$$$.$$$^{\\text{†}}$$$A leaf is any vertex without children.\n\nInputEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 50$$$). The description of the test cases follows.The first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2 \\leq n \\leq 1000$$$, $$$0 \\leq k \\leq n$$$) — the number of vertices and the number of vertices labeled with zero, respectively.The second line contains $$$n - 1$$$ integers $$$p_2, p_3, \\ldots, p_{n}$$$ ($$$1 \\leq p_i \\le i - 1$$$) — the parent of vertex $$$i$$$.Note that there areno constraintson the sum of $$$n$$$ over all test cases.\n\nOutputFor each test case, output a single integer representing the maximum beauty among all labelings of the tree with exactly $$$k$$$ zeros and $$$n - k$$$ ones.",
+    "sample_inputs": [
+      "57 31 1 2 2 3 37 21 1 2 3 1 15 01 2 3 45 21 1 1 15 41 1 1 1",
+      "52 012 113 01 13 11 23 11 1"
+    ],
+    "sample_outputs": [
+      "3\n2\n5\n1\n2",
+      "2\n2\n2\n3\n2"
+    ],
+    "notes": "NoteIn the first test case, the maximum beauty is $$$3$$$, when the vertices are labeled with $$$[0, 0, 0, 1, 1, 1, 1]$$$, and the longest common subsequence is001.In the second test case, the maximum beauty is $$$2$$$, when the vertices are labeled with $$$[1, 0, 0, 1, 1, 1, 1]$$$, and the longest common subsequence is11.",
+    "tags": [],
+    "url": "https://codeforces.com/problemset/problem/2138/C1",
+    "tutorial_info": {
+      "has_tutorial": false,
+      "tutorial_links": [],
+      "announcement_links": []
+    },
+    "hints": [],
+    "solutions": [],
+    "tutorials": [],
+    "editorials": []
   }
 }
