@@ -1,196 +1,303 @@
 # Codeforces AI Tutor 🎯
 
-An intelligent web application that helps you learn competitive programming by providing progressive hints, explanations, and guidance for Codeforces problems. The AI tutor guides you through problem-solving rather than just giving away solutions.
+An intelligent web application that helps you learn competitive programming by providing progressive hints, explanations, and guidance for Codeforces problems. The AI tutor guides you through problem-solving rather than just giving away solutions, with support for multiple conversations and advanced session management.
 
 ## Features ✨
 
-- **Problem Extraction**: Automatically extracts problem data from Codeforces URLs
-- **AI-Powered Tutoring**: Uses Gemini AI to provide intelligent coaching
-- **Progressive Hints**: Get increasingly specific hints based on your progress
-- **Interactive Chat**: Discuss your approach and get personalized feedback
+- **Auto Problem Extraction**: Automatically extracts problem data when you paste Codeforces URLs
+- **AI-Powered Tutoring**: Uses Gemini AI to provide intelligent coaching and personalized guidance
+- **Multi-Conversation Support**: Work on multiple problems simultaneously with independent conversation contexts
+- **Progressive Hints**: Get increasingly specific hints based on your progress and conversation history
+- **Interactive Chat**: Discuss your approach and get personalized feedback with full conversation context
 - **Code Analysis**: Submit your code for detailed analysis and suggestions
-- **Clean UI**: Modern, responsive interface that works on all devices
-- **Session Management**: Maintain conversation context throughout your learning session
+- **Session Persistence**: Your conversations are saved and restored across browser sessions
+- **Modern UI**: Clean, responsive ChatGPT-like interface with VS Code-style syntax highlighting
+- **Real-time Features**: Auto-scrolling, copy buttons, smooth animations, and loading states
 
 ## Project Structure 📁
 
 ```
 final code/
-├── .env                    # Environment variables (API keys, config)
-├── system_prompt.txt       # AI tutor behavior and personality
-├── final.py               # Original Codeforces data extraction logic
-├── start_server.py        # Main server startup script
-├── requirements.txt       # Python dependencies
+├── .env                     # Environment variables (API keys, config)
+├── system_prompt.txt        # AI tutor behavior and personality
+├── final.py                # Codeforces data extraction logic
+├── requirements.txt        # Python dependencies
+├── Procfile               # Cloud deployment process definition
+├── runtime.txt            # Python version for cloud deployment
+├── DEPLOYMENT.md          # Detailed cloud deployment guide
 ├── backend/               # Backend server code
-│   ├── app.py            # Flask web server and API endpoints
+│   ├── app.py            # Flask web server with conversation management
 │   └── ai_service.py     # Gemini AI integration service
-└── frontend/             # Frontend web interface
-    ├── index.html        # Main web page
-    └── static/
-        ├── css/
-        │   └── styles.css    # Application styling
-        └── js/
-            └── app.js        # Frontend JavaScript logic
+├── frontend/             # Frontend web interface
+│   ├── index.html        # Main web page with conversation sidebar
+│   └── static/
+│       ├── css/
+│       │   └── styles.css    # Modern glassmorphism styling
+│       └── js/
+│           └── app.js        # Advanced conversation management
+└── scripts/              # Automation scripts
+    ├── install.sh        # Install dependencies without virtual env
+    ├── start.sh          # Start server and open browser
+    ├── stop.sh           # Stop running server
+    ├── deploy.sh         # Prepare for cloud deployment
+    ├── quickstart.sh     # Complete setup in one command
+    └── health_check.py   # Health monitoring script
 ```
 
-## Setup Instructions 🚀
+## Quick Start 🚀
 
-### 1. Install Dependencies
-
+### Option 1: One-Command Setup
 ```bash
-pip install -r requirements.txt
+./quickstart.sh
+```
+This will:
+1. Install all requirements (no virtual environment)
+2. Guide you through API key setup
+3. Start the server
+4. Open your browser automatically
+
+### Option 2: Manual Setup
+
+#### 1. Install Dependencies
+```bash
+./install.sh
+# or manually: pip3 install -r requirements.txt
 ```
 
-### 2. Configure Environment
-
-The `.env` file contains your API key and configuration. Update it if needed:
-
+#### 2. Configure Environment
+Edit the `.env` file and add your Gemini API key:
 ```bash
 # .env file
-GEMINI_API_KEY=your_api_key_here
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_API_KEY=your_actual_api_key_here
+GEMINI_MODEL=gemini-1.5-flash
 FLASK_ENV=development
 FLASK_DEBUG=True
 FLASK_PORT=5000
 ```
 
-### 3. Customize AI Behavior (Optional)
-
-Edit `system_prompt.txt` to modify how the AI tutor behaves:
-- Coaching style and personality
-- Hint progression strategy
-- Encouragement approach
-
-### 4. Start the Server
-
+#### 3. Start the Server
 ```bash
-python start_server.py
+./start.sh
+# or manually: python3 start_server.py
 ```
 
-The server will start on `http://localhost:5000` by default.
+The server will automatically open in your browser at `http://localhost:5000`.
+
+#### 4. Stop the Server
+```bash
+./stop.sh
+# or press Ctrl+C in the terminal
+```
 
 ## Usage Guide 📚
 
-### 1. Extract a Problem
-- Enter a Codeforces problem URL (e.g., `https://codeforces.com/contest/2135/problem/C`)
-- Click "Extract Problem" to fetch problem data
-- Review the problem statement, constraints, and sample tests
+### 1. Start a New Conversation
+- Click "New Chat" to create a fresh conversation
+- Each conversation maintains independent context and history
 
-### 2. Start Tutoring Session
-- Click "Start Tutoring Session" to begin working with the AI tutor
-- The AI will greet you and ask about your initial thoughts
+### 2. Work with Problems
+- **Paste URL**: Simply paste a Codeforces URL (e.g., `https://codeforces.com/contest/2135/problem/C`)
+- **Auto-Extraction**: Problem data is extracted automatically when you paste
+- **Start Session**: Click "Start Session" to begin working with the AI tutor
 
-### 3. Interactive Learning
+### 3. Interactive Learning Features
 - **Chat**: Discuss your approach, ask questions, share ideas
-- **Get Hints**: Request progressive hints that guide your thinking
-- **Analyze Code**: Submit your solution attempts for detailed feedback
-- **Get Solution**: View complete solution with explanation (use sparingly!)
+- **Progressive Hints**: Request hints that build on your conversation history
+- **Code Analysis**: Submit your solution attempts for detailed feedback
+- **Complete Solution**: View solution with explanation (use wisely!)
 
-### 4. Learning Philosophy
+### 4. Multi-Conversation Workflow
+- **Switch Conversations**: Click any conversation in the sidebar to switch contexts
+- **Independent Sessions**: Each conversation tracks its own hints, progress, and context
+- **Persistent Storage**: All conversations are saved and restored automatically
+
+### 5. Learning Philosophy
 The AI tutor follows these principles:
-- **Guide, don't solve**: Helps you discover solutions rather than giving them away
-- **Progressive hints**: Starts broad, becomes more specific based on your needs
-- **Encourage exploration**: Motivates you to try different approaches
-- **Build understanding**: Focuses on teaching problem-solving patterns
+- **Contextual Guidance**: Uses your full conversation history for personalized help
+- **Progressive Discovery**: Helps you discover solutions through guided thinking
+- **Pattern Recognition**: Teaches problem-solving patterns and algorithmic thinking
+- **Encouraging Exploration**: Motivates trying different approaches safely
+
+## Advanced Features 🎮
+
+### Conversation Management
+- **Multiple Problems**: Work on different problems simultaneously
+- **Context Isolation**: Each conversation maintains separate context
+- **Session Persistence**: Conversations survive browser restarts
+- **History Tracking**: Full message history with timestamps
+
+### Enhanced UI/UX
+- **Auto-Scrolling**: Smooth scrolling to new messages
+- **Copy Buttons**: One-click code copying with visual feedback
+- **Syntax Highlighting**: VS Code-style code highlighting
+- **Responsive Design**: Works perfectly on mobile, tablet, and desktop
+- **Loading States**: Clear feedback during AI processing
+
+### Smart Features
+- **Auto-Extraction**: No need to manually extract - just paste URLs
+- **Conversation Titles**: Automatically named based on problem information
+- **Real-time Updates**: Live conversation list with last activity times
+- **Error Handling**: Graceful error recovery with user-friendly messages
+
+## Cloud Deployment ☁️
+
+### Prepare for Deployment
+```bash
+./deploy.sh
+```
+This creates all necessary files for cloud deployment including `Procfile`, `runtime.txt`, and deployment guides.
+
+### Supported Platforms
+- **Railway** (Recommended): Free tier with auto-deployment
+- **Render**: Excellent free tier performance  
+- **Heroku**: Popular platform with easy setup
+- **DigitalOcean**: VPS option for full control
+
+### Quick Railway Deployment
+1. Connect your GitHub repository to Railway
+2. Set environment variables:
+   - `GEMINI_API_KEY=your_api_key`
+   - `FLASK_ENV=production`
+   - `FLASK_DEBUG=False`
+3. Deploy automatically on git push
+
+See `DEPLOYMENT.md` for detailed platform-specific instructions.
 
 ## API Endpoints 🔗
 
 ### Problem Management
 - `POST /api/extract-problem` - Extract problem from Codeforces URL
-- `POST /api/start-session` - Start new tutoring session
+- `POST /api/start-session` - Start new tutoring session with conversation ID
 
-### Tutoring Interaction  
-- `POST /api/chat` - Send message to AI tutor
-- `POST /api/get-hint` - Get progressive hint
-- `POST /api/get-solution` - Get complete solution
+### Conversation Interaction  
+- `POST /api/chat` - Send message to AI tutor with conversation context
+- `POST /api/get-hint` - Get progressive hint based on conversation history
+- `POST /api/get-solution` - Get complete solution with full context
 
-### Utilities
-- `GET /api/health` - Server health check
-- `GET /api/session/{id}/history` - Get conversation history
+### Session Management
+- `GET /api/conversation/{id}/history` - Get conversation history
+- `GET /api/session/{id}/history` - Get session-specific history
+- `GET /api/health` - Server health check with conversation count
 
-## Technical Details ⚙️
+## Technical Architecture ⚙️
 
-### Backend Architecture
-- **Flask**: Web framework for API endpoints
-- **Gemini AI**: Google's AI model for intelligent tutoring
-- **Cloudscraper**: Bypasses Cloudflare protection for Codeforces
-- **BeautifulSoup**: Parses HTML to extract problem data
+### Backend Features
+- **Flask**: RESTful API with conversation state management
+- **Conversation Isolation**: Independent context tracking per conversation
+- **Session Persistence**: Robust session and conversation storage
+- **Context-Aware AI**: AI responses use full conversation history
+- **Comprehensive Logging**: Detailed request/response logging for debugging
 
 ### Frontend Architecture
-- **Vanilla JavaScript**: Clean, dependency-free frontend
-- **Responsive CSS**: Works on desktop, tablet, and mobile
-- **Progressive Enhancement**: Graceful degradation for older browsers
+- **Vanilla JavaScript**: Zero dependencies, fast loading
+- **State Management**: Advanced conversation and session state handling
+- **Local Storage**: Persistent conversation storage across sessions
+- **Event-Driven**: Responsive UI with real-time updates
+- **Error Recovery**: Graceful handling of network issues and timeouts
 
-### Security Features
-- **Environment Variables**: API keys stored securely
-- **Input Validation**: Prevents malicious input
-- **CORS Protection**: Controlled cross-origin requests
+### Security & Performance
+- **Environment Variables**: Secure API key management
+- **CORS Protection**: Configurable cross-origin policies
+- **Request Timeout**: Protection against hanging requests
+- **Input Validation**: Comprehensive input sanitization
+- **Error Handling**: User-friendly error messages
 
 ## Customization 🛠️
 
-### Modifying AI Behavior
-Edit `system_prompt.txt` to change:
-- Tutoring style and tone
-- Hint progression strategy  
+### AI Behavior
+Edit `system_prompt.txt` to customize:
+- Tutoring style and personality
+- Hint progression strategy
 - Problem-solving methodology
-- Encouragement patterns
+- Response format and tone
 
-### Extending Functionality
-The modular architecture makes it easy to:
-- Add new AI models or providers
-- Implement additional problem sources
-- Create custom analysis features
-- Build team collaboration features
+### Frontend Themes
+Modify CSS variables in `styles.css`:
+```css
+:root {
+  --bg: #0b0f1a;          /* Background color */
+  --primary: #8b5cf6;     /* Primary accent */
+  --text: #e5e7eb;        /* Text color */
+  /* ... more variables */
+}
+```
 
-### Frontend Customization
-- **CSS Variables**: Easy theme customization
-- **Modular JavaScript**: Add new features easily
-- **Responsive Design**: Adapts to different screen sizes
+### Conversation Management
+- Modify conversation storage duration
+- Customize conversation title generation
+- Add conversation export/import features
+- Implement conversation sharing
 
 ## Troubleshooting 🔧
 
 ### Common Issues
 
-**Server won't start:**
-- Check if port 5000 is available
-- Verify all dependencies are installed
-- Ensure `.env` file exists with valid API key
+**Multiple conversations not working:**
+- Clear browser localStorage: `localStorage.clear()`
+- Check console for JavaScript errors
+- Ensure latest code is deployed
 
-**Problem extraction fails:**
-- Verify the Codeforces URL is correct
-- Check internet connection
-- Ensure Codeforces is accessible
+**Conversations not persisting:**
+- Check browser localStorage quota
+- Verify `saveToLocalStorage()` is being called
+- Look for JavaScript errors during save/load
 
-**AI responses are poor:**
-- Verify Gemini API key is valid
-- Check `system_prompt.txt` for clarity
-- Review conversation context limits
+**Auto-extraction not working:**
+- Verify URL format is correct
+- Check network connectivity
+- Ensure backend extraction endpoint is responding
 
-**Frontend not loading:**
-- Ensure server is running on correct port
-- Check browser console for JavaScript errors
-- Verify static file paths are correct
+**Server issues:**
+- Use `./health_check.py` to verify server status
+- Check `api.log` for detailed error information
+- Verify all environment variables are set
 
 ### Debug Mode
-Start with debug enabled to see detailed error messages:
+Enable comprehensive debugging:
 ```bash
-FLASK_DEBUG=True python start_server.py
+FLASK_DEBUG=True python3 start_server.py
 ```
+
+### Health Monitoring
+```bash
+python3 health_check.py
+```
+
+## Scripts Reference 📜
+
+- `./install.sh` - Install all requirements without virtual environment
+- `./start.sh` - Start server and open browser automatically
+- `./stop.sh` - Gracefully stop running server
+- `./deploy.sh` - Prepare project for cloud deployment
+- `./quickstart.sh` - Complete setup and start in one command
+- `./health_check.py` - Monitor server health and availability
 
 ## Contributing 🤝
 
-This is a modular, educational project. Feel free to:
-- Add new AI models or providers
-- Implement additional problem sources  
-- Enhance the user interface
-- Create new tutoring strategies
+This project welcomes contributions for:
+- New AI model integrations
+- Enhanced conversation management features
+- Additional problem source support
+- UI/UX improvements
+- Performance optimizations
+- Mobile app development
 
 ## License 📄
 
-This project is for educational purposes. Please respect Codeforces terms of service when scraping problem data.
+This project is for educational purposes. Please respect Codeforces terms of service when using the platform.
 
 ---
 
+## What's New in This Version 🆕
+
+- ✅ **Multi-Conversation Support**: Work on multiple problems simultaneously
+- ✅ **Auto-Extraction**: No more manual extraction - just paste URLs
+- ✅ **Enhanced AI Context**: AI uses full conversation history for better responses
+- ✅ **Session Persistence**: Conversations survive browser restarts
+- ✅ **Modern UI**: ChatGPT-like interface with smooth animations
+- ✅ **Cloud-Ready**: One-command deployment preparation
+- ✅ **Automation Scripts**: Complete setup and management automation
+
 **Happy learning! 🎉**
 
-Remember: The goal is not just to solve problems, but to understand the thinking process behind competitive programming. Use this tool to build your problem-solving intuition and algorithmic thinking skills.
+Remember: The goal is not just to solve problems, but to understand the thinking process behind competitive programming. Use this tool to build your problem-solving intuition and develop strong algorithmic thinking skills through guided practice.
