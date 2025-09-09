@@ -35,7 +35,7 @@ final code/
 │       │   └── styles.css    # Modern glassmorphism styling
 │       └── js/
 │           └── app.js        # Advanced conversation management
-└── scripts/              # Automation scripts
+└── scripts/              # Automation scripts (Linux/macOS only)
     ├── install.sh        # Install dependencies without virtual env
     ├── start.sh          # Start server and open browser
     ├── stop.sh           # Stop running server
@@ -44,9 +44,49 @@ final code/
     └── health_check.py   # Health monitoring script
 ```
 
+## Platform Compatibility 💻
+
+### Linux/macOS Users 🐧🍎
+- **Full automation**: All shell scripts work out of the box
+- **One-command setup**: Use `./quickstart.sh` for instant setup
+- **Auto browser opening**: Server starts and browser opens automatically
+- **Process management**: Graceful start/stop with PID tracking
+
+### Windows Users 🪟
+- **Manual commands**: Use Python commands directly
+- **Same functionality**: All features work, just different commands
+- **Manual browser**: Open `http://localhost:5000` manually after starting
+- **Ctrl+C to stop**: Use standard Windows process termination
+
+### Command Reference
+
+| Task | Linux/macOS | Windows |
+|------|-------------|---------|
+| **Install** | `./install.sh` | `pip3 install -r requirements.txt` |
+| **Start** | `./start.sh` | `python3 start_server.py` |
+| **Stop** | `./stop.sh` | `Ctrl+C` |
+| **Health Check** | `python3 health_check.py` | `python health_check.py` |
+| **Quick Start** | `./quickstart.sh` | Manual steps below |
+
+### Cross-Platform Python Commands
+These work on all platforms:
+```bash
+# Install dependencies
+pip3 install -r requirements.txt
+
+# Start server
+python3 start_server.py
+
+# Health check
+python3 health_check.py
+
+# Check Python version
+python3 --version
+```
+
 ## Quick Start 🚀
 
-### Option 1: One-Command Setup
+### Option 1: Automated Setup (Linux/macOS)
 ```bash
 ./quickstart.sh
 ```
@@ -56,12 +96,17 @@ This will:
 3. Start the server
 4. Open your browser automatically
 
-### Option 2: Manual Setup
+### Option 2: Manual Setup (All Platforms)
 
 #### 1. Install Dependencies
+**Linux/macOS:**
 ```bash
 ./install.sh
-# or manually: pip3 install -r requirements.txt
+```
+
+**Windows/Manual:**
+```bash
+pip3 install -r requirements.txt
 ```
 
 #### 2. Configure Environment
@@ -76,17 +121,26 @@ FLASK_PORT=5000
 ```
 
 #### 3. Start the Server
+**Linux/macOS:**
 ```bash
 ./start.sh
-# or manually: python3 start_server.py
 ```
 
-The server will automatically open in your browser at `http://localhost:5000`.
+**Windows/Manual:**
+```bash
+python3 start_server.py
+```
+Then manually open your browser to `http://localhost:5000`
 
 #### 4. Stop the Server
+**Linux/macOS:**
 ```bash
 ./stop.sh
-# or press Ctrl+C in the terminal
+```
+
+**Windows/Manual:**
+```bash
+# Press Ctrl+C in the terminal where server is running
 ```
 
 ## Usage Guide 📚
@@ -142,10 +196,25 @@ The AI tutor follows these principles:
 ## Cloud Deployment ☁️
 
 ### Prepare for Deployment
+**Linux/macOS:**
 ```bash
 ./deploy.sh
 ```
-This creates all necessary files for cloud deployment including `Procfile`, `runtime.txt`, and deployment guides.
+
+**Windows/Manual:**
+Create the following files manually:
+
+**Procfile:**
+```
+web: python start_server.py
+```
+
+**runtime.txt:**
+```
+python-3.11.0
+```
+
+This creates all necessary files for cloud deployment.
 
 ### Supported Platforms
 - **Railway** (Recommended): Free tier with auto-deployment
@@ -248,29 +317,50 @@ Modify CSS variables in `styles.css`:
 - Ensure backend extraction endpoint is responding
 
 **Server issues:**
-- Use `./health_check.py` to verify server status
+- Use health check to verify server status
 - Check `api.log` for detailed error information
 - Verify all environment variables are set
 
 ### Debug Mode
 Enable comprehensive debugging:
+
+**Linux/macOS:**
 ```bash
 FLASK_DEBUG=True python3 start_server.py
 ```
 
+**Windows:**
+```bash
+set FLASK_DEBUG=True && python start_server.py
+```
+
 ### Health Monitoring
+**Linux/macOS:**
 ```bash
 python3 health_check.py
 ```
 
+**Windows:**
+```bash
+python health_check.py
+```
+
 ## Scripts Reference 📜
 
+**Linux/macOS Users:**
 - `./install.sh` - Install all requirements without virtual environment
 - `./start.sh` - Start server and open browser automatically
 - `./stop.sh` - Gracefully stop running server
 - `./deploy.sh` - Prepare project for cloud deployment
 - `./quickstart.sh` - Complete setup and start in one command
 - `./health_check.py` - Monitor server health and availability
+
+**Windows Users:**
+- `pip3 install -r requirements.txt` - Install requirements
+- `python3 start_server.py` - Start server (open browser manually)
+- `Ctrl+C` - Stop server
+- Create deployment files manually (see Cloud Deployment section)
+- `python health_check.py` - Check server health
 
 ## Contributing 🤝
 
@@ -296,7 +386,8 @@ This project is for educational purposes. Please respect Codeforces terms of ser
 - ✅ **Session Persistence**: Conversations survive browser restarts
 - ✅ **Modern UI**: ChatGPT-like interface with smooth animations
 - ✅ **Cloud-Ready**: One-command deployment preparation
-- ✅ **Automation Scripts**: Complete setup and management automation
+- ✅ **Cross-Platform**: Works on Linux, macOS, and Windows
+- ✅ **Automation Scripts**: Complete setup and management automation (Linux/macOS)
 
 **Happy learning! 🎉**
 
