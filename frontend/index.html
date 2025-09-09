@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codeforces AI Tutor</title>
     <link rel="stylesheet" href="/static/css/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="theme-dark">
@@ -44,7 +44,6 @@
                 </div>
                 <div class="url-bar">
                     <input type="url" id="problem-url" class="url-input" placeholder="Paste Codeforces URL e.g. https://codeforces.com/contest/2135/problem/C">
-                    <button id="extract-btn" class="btn btn-primary"><i class="fa-solid fa-download"></i> Extract</button>
                     <button id="start-session-btn" class="btn btn-success" disabled>
                         <i class="fa-solid fa-play"></i> Start Session
                     </button>
@@ -98,24 +97,49 @@
 
             <!-- Modals -->
             <div id="code-input-modal" class="modal hidden">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h3>Submit Your Code for Analysis</h3>
-                    <textarea id="student-code" placeholder="Paste your code here..." rows="15"></textarea>
+                <div class="modal-content wide">
+                    <div class="modal-header">
+                        <h3><i class="fa-solid fa-code"></i> Submit Your Code for Analysis</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="student-code" placeholder="Paste your C++, Java, or Python code here..."></textarea>
+                    </div>
                     <div class="modal-actions">
-                        <button id="submit-code-btn" class="btn btn-primary">Submit for Analysis</button>
                         <button id="cancel-code-btn" class="btn btn-secondary">Cancel</button>
+                        <button id="submit-code-btn" class="btn btn-primary">
+                            <i class="fa-solid fa-paper-plane"></i> Submit for Analysis
+                        </button>
                     </div>
                 </div>
             </div>
 
             <div id="problem-details-modal" class="modal hidden">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h3 id="pd-title">Problem Details</h3>
-                    <div id="pd-body">
-                        <div id="pd-statement" class="problem-statement"></div>
+                    <div class="modal-header">
+                        <h3 id="pd-title"><i class="fa-solid fa-file-lines"></i> Problem Details</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div id="pd-statement" class="problem-statement">Loading problem details...</div>
                         <div id="pd-samples" class="sample-tests"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="solution-modal" class="modal hidden">
+                <div class="modal-content wide">
+                    <div class="modal-header">
+                        <h3><i class="fa-solid fa-key"></i> Complete Solution</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div id="solution-explanation" class="solution-explanation">
+                            Loading solution...
+                        </div>
+                        <div id="solution-code-blocks" class="solution-code-blocks">
+                            <!-- Code blocks will be inserted here -->
+                        </div>
                     </div>
                 </div>
             </div>

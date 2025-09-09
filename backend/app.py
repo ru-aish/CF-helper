@@ -98,8 +98,9 @@ CORS(app)
 extractor = ComprehensiveCodeforcesSolutionExtractor()
 ai_tutor = AITutorService()
 
-# Store active sessions
+# Store active sessions and conversations
 active_sessions = {}
+conversations = {}  # {conversation_id: {sessions: [], context: [], created_at: ...}}
 
 # Frontend serving routes
 @app.route('/')
@@ -202,6 +203,8 @@ def start_session():
             return jsonify({'error': 'Problem ID is required'}), 400
         
         problem_id = data['problem_id']
+        conversation_id = data.get('conversation_id')  # Optional conversation ID from frontend
+        
         problem_data = extractor.search_problem(problem_id)
         
         if not problem_data:
@@ -216,10 +219,24 @@ def start_session():
             'conversation_history': [],
             'hints_given': 0,
             'created_at': datetime.now().isoformat(),
-            'last_activity': datetime.now().isoformat()
+            'last_activity': datetime.now().isoformat(),
+            'conversation_id': conversation_id  # Link to conversation
         }
         
         active_sessions[session_id] = session_data
+        
+        # If conversation_id is provided, track this session in the conversation
+        if conversation_id:
+            if conversation_id not in conversations:
+                conversations[conversation_id] = {
+                    'id': conversation_id,
+                    'sessions': [],
+                    'context': [],
+                    'created_at': datetime.now().isoformat(),
+                    'last_updated': datetime.now().isoformat()
+                }
+            conversations[conversation_id]['sessions'].append(session_id)
+            conversations[conversation_id]['last_updated'] = datetime.now().isoformat()
         
         # Generate welcome message
         welcome_message = ai_tutor.start_session(problem_data)
@@ -229,6 +246,15 @@ def start_session():
             'message': welcome_message,
             'timestamp': datetime.now().isoformat()
         })
+        
+        # Also add to conversation context if available
+        if conversation_id and conversation_id in conversations:
+            conversations[conversation_id]['context'].append({
+                'role': 'assistant',
+                'message': welcome_message,
+                'timestamp': datetime.now().isoformat(),
+                'session_id': session_id
+            })
         
         return jsonify({
             'session_id': session_id,
@@ -252,6 +278,7 @@ def chat():
         
         session_id = data['session_id']
         user_message = data['message'].strip()
+        conversation_id = data.get('conversation_id')
         
         if session_id not in active_sessions:
             return jsonify({'error': 'Session not found or expired'}), 404
@@ -261,18 +288,36 @@ def chat():
         # Update last activity
         session['last_activity'] = datetime.now().isoformat()
         
-        # Add user message to history
+        # Get conversation context if available
+        conversation_context = []
+        if conversation_id and conversation_id in conversations:
+            conversation_context = conversations[conversation_id]['context']
+            conversations[conversation_id]['last_updated'] = datetime.now().isoformat()
+        
+        # Add user message to session history
         session['conversation_history'].append({
             'role': 'user',
             'message': user_message,
             'timestamp': datetime.now().isoformat()
         })
         
+        # Add user message to conversation context
+        if conversation_id and conversation_id in conversations:
+            conversations[conversation_id]['context'].append({
+                'role': 'user',
+                'message': user_message,
+                'timestamp': datetime.now().isoformat(),
+                'session_id': session_id
+            })
+        
+        # Use conversation context for AI response (more comprehensive context)
+        context_to_use = conversation_context if conversation_context else session['conversation_history']
+        
         # Get AI response
         ai_response = ai_tutor.get_response(
             user_message=user_message,
             problem_data=session['problem_data'],
-            conversation_history=session['conversation_history'],
+            conversation_history=context_to_use,
             hints_given=session['hints_given']
         )
         
@@ -280,13 +325,23 @@ def chat():
         if ai_response.get('is_hint', False):
             session['hints_given'] += 1
         
-        # Add AI response to history
+        # Add AI response to session history
         session['conversation_history'].append({
             'role': 'assistant',
             'message': ai_response['message'],
             'timestamp': datetime.now().isoformat(),
             'is_hint': ai_response.get('is_hint', False)
         })
+        
+        # Add AI response to conversation context
+        if conversation_id and conversation_id in conversations:
+            conversations[conversation_id]['context'].append({
+                'role': 'assistant',
+                'message': ai_response['message'],
+                'timestamp': datetime.now().isoformat(),
+                'is_hint': ai_response.get('is_hint', False),
+                'session_id': session_id
+            })
         
         return jsonify({
             'message': ai_response['message'],
@@ -309,6 +364,7 @@ def get_hint():
             return jsonify({'error': 'Session ID is required'}), 400
         
         session_id = data['session_id']
+        conversation_id = data.get('conversation_id')
         
         if session_id not in active_sessions:
             return jsonify({'error': 'Session not found or expired'}), 404
@@ -317,11 +373,20 @@ def get_hint():
         problem_data = session['problem_data']
         hints_given = session['hints_given']
         
+        # Get conversation context if available
+        conversation_context = []
+        if conversation_id and conversation_id in conversations:
+            conversation_context = conversations[conversation_id]['context']
+            conversations[conversation_id]['last_updated'] = datetime.now().isoformat()
+        
+        # Use conversation context for hint generation
+        context_to_use = conversation_context if conversation_context else session['conversation_history']
+        
         # Get hint from AI tutor
         hint_response = ai_tutor.get_progressive_hint(
             problem_data=problem_data,
             hints_given=hints_given,
-            conversation_history=session['conversation_history']
+            conversation_history=context_to_use
         )
         
         # Update session
@@ -335,6 +400,16 @@ def get_hint():
             'timestamp': datetime.now().isoformat(),
             'is_hint': True
         })
+        
+        # Add to conversation context
+        if conversation_id and conversation_id in conversations:
+            conversations[conversation_id]['context'].append({
+                'role': 'assistant',
+                'message': hint_response['message'],
+                'timestamp': datetime.now().isoformat(),
+                'is_hint': True,
+                'session_id': session_id
+            })
         
         return jsonify({
             'hint': hint_response['message'],
@@ -357,6 +432,7 @@ def get_solution():
             return jsonify({'error': 'Session ID is required'}), 400
         
         session_id = data['session_id']
+        conversation_id = data.get('conversation_id')
         
         if session_id not in active_sessions:
             return jsonify({'error': 'Session not found or expired'}), 404
@@ -364,10 +440,19 @@ def get_solution():
         session = active_sessions[session_id]
         problem_data = session['problem_data']
         
+        # Get conversation context if available
+        conversation_context = []
+        if conversation_id and conversation_id in conversations:
+            conversation_context = conversations[conversation_id]['context']
+            conversations[conversation_id]['last_updated'] = datetime.now().isoformat()
+        
+        # Use conversation context for solution generation
+        context_to_use = conversation_context if conversation_context else session['conversation_history']
+        
         # Get solution from AI tutor
         solution_response = ai_tutor.get_complete_solution(
             problem_data=problem_data,
-            conversation_history=session['conversation_history']
+            conversation_history=context_to_use
         )
         
         # Update session
@@ -381,6 +466,16 @@ def get_solution():
             'is_solution': True
         })
         
+        # Add to conversation context
+        if conversation_id and conversation_id in conversations:
+            conversations[conversation_id]['context'].append({
+                'role': 'assistant',
+                'message': solution_response['message'],
+                'timestamp': datetime.now().isoformat(),
+                'is_solution': True,
+                'session_id': session_id
+            })
+        
         return jsonify({
             'solution': solution_response['message'],
             'explanation': solution_response.get('explanation', ''),
@@ -390,6 +485,28 @@ def get_solution():
         
     except Exception as e:
         print(f"Error in get_solution: {e}")
+        traceback.print_exc()
+        return jsonify({'error': f'Internal server error: {str(e)}'}), 500
+
+@app.route('/api/conversation/<conversation_id>/history', methods=['GET'])
+@log_api_call
+def get_conversation_history(conversation_id):
+    """Get conversation history for a conversation"""
+    try:
+        if conversation_id not in conversations:
+            return jsonify({'error': 'Conversation not found'}), 404
+        
+        conversation = conversations[conversation_id]
+        return jsonify({
+            'conversation_id': conversation_id,
+            'context': conversation['context'],
+            'sessions': conversation['sessions'],
+            'created_at': conversation['created_at'],
+            'last_updated': conversation['last_updated']
+        })
+        
+    except Exception as e:
+        print(f"Error in get_conversation_history: {e}")
         traceback.print_exc()
         return jsonify({'error': f'Internal server error: {str(e)}'}), 500
 
@@ -421,7 +538,8 @@ def health_check():
     return jsonify({
         'status': 'healthy',
         'timestamp': datetime.now().isoformat(),
-        'active_sessions': len(active_sessions)
+        'active_sessions': len(active_sessions),
+        'active_conversations': len(conversations)
     })
 
 @app.errorhandler(404)

@@ -4,7 +4,7 @@ import os
 import json
 from typing import Dict, List, Optional
 from datetime import datetime
-from google import genai
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,13 +12,14 @@ load_dotenv()
 class AITutorService:
     def __init__(self):
         self.api_key = os.getenv('GEMINI_API_KEY')
-        self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.5-flash')
+        self.model_name = os.getenv('GEMINI_MODEL', 'gemini-1.5-flash')  # Use standard flash model
         
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY not found in environment variables")
         
         # Initialize Gemini client
-        self.client = genai.Client(api_key=self.api_key)
+        genai.configure(api_key=self.api_key)
+        self.model = genai.GenerativeModel(self.model_name)
         
         # Load system prompt
         self.system_prompt = self._load_system_prompt()
@@ -34,60 +35,98 @@ class AITutorService:
             return "You are a helpful competitive programming tutor."
     
     def _create_problem_context(self, problem_data: Dict) -> str:
-        """Create context string from problem data"""
+        """Create context string from problem data - simplified for speed"""
         context_parts = [
-            f"Problem: {problem_data.get('problem_id', 'Unknown')} - {problem_data.get('problem_title', 'Unknown')}",
-            f"Contest: {problem_data.get('contest_title', 'N/A')}",
+            f"Problem: {problem_data.get('problem_id', 'Unknown')} - {problem_data.get('problem_title', 'Unknown')}"
         ]
         
         if problem_data.get('statement'):
-            context_parts.append(f"Problem Statement:\n{problem_data['statement']}")
+            # Truncate statement to first 300 characters for speed
+            statement = problem_data['statement']
+            if len(statement) > 300:
+                statement = statement[:300] + "..."
+            context_parts.append(f"Statement: {statement}")
         
         if problem_data.get('sample_inputs') and problem_data.get('sample_outputs'):
-            context_parts.append("Sample Input/Output:")
-            for i, (inp, out) in enumerate(zip(problem_data['sample_inputs'], problem_data['sample_outputs'])):
-                context_parts.append(f"Example {i+1}:")
-                context_parts.append(f"Input: {inp}")
-                context_parts.append(f"Output: {out}")
+            # Only include first sample for speed
+            inp = problem_data['sample_inputs'][0] if problem_data['sample_inputs'] else ""
+            out = problem_data['sample_outputs'][0] if problem_data['sample_outputs'] else ""
+            context_parts.append(f"Sample: Input: {inp} | Output: {out}")
         
         if problem_data.get('tags'):
-            context_parts.append(f"Tags: {', '.join(problem_data['tags'])}")
+            # Limit to first 3 tags
+            tags = problem_data['tags'][:3]
+            context_parts.append(f"Tags: {', '.join(tags)}")
         
-        if problem_data.get('time_limit'):
-            context_parts.append(f"Time Limit: {problem_data['time_limit']}")
-        
-        if problem_data.get('memory_limit'):
-            context_parts.append(f"Memory Limit: {problem_data['memory_limit']}")
-        
-        return "\n\n".join(context_parts)
+        return "\n".join(context_parts)
     
     def _create_conversation_context(self, conversation_history: List[Dict]) -> str:
-        """Create conversation context from history"""
+        """Create conversation context from history - limit to last 3 messages for speed"""
         if not conversation_history:
-            return ""
+            return "This is the start of the conversation."
         
-        context_parts = ["Previous conversation:"]
-        for entry in conversation_history[-10:]:  # Only include last 10 messages
+        # Limit to last 3 messages for faster processing and conciseness
+        recent_history = conversation_history[-3:] if len(conversation_history) > 3 else conversation_history
+        
+        context_parts = ["Recent conversation:"]
+        for entry in recent_history:
             role = entry.get('role', 'unknown')
             message = entry.get('message', '')
-            if role == 'user':
-                context_parts.append(f"Student: {message}")
-            elif role == 'assistant':
-                context_parts.append(f"Tutor: {message}")
+            # Truncate very long messages more aggressively 
+            if len(message) > 150:
+                message = message[:150] + "..."
+            context_parts.append(f"{role}: {message}")
         
         return "\n".join(context_parts)
     
     def _make_api_call(self, prompt: str) -> str:
-        """Make API call to Gemini"""
+        """Make API call to Gemini with timeout"""
+        import time
+        import signal
+        import threading
+        from concurrent.futures import ThreadPoolExecutor, TimeoutError
+        
+        def timeout_handler(signum, frame):
+            raise TimeoutError("API call timed out")
+        
+        def api_call():
+            return self.model.generate_content(prompt)
+        
         try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt
-            )
-            return response.text.strip()
+            start_time = time.time()
+            print(f"Making API call with model: {self.model_name}")
+            
+            # Use ThreadPoolExecutor with timeout for API call
+            with ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(api_call)
+                try:
+                    response = future.result(timeout=20)  # 20 second timeout
+                except TimeoutError:
+                    print("API call timed out after 20 seconds")
+                    return "I'm experiencing response delays. Please try again or use a simpler question."
+            
+            elapsed = time.time() - start_time
+            print(f"API call completed in {elapsed:.2f} seconds")
+            
+            if hasattr(response, 'text'):
+                return response.text.strip()
+            else:
+                print(f"Unexpected response format: {response}")
+                return "I received an unexpected response format. Please try again."
+                
         except Exception as e:
             print(f"Error making API call: {e}")
-            return "I apologize, but I'm having trouble processing your request right now. Please try again."
+            print(f"Error type: {type(e)}")
+            import traceback
+            traceback.print_exc()
+            
+            # Return a more helpful error message
+            if "timeout" in str(e).lower():
+                return "The AI response timed out. Please try asking a more specific question."
+            elif "quota" in str(e).lower() or "limit" in str(e).lower():
+                return "API quota exceeded. Please try again later."
+            else:
+                return "I'm having trouble processing your request. Please try again or rephrase your question."
     
     def start_session(self, problem_data: Dict) -> str:
         """Start a new tutoring session"""
@@ -97,13 +136,7 @@ class AITutorService:
 
 {problem_context}
 
-The student is starting to work on this problem. Provide a welcoming message that:
-1. Briefly acknowledges the problem they're working on
-2. Encourages them to share their initial thoughts or approach
-3. Lets them know you're here to guide them through the problem-solving process
-4. Asks what they understand about the problem so far or what their initial approach might be
-
-Keep the message encouraging and concise (2-3 sentences)."""
+The student is starting to work on this problem. Give a brief welcome (1-2 sentences) and ask what they'd like help with or what they've tried so far."""
         
         return self._make_api_call(prompt)
     
@@ -118,11 +151,10 @@ Keep the message encouraging and concise (2-3 sentences)."""
 
 {conversation_context}
 
-Student's current message: {user_message}
+Student's message: {user_message}
+Hints given: {hints_given}
 
-Number of hints already given: {hints_given}
-
-Respond to the student's message following your role as a competitive programming tutor. If they're asking for a hint, provide appropriate guidance based on the number of hints already given. If they're sharing their approach or asking questions, provide supportive feedback and guidance."""
+Respond concisely and technically. Be direct and helpful."""
         
         response_text = self._make_api_call(prompt)
         
@@ -140,10 +172,10 @@ Respond to the student's message following your role as a competitive programmin
         conversation_context = self._create_conversation_context(conversation_history)
         
         hint_instructions = {
-            0: "Provide a high-level conceptual hint about the general approach or key insight needed to solve this problem. Don't reveal specific algorithms or implementation details.",
-            1: "Provide a more specific hint about the algorithmic technique or data structure that would be helpful for this problem.",
-            2: "Provide implementation guidance or pseudocode structure that would help the student organize their solution.",
-            3: "Provide a detailed explanation of the solution approach, including step-by-step methodology."
+            0: "Give a direct hint about the main algorithm or technique needed (1-2 sentences).",
+            1: "Suggest specific data structures or implementation approach (1-2 sentences).", 
+            2: "Provide key implementation details or optimization insights (1-2 sentences).",
+            3: "Give a detailed solution explanation with approach and complexity."
         }
         
         hint_level = min(hints_given, 3)
@@ -155,9 +187,8 @@ Respond to the student's message following your role as a competitive programmin
 
 {conversation_context}
 
-This is hint #{hints_given + 1} for the student. {instruction}
-
-Make sure your hint is encouraging and educational, helping the student learn the thinking process rather than just giving away the answer."""
+Hint #{hints_given + 1}: {instruction}
+Be concise and technical."""
         
         response_text = self._make_api_call(prompt)
         
@@ -195,16 +226,13 @@ Make sure your hint is encouraging and educational, helping the student learn th
 
 {solution_context}
 
-The student is requesting the complete solution. Provide a comprehensive explanation that includes:
+Provide a complete solution with:
+1. Brief approach explanation (2-3 sentences)
+2. Clean code implementation in C++ (minimal comments only for complex parts)
+3. Time/space complexity
+4. Key insight (1 sentence)
 
-1. A clear explanation of the approach and algorithm
-2. Step-by-step breakdown of the solution methodology
-3. Code implementation (preferably in C++ for competitive programming)
-4. Time and space complexity analysis
-5. Key insights and learning points
-6. Alternative approaches if applicable
-
-Make this educational and help the student understand not just what the solution is, but why it works and how they could approach similar problems in the future."""
+Focus on clarity and efficiency. Avoid excessive commenting."""
         
         response_text = self._make_api_call(prompt)
         
