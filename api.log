@@ -2382,3 +2382,143 @@
 2025-09-09 16:17:58,396 - werkzeug - INFO -  * Restarting with watchdog (inotify)
 2025-09-09 16:17:59,011 - werkzeug - WARNING -  * Debugger is active!
 2025-09-09 16:17:59,012 - werkzeug - INFO -  * Debugger PIN: 981-303-220
+2025-10-07 22:27:46,761 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-07 22:27:46,761 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-07 22:27:46,789 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 22:27:47,465 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 22:27:47,465 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 22:29:29,070 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:29:29] "GET / HTTP/1.1" 200 -
+2025-10-07 22:29:29,110 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:29:29] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-07 22:29:29,111 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:29:29] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-07 22:29:31,067 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:29:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-07 22:39:44,438 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-07 22:39:44,438 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-07 22:39:44,441 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 22:39:45,055 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 22:39:45,055 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 22:40:50,122 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:40:50] "GET / HTTP/1.1" 200 -
+2025-10-07 22:41:03,078 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:41:03] "GET / HTTP/1.1" 200 -
+2025-10-07 22:41:03,086 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:41:03] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-07 22:41:03,087 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:41:03] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-07 22:41:08,831 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:41:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-07 22:55:11,483 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:55:11] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 22:55:11,525 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:55:11] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-07 22:55:11,528 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:55:11] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 22:55:35,583 - app - INFO - === API CALL START: extract_problem ===
+2025-10-07 22:55:35,583 - app - INFO - Method: POST
+2025-10-07 22:55:35,584 - app - INFO - URL: http://127.0.0.1:5000/api/extract-problem
+2025-10-07 22:55:35,585 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '56', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 22:55:35,586 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/contest/2126/problem/G2"
+}
+2025-10-07 22:55:35,681 - app - INFO - === API CALL START: extract_problem ===
+2025-10-07 22:55:35,681 - app - INFO - Method: POST
+2025-10-07 22:55:35,681 - app - INFO - URL: http://127.0.0.1:5000/api/extract-problem
+2025-10-07 22:55:35,682 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '56', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 22:55:35,682 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/contest/2126/problem/G2"
+}
+2025-10-07 22:55:39,350 - app - INFO - Response Status: 200
+2025-10-07 22:55:39,350 - app - INFO - Duration: 3.669s
+2025-10-07 22:55:39,350 - app - INFO - === API CALL END: extract_problem ===
+2025-10-07 22:55:39,351 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:55:39] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-07 22:55:39,352 - app - INFO - Response Status: 200
+2025-10-07 22:55:39,352 - app - INFO - Duration: 3.769s
+2025-10-07 22:55:39,353 - app - INFO - === API CALL END: extract_problem ===
+2025-10-07 22:55:39,353 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:55:39] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-07 22:55:42,489 - app - INFO - === API CALL START: start_session ===
+2025-10-07 22:55:42,490 - app - INFO - Method: POST
+2025-10-07 22:55:42,491 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-07 22:55:42,491 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 22:55:42,492 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 22:55:44,484 - app - INFO - Response Status: 200
+2025-10-07 22:55:44,484 - app - INFO - Duration: 1.994s
+2025-10-07 22:55:44,484 - app - INFO - === API CALL END: start_session ===
+2025-10-07 22:55:44,485 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:55:44] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-07 22:56:12,910 - app - INFO - === API CALL START: chat ===
+2025-10-07 22:56:12,911 - app - INFO - Method: POST
+2025-10-07 22:56:12,911 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 22:56:12,912 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '136', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 22:56:12,913 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_225542",
+  "message": "what is the bessic of this solution",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 22:56:13,456 - app - INFO - Response Status: 200
+2025-10-07 22:56:13,456 - app - INFO - Duration: 0.546s
+2025-10-07 22:56:13,456 - app - INFO - === API CALL END: chat ===
+2025-10-07 22:56:13,456 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 22:56:13] "POST /api/chat HTTP/1.1" 200 -
+2025-10-07 23:03:23,451 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:03:23,452 - app - INFO - Method: POST
+2025-10-07 23:03:23,454 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:03:23,455 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '238', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:03:23,455 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_225542",
+  "message": "Hello! This problem involves finding a specific type of subarray. What have you tried so far, or what aspect are you finding challenging?",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:03:24,534 - app - INFO - Response Status: 200
+2025-10-07 23:03:24,534 - app - INFO - Duration: 1.083s
+2025-10-07 23:03:24,534 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:03:24,535 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:03:24] "POST /api/chat HTTP/1.1" 200 -
+2025-10-07 23:03:34,847 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:03:34] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 23:03:34,874 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:03:34] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 23:03:34,875 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:03:34] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-07 23:04:29,945 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-07 23:04:29,946 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-07 23:04:29,951 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:04:30,556 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:04:30,559 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:04:57,695 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:04:57] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 23:04:57,754 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:04:57] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-07 23:04:57,760 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:04:57] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 23:05:22,222 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:22] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 23:05:22,265 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-07 23:05:22,266 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:22] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 23:05:25,765 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:25] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 23:05:25,810 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-07 23:05:25,812 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:25] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 23:05:54,675 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:05:54,675 - app - INFO - Method: POST
+2025-10-07 23:05:54,676 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:05:54,677 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '136', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:05:54,678 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_225542",
+  "message": "what is the bessic of this solution",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:05:54,679 - app - INFO - Response Status: 404
+2025-10-07 23:05:54,679 - app - INFO - Duration: 0.003s
+2025-10-07 23:05:54,681 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:05:54,681 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:05:54] "[33mPOST /api/chat HTTP/1.1[0m" 404 -
+2025-10-07 23:05:59,632 - app - INFO - === API CALL START: start_session ===
+2025-10-07 23:05:59,633 - app - INFO - Method: POST
+2025-10-07 23:05:59,634 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-07 23:05:59,636 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:05:59,637 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:06:01,952 - app - INFO - Response Status: 200
+2025-10-07 23:06:01,952 - app - INFO - Duration: 2.320s
+2025-10-07 23:06:01,953 - app - INFO - === API CALL END: start_session ===
+2025-10-07 23:06:01,954 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:06:01] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-07 23:06:04,439 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:06:04,439 - app - INFO - Method: POST
+2025-10-07 23:06:04,440 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:06:04,441 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '136', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:06:04,442 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_230559",
+  "message": "what is the bessic of this solution",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:06:05,433 - app - INFO - Response Status: 200
+2025-10-07 23:06:05,433 - app - INFO - Duration: 0.994s
+2025-10-07 23:06:05,433 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:06:05,435 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:06:05] "POST /api/chat HTTP/1.1" 200 -
