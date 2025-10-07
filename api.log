@@ -2522,3 +2522,300 @@
 2025-10-07 23:06:05,433 - app - INFO - Duration: 0.994s
 2025-10-07 23:06:05,433 - app - INFO - === API CALL END: chat ===
 2025-10-07 23:06:05,435 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:06:05] "POST /api/chat HTTP/1.1" 200 -
+2025-10-07 23:16:26,493 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:16:26,494 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:16:29,177 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:16:30,309 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:16:30,310 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:17:25,686 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:17:25] "GET / HTTP/1.1" 200 -
+2025-10-07 23:17:25,698 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:17:25] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-07 23:17:25,699 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:17:25] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-07 23:17:28,755 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:17:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-07 23:20:18,295 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:20:18] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 23:20:18,319 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:20:18] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-07 23:20:18,322 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:20:18] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 23:20:22,289 - app - INFO - === API CALL START: start_session ===
+2025-10-07 23:20:22,290 - app - INFO - Method: POST
+2025-10-07 23:20:22,290 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-07 23:20:22,290 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:20:22,291 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:20:23,698 - app - INFO - Response Status: 200
+2025-10-07 23:20:23,699 - app - INFO - Duration: 1.409s
+2025-10-07 23:20:23,699 - app - INFO - === API CALL END: start_session ===
+2025-10-07 23:20:23,700 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:20:23] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-07 23:20:40,804 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:20:40,805 - app - INFO - Method: POST
+2025-10-07 23:20:40,805 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:20:40,806 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '144', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:20:40,806 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232022",
+  "message": "what is the overview what i can use in this",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:20:42,220 - app - INFO - Response Status: 200
+2025-10-07 23:20:42,220 - app - INFO - Duration: 1.416s
+2025-10-07 23:20:42,221 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:20:42,222 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:20:42] "POST /api/chat HTTP/1.1" 200 -
+2025-10-07 23:21:24,709 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:21:24,710 - app - INFO - Method: POST
+2025-10-07 23:21:24,710 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:21:24,711 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '148', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:21:24,712 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232022",
+  "message": "oh that is good idea i will tell you what i get",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:21:26,130 - app - INFO - Response Status: 200
+2025-10-07 23:21:26,131 - app - INFO - Duration: 1.421s
+2025-10-07 23:21:26,131 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:21:26,133 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:21:26] "POST /api/chat HTTP/1.1" 200 -
+2025-10-07 23:25:43,101 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:25:43,101 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:25:45,995 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:25:46,859 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:25:46,860 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:25:54,883 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:25:54,884 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:25:55,582 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:25:56,200 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:25:56,201 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:26:17,981 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:26:17,981 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:26:18,733 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:26:19,421 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:26:19,422 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:26:31,460 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:26:31,461 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-07 23:26:31,991 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:26:32,627 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:26:32,627 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:27:44,393 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:27:44] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-07 23:27:44,449 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:27:44] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-07 23:27:44,451 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:27:44] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-07 23:27:51,268 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:27:51,268 - app - INFO - Method: POST
+2025-10-07 23:27:51,268 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:27:51,269 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '148', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:27:51,269 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232022",
+  "message": "oh that is good idea i will tell you what i get",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:27:51,271 - app - INFO - Response Status: 404
+2025-10-07 23:27:51,271 - app - INFO - Duration: 0.003s
+2025-10-07 23:27:51,271 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:27:51,271 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:27:51] "[33mPOST /api/chat HTTP/1.1[0m" 404 -
+2025-10-07 23:27:54,674 - app - INFO - === API CALL START: start_session ===
+2025-10-07 23:27:54,674 - app - INFO - Method: POST
+2025-10-07 23:27:54,674 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-07 23:27:54,675 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:27:54,676 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:27:57,065 - app - INFO - Response Status: 200
+2025-10-07 23:27:57,065 - app - INFO - Duration: 2.391s
+2025-10-07 23:27:57,066 - app - INFO - === API CALL END: start_session ===
+2025-10-07 23:27:57,068 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:27:57] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-07 23:28:14,645 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:28:14,646 - app - INFO - Method: POST
+2025-10-07 23:28:14,647 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:28:14,648 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '162', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:28:14,650 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232754",
+  "message": "what is the high idea i should go to for solving the question",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:28:15,686 - app - INFO - Response Status: 200
+2025-10-07 23:28:15,686 - app - INFO - Duration: 1.041s
+2025-10-07 23:28:15,687 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:28:15,688 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:28:15] "POST /api/chat HTTP/1.1" 200 -
+2025-10-07 23:28:52,661 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:28:52,661 - app - INFO - Method: POST
+2025-10-07 23:28:52,663 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:28:52,665 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '170', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:28:52,667 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232754",
+  "message": "oh i will think about that and then i will tell you the result thanks",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:29:34,890 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-07 23:29:34,891 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-07 23:29:34,894 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-07 23:29:35,516 - werkzeug - WARNING -  * Debugger is active!
+2025-10-07 23:29:35,516 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-07 23:29:49,878 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:29:49,878 - app - INFO - Method: POST
+2025-10-07 23:29:49,879 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:29:49,880 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '170', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:29:49,881 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232754",
+  "message": "oh i will think about that and then i will tell you the result thanks",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:29:49,882 - app - INFO - Response Status: 404
+2025-10-07 23:29:49,883 - app - INFO - Duration: 0.004s
+2025-10-07 23:29:49,884 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:29:49,886 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:29:49] "[33mPOST /api/chat HTTP/1.1[0m" 404 -
+2025-10-07 23:29:53,997 - app - INFO - === API CALL START: start_session ===
+2025-10-07 23:29:53,997 - app - INFO - Method: POST
+2025-10-07 23:29:53,998 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-07 23:29:53,999 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:29:54,000 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:29:56,022 - app - INFO - Response Status: 200
+2025-10-07 23:29:56,022 - app - INFO - Duration: 2.025s
+2025-10-07 23:29:56,023 - app - INFO - === API CALL END: start_session ===
+2025-10-07 23:29:56,023 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:29:56] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-07 23:30:19,532 - app - INFO - === API CALL START: chat ===
+2025-10-07 23:30:19,532 - app - INFO - Method: POST
+2025-10-07 23:30:19,532 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-07 23:30:19,533 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '158', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-07 23:30:19,533 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251007_232954",
+  "message": "so what is the high level idea ishould thing in direction",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-07 23:31:44,194 - app - INFO - Response Status: 200
+2025-10-07 23:31:44,194 - app - INFO - Duration: 84.662s
+2025-10-07 23:31:44,195 - app - INFO - === API CALL END: chat ===
+2025-10-07 23:31:44,195 - werkzeug - INFO - 127.0.0.1 - - [07/Oct/2025 23:31:44] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 00:00:35,791 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 00:00:35,792 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 00:00:38,746 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:00:40,669 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:00:40,669 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:00:51,514 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 00:00:51,514 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 00:00:52,367 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:00:54,295 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:00:54,296 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:01:00,304 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 00:01:00,305 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 00:01:01,016 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:01:02,839 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:01:02,840 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:01:19,991 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 00:01:19,992 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 00:01:20,535 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:01:22,321 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:01:22,321 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:01:40,159 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 00:01:40,159 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 00:01:41,054 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:01:42,968 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:01:42,968 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:02:50,698 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-08 00:02:50,698 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-08 00:02:50,701 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:02:52,466 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:02:52,466 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:12:04,523 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-08 00:12:04,523 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-08 00:12:04,529 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:12:07,468 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:12:07,469 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:12:13,726 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:12:13] "GET / HTTP/1.1" 200 -
+2025-10-08 00:12:13,768 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:12:13] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 00:12:13,769 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:12:13] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 00:12:16,047 - app - INFO - === API CALL START: start_session ===
+2025-10-08 00:12:16,047 - app - INFO - Method: POST
+2025-10-08 00:12:16,048 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-08 00:12:16,049 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 00:12:16,051 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-08 00:12:16,052 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 00:12:17,932 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2025-10-08 00:12:18,000 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 00:12:18,000 - app - INFO - Response Status: 200
+2025-10-08 00:12:18,001 - app - INFO - Duration: 1.954s
+2025-10-08 00:12:18,001 - app - INFO - === API CALL END: start_session ===
+2025-10-08 00:12:18,001 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:12:18] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 00:12:48,437 - app - INFO - === API CALL START: chat ===
+2025-10-08 00:12:48,437 - app - INFO - Method: POST
+2025-10-08 00:12:48,437 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-08 00:12:48,438 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '154', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 00:12:48,439 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251008_001216",
+  "message": "so what is the overview for the solution i should use",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-08 00:12:48,439 - app - INFO - Response Status: 200
+2025-10-08 00:12:48,440 - app - INFO - Duration: 0.002s
+2025-10-08 00:12:48,440 - app - INFO - === API CALL END: chat ===
+2025-10-08 00:12:48,441 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 00:12:48,441 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 00:12:49,454 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 00:12:49,454 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:12:49] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 00:21:37,939 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-08 00:21:37,939 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-08 00:21:37,944 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:21:39,833 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:21:39,834 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:22:36,312 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-08 00:22:36,312 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-08 00:22:36,316 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 00:22:38,592 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 00:22:38,593 - werkzeug - INFO -  * Debugger PIN: 586-970-693
+2025-10-08 00:22:48,632 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:22:48] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 00:22:48,656 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:22:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 00:22:48,665 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:22:48] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 00:22:52,819 - app - INFO - === API CALL START: start_session ===
+2025-10-08 00:22:52,820 - app - INFO - Method: POST
+2025-10-08 00:22:52,820 - app - INFO - URL: http://127.0.0.1:5000/api/start-session
+2025-10-08 00:22:52,821 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '72', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 00:22:52,821 - app - INFO - Request JSON: {
+  "problem_id": "2126G2",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-08 00:22:52,821 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 00:22:54,393 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 00:22:54,475 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 00:22:54,475 - app - INFO - Response Status: 200
+2025-10-08 00:22:54,475 - app - INFO - Duration: 1.655s
+2025-10-08 00:22:54,475 - app - INFO - === API CALL END: start_session ===
+2025-10-08 00:22:54,475 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:22:54] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 00:22:56,389 - app - INFO - === API CALL START: chat ===
+2025-10-08 00:22:56,390 - app - INFO - Method: POST
+2025-10-08 00:22:56,390 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-08 00:22:56,391 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '154', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 00:22:56,392 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251008_002252",
+  "message": "so what is the overview for the solution i should use",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-08 00:22:56,392 - app - INFO - Response Status: 200
+2025-10-08 00:22:56,393 - app - INFO - Duration: 0.003s
+2025-10-08 00:22:56,393 - app - INFO - === API CALL END: chat ===
+2025-10-08 00:22:56,394 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 00:22:56,395 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 00:22:57,466 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 00:22:57,467 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:22:57] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 00:23:18,093 - app - INFO - === API CALL START: chat ===
+2025-10-08 00:23:18,093 - app - INFO - Method: POST
+2025-10-08 00:23:18,093 - app - INFO - URL: http://127.0.0.1:5000/api/chat
+2025-10-08 00:23:18,094 - app - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '161', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.8', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 00:23:18,095 - app - INFO - Request JSON: {
+  "session_id": "2126G2_20251008_002252",
+  "message": "oh that is good idea i will try and then tell you the result",
+  "conversation_id": "conv_1759856370208_zseut93it"
+}
+2025-10-08 00:23:18,095 - app - INFO - Response Status: 200
+2025-10-08 00:23:18,095 - app - INFO - Duration: 0.002s
+2025-10-08 00:23:18,096 - app - INFO - === API CALL END: chat ===
+2025-10-08 00:23:18,096 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 00:23:18,096 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 00:23:19,124 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 00:23:19,125 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 00:23:19] "POST /api/chat HTTP/1.1" 200 -

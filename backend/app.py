@@ -2,7 +2,7 @@
 
 import os
 import sys
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, Response, stream_with_context
 from flask_cors import CORS
 import json
 from datetime import datetime
@@ -270,7 +270,7 @@ def start_session():
 @app.route('/api/chat', methods=['POST'])
 @log_api_call
 def chat():
-    """Handle chat messages in a tutoring session"""
+    """Handle chat messages in a tutoring session with streaming"""
     try:
         data = request.get_json()
         if not data or 'session_id' not in data or 'message' not in data:
@@ -285,23 +285,19 @@ def chat():
         
         session = active_sessions[session_id]
         
-        # Update last activity
         session['last_activity'] = datetime.now().isoformat()
         
-        # Get conversation context if available
         conversation_context = []
         if conversation_id and conversation_id in conversations:
             conversation_context = conversations[conversation_id]['context']
             conversations[conversation_id]['last_updated'] = datetime.now().isoformat()
         
-        # Add user message to session history
         session['conversation_history'].append({
             'role': 'user',
             'message': user_message,
             'timestamp': datetime.now().isoformat()
         })
         
-        # Add user message to conversation context
         if conversation_id and conversation_id in conversations:
             conversations[conversation_id]['context'].append({
                 'role': 'user',
@@ -310,44 +306,49 @@ def chat():
                 'session_id': session_id
             })
         
-        # Use conversation context for AI response (more comprehensive context)
         context_to_use = conversation_context if conversation_context else session['conversation_history']
         
-        # Get AI response
-        ai_response = ai_tutor.get_response(
-            user_message=user_message,
-            problem_data=session['problem_data'],
-            conversation_history=context_to_use,
-            hints_given=session['hints_given']
-        )
+        def generate():
+            full_response = ""
+            try:
+                for chunk in ai_tutor.get_response_stream(
+                    user_message=user_message,
+                    problem_data=session['problem_data'],
+                    conversation_history=context_to_use,
+                    hints_given=session['hints_given']
+                ):
+                    full_response += chunk
+                    yield f"data: {json.dumps({'chunk': chunk})}\n\n"
+                
+                is_hint = any(keyword in user_message.lower() for keyword in ['hint', 'help', 'stuck', 'don\'t know', 'how to'])
+                
+                if is_hint:
+                    session['hints_given'] += 1
+                
+                session['conversation_history'].append({
+                    'role': 'assistant',
+                    'message': full_response,
+                    'timestamp': datetime.now().isoformat(),
+                    'is_hint': is_hint
+                })
+                
+                if conversation_id and conversation_id in conversations:
+                    conversations[conversation_id]['context'].append({
+                        'role': 'assistant',
+                        'message': full_response,
+                        'timestamp': datetime.now().isoformat(),
+                        'is_hint': is_hint,
+                        'session_id': session_id
+                    })
+                
+                yield f"data: {json.dumps({'done': True, 'is_hint': is_hint, 'hints_given': session['hints_given']})}\n\n"
+                
+            except Exception as e:
+                print(f"Error in streaming: {e}")
+                traceback.print_exc()
+                yield f"data: {json.dumps({'error': str(e)})}\n\n"
         
-        # Update hints counter if this was a hint
-        if ai_response.get('is_hint', False):
-            session['hints_given'] += 1
-        
-        # Add AI response to session history
-        session['conversation_history'].append({
-            'role': 'assistant',
-            'message': ai_response['message'],
-            'timestamp': datetime.now().isoformat(),
-            'is_hint': ai_response.get('is_hint', False)
-        })
-        
-        # Add AI response to conversation context
-        if conversation_id and conversation_id in conversations:
-            conversations[conversation_id]['context'].append({
-                'role': 'assistant',
-                'message': ai_response['message'],
-                'timestamp': datetime.now().isoformat(),
-                'is_hint': ai_response.get('is_hint', False),
-                'session_id': session_id
-            })
-        
-        return jsonify({
-            'message': ai_response['message'],
-            'is_hint': ai_response.get('is_hint', False),
-            'hints_given': session['hints_given']
-        })
+        return Response(stream_with_context(generate()), mimetype='text/event-stream')
         
     except Exception as e:
         print(f"Error in chat: {e}")

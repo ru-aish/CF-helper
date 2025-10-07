@@ -165,27 +165,99 @@ body {
 .message .tools { display: flex; gap: 8px; opacity: 0.8; }
 .message .tools .tool { cursor: pointer; color: var(--subtle); }
 .message pre { 
-  background: #1e1e1e !important; 
-  border: 1px solid #333; 
-  border-radius: 10px; 
+  background: var(--bg) !important; 
+  border: 1px solid var(--border); 
+  border-radius: 16px; 
   padding: 16px; 
   overflow: auto; 
   font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
   font-size: 14px;
   line-height: 1.5;
   color: #d4d4d4 !important;
+  margin: 12px 0;
 }
 
 .message code:not([class*="language-"]) {
-  background: rgba(30,30,30,0.8) !important;
-  color: #ce9178 !important; 
-  padding: 2px 6px;
-  border-radius: 4px;
+  background: rgba(139,92,246,0.15) !important;
+  color: #e9d5ff !important; 
+  padding: 3px 8px;
+  border-radius: 6px;
   font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
   font-size: 0.9em;
-  border: 1px solid #444;
+  border: 1px solid rgba(139,92,246,0.3);
 }
-.message code { background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; }
+
+.message h1, .message h2, .message h3, .message h4 {
+  margin: 16px 0 8px 0;
+  color: var(--text);
+  font-weight: 600;
+}
+.message h1 { font-size: 1.5em; }
+.message h2 { font-size: 1.3em; }
+.message h3 { font-size: 1.1em; }
+
+.message p {
+  margin: 8px 0;
+  line-height: 1.7;
+}
+
+.message ul, .message ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.message li {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+.message strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.message em {
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.message blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 12px;
+  margin: 12px 0;
+  color: var(--subtle);
+}
+
+.message a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.message a:hover {
+  text-decoration: underline;
+}
+
+.message hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+.message table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.message th, .message td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.message th {
+  background: rgba(139,92,246,0.1);
+  font-weight: 600;
+}
 .message-time { 
   font-size: 11px; 
   color: var(--subtle); 
@@ -524,13 +596,13 @@ body {
 }
 
 .solution-explanation code:not([class*="language-"]) {
-  background: rgba(30,30,30,0.8);
-  color: #ce9178; /* Orange like string color */
-  padding: 2px 6px;
-  border-radius: 4px;
+  background: rgba(139,92,246,0.15);
+  color: #e9d5ff;
+  padding: 3px 8px;
+  border-radius: 6px;
   font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
   font-size: 0.9em;
-  border: 1px solid #444;
+  border: 1px solid rgba(139,92,246,0.3);
 }
 
 /* Code block improvements */
@@ -548,7 +620,7 @@ body {
 }
 
 .code-block-content pre::-webkit-scrollbar-track {
-  background: #0b1220;
+  background: var(--bg);
 }
 
 .code-block-content pre::-webkit-scrollbar-thumb {
@@ -568,13 +640,14 @@ body {
 
 /* Prism tweaks - Dark theme like VS Code */
 pre[class*="language-"] { 
-  background: #1e1e1e !important; 
-  border: 1px solid #333; 
-  border-radius: 10px; 
+  background: var(--bg) !important; 
+  border: 1px solid var(--border); 
+  border-radius: 16px; 
   color: #d4d4d4 !important;
   padding: 20px !important;
   font-size: 14px;
   line-height: 1.5;
+  margin: 12px 0 !important;
 }
 
 code[class*="language-"] { 

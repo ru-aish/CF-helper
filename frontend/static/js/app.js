@@ -337,22 +337,93 @@ async function sendMessage() {
   addMessage('user', message);
   chatInput.value = ''; autosize(chatInput);
   setComposerBusy(true);
+  
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('message', 'assistant');
+  const contentDiv = document.createElement('div');
+  contentDiv.classList.add('message-content');
+  messageElement.appendChild(contentDiv);
+  chatMessages.appendChild(messageElement);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  
+  let fullResponse = '';
+  let isHint = false;
+  let hintsGiven = conversation.hints_given;
+  
   try {
-    const result = await apiCall('chat', 'POST', { 
-      session_id: conversation.session.session_id, 
-      message,
-      conversation_id: currentConversationId
+    abortController = new AbortController();
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        session_id: conversation.session.session_id, 
+        message,
+        conversation_id: currentConversationId
+      }),
+      signal: abortController.signal
     });
-    addMessage(result.is_hint ? 'hint' : 'assistant', result.message);
-    if (result.hints_given !== undefined) {
-      conversation.hints_given = result.hints_given;
-      document.getElementById('hints-counter').textContent = `Hints given: ${result.hints_given}`;
+    
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const chunk = decoder.decode(value);
+      const lines = chunk.split('\n');
+      
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = JSON.parse(line.slice(6));
+          
+          if (data.chunk) {
+            fullResponse += data.chunk;
+            contentDiv.innerHTML = processMessageContent(fullResponse);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
+          
+          if (data.done) {
+            isHint = data.is_hint || false;
+            hintsGiven = data.hints_given || hintsGiven;
+            if (isHint) messageElement.classList.add('hint');
+            
+            if (typeof Prism !== 'undefined') {
+              Prism.highlightAllUnder(messageElement);
+            }
+            
+            attachCopyButtons(messageElement);
+          }
+          
+          if (data.error) {
+            throw new Error(data.error);
+          }
+        }
+      }
+    }
+    
+    conversation.history.push({ type: isHint ? 'hint' : 'assistant', content: fullResponse });
+    if (hintsGiven !== conversation.hints_given) {
+      conversation.hints_given = hintsGiven;
+      document.getElementById('hints-counter').textContent = `Hints given: ${hintsGiven}`;
     }
     conversation.lastUpdated = new Date().toISOString();
     renderConversations();
     saveToLocalStorage();
-  } catch (e) { addMessage('assistant', `Sorry, I encountered an error: ${e.message}`); }
-  finally { setComposerBusy(false); }
+    
+  } catch (e) { 
+    if (e.name === 'AbortError') {
+      contentDiv.innerHTML = processMessageContent(fullResponse + '\n\n*[Response stopped]*');
+    } else {
+      contentDiv.innerHTML = `Sorry, I encountered an error: ${e.message}`;
+    }
+  }
+  finally { 
+    setComposerBusy(false); 
+    abortController = null;
+  }
 }
 
 async function regenerateLast() {
