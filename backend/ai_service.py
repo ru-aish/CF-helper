@@ -4,7 +4,7 @@ import os
 import json
 from typing import Dict, List, Optional, Generator
 from datetime import datetime
-from google import genai
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,12 +12,13 @@ load_dotenv()
 class AITutorService:
     def __init__(self):
         self.api_key = os.getenv('GEMINI_API_KEY')
-        self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.5-flash-lite')
+        self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.0-flash-exp')
         
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY not found in environment variables")
         
-        self.client = genai.Client(api_key=self.api_key)
+        genai.configure(api_key=self.api_key)
+        self.client = genai.GenerativeModel(self.model_name)
         
         # Load system prompt
         self.system_prompt = self._load_system_prompt()
@@ -112,10 +113,12 @@ class AITutorService:
         try:
             print(f"Making streaming API call with model: {self.model_name}")
             
-            for chunk in self.client.models.generate_content_stream(
-                model=self.model_name,
-                contents=prompt
-            ):
+            response = self.client.generate_content(
+                prompt,
+                stream=True
+            )
+            
+            for chunk in response:
                 if chunk.text:
                     yield chunk.text
                     
@@ -130,16 +133,9 @@ class AITutorService:
         try:
             print(f"Making non-streaming API call with model: {self.model_name}")
             
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt
-            )
+            response = self.client.generate_content(prompt)
             
-            if hasattr(response, 'text'):
-                return response.text.strip()
-            else:
-                print(f"Unexpected response format: {response}")
-                return "I received an unexpected response format. Please try again."
+            return response.text.strip()
                 
         except Exception as e:
             print(f"Error making API call: {e}")
