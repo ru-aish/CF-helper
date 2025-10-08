@@ -8,7 +8,6 @@ google-generativeai==0.7.2
 # Web Scraping (from existing final.py)
 cloudscraper==1.2.71
 beautifulsoup4==4.12.2
-lxml==4.9.3
 
 # Utilities
 python-dotenv==1.0.0
