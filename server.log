@@ -1,0 +1,566 @@
+Loaded 43 existing problems from comprehensive_codeforces_problems.json
+============================================================
+🎯 CODEFORCES AI TUTOR
+============================================================
+🚀 Starting server on http://127.0.0.1:5000
+🔧 Debug mode: True
+📋 Available endpoints:
+   • GET  /                    - Main web interface
+   • POST /api/extract-problem - Extract problem from URL
+   • POST /api/start-session   - Start tutoring session
+   • POST /api/chat           - Chat with AI tutor
+   • POST /api/get-hint       - Get progressive hints
+   • POST /api/get-solution   - Get complete solution
+   • GET  /api/health         - Health check
+============================================================
+💡 Tip: Make sure your .env file contains valid GEMINI_API_KEY
+🛑 Press Ctrl+C to stop the server
+============================================================
+ * Serving Flask app 'app'
+ * Debug mode: on
+2025-10-08 14:13:43,646 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-08 14:13:43,646 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-08 14:13:43,650 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+Loaded 43 existing problems from comprehensive_codeforces_problems.json
+============================================================
+🎯 CODEFORCES AI TUTOR
+============================================================
+🚀 Starting server on http://127.0.0.1:5000
+🔧 Debug mode: True
+📋 Available endpoints:
+   • GET  /                    - Main web interface
+   • POST /api/extract-problem - Extract problem from URL
+   • POST /api/start-session   - Start tutoring session
+   • POST /api/chat           - Chat with AI tutor
+   • POST /api/get-hint       - Get progressive hints
+   • POST /api/get-solution   - Get complete solution
+   • GET  /api/health         - Health check
+============================================================
+💡 Tip: Make sure your .env file contains valid GEMINI_API_KEY
+🛑 Press Ctrl+C to stop the server
+============================================================
+2025-10-08 14:13:45,253 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 14:13:45,254 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 14:14:49,679 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:14:49] "GET / HTTP/1.1" 200 -
+2025-10-08 14:15:59,018 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:15:59] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 14:15:59,062 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:15:59] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:15:59,065 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:15:59] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:16:16,796 - app - INFO - === API CALL START: extract_problem ===
+2025-10-08 14:16:16,797 - app - INFO - Method: POST
+2025-10-08 14:16:16,799 - app - INFO - URL: http://localhost:5000/api/extract-problem
+2025-10-08 14:16:16,799 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:16:16,800 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2135/C"
+}
+
+🚀 Starting complete processing for: https://codeforces.com/problemset/problem/2135/C
+🔍 Fetching problem from: https://codeforces.com/problemset/problem/2135/C
+✅ Found tutorial: Tutorial(en) -> /blog/entry/145796
+✅ Successfully extracted problem: 2135C
+📖 Processing editorial: https://codeforces.com/blog/entry/145796
+📖 Fetching editorial from: https://codeforces.com/blog/entry/145796
+Found 10 problem links in editorial
+Processing 2136A - In the Dream
+  Found hint: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found code (python): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2136A: 1 hints, 4 solutions, 0 tutorials, 0 editorials
+Processing 2136B - Like the Bitset
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found code (python): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2136B: 2 hints, 4 solutions, 0 tutorials, 0 editorials
+Processing 2135A - Against the Difference
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135A: 2 hints, 3 solutions, 0 tutorials, 0 editorials
+Processing 2135B - For the Champion
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135B: 2 hints, 3 solutions, 0 tutorials, 0 editorials
+Processing 2135C - By the Assignment
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135C: 4 hints, 3 solutions, 0 tutorials, 0 editorials
+Processing 2135D1 - From the Unknown (Easy Version)
+⚠️  No content found for 2135D1
+Processing 2135D2 - From the Unknown (Hard Version)
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution (easy): 0 code blocks
+  Found code (easy, c++): 1 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found hint 5: 0 code blocks
+  Found solution (hard): 0 code blocks
+  Found code (hard, c++): 1 code blocks
+  Found rate the problem! (easy): 0 code blocks
+  Found rate the problem! (hard): 0 code blocks
+✅ 2135D2: 5 hints, 6 solutions, 0 tutorials, 0 editorials
+Processing 2135E1 - Beyond the Palindrome (Easy Version)
+⚠️  No content found for 2135E1
+Processing 2135E2 - Beyond the Palindrome (Hard Version)
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found solution (easy): 0 code blocks
+  Found code (easy, c++): 1 code blocks
+  Found hint 5: 0 code blocks
+  Found hint 6: 0 code blocks
+  Found solution (hard): 0 code blocks
+  Found code (hard, c++): 1 code blocks
+  Found rate the problem! (easy): 0 code blocks
+  Found rate the problem! (hard): 0 code blocks
+✅ 2135E2: 6 hints, 6 solutions, 0 tutorials, 0 editorials
+Processing 2135F - To the Infinity
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found hint 5: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135F: 5 hints, 3 solutions, 0 tutorials, 0 editorials
+✅ Found 8 problems in editorial!
+✅ Found 7 total content items for 2135C!
+✅ Also saved 2136A from editorial
+✅ Also saved 2136B from editorial
+✅ Also saved 2135A from editorial
+✅ Also saved 2135B from editorial
+✅ Also saved 2135D2 from editorial
+✅ Also saved 2135E2 from editorial
+✅ Also saved 2135F from editorial
+Saved 43 problems to comprehensive_codeforces_problems.json
+✅ Problem 2135C processing complete!
+2025-10-08 14:16:19,962 - app - INFO - Response Status: 200
+2025-10-08 14:16:19,962 - app - INFO - Duration: 3.165s
+2025-10-08 14:16:19,962 - app - INFO - === API CALL END: extract_problem ===
+2025-10-08 14:16:19,962 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:16:19] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-08 14:16:19,971 - app - INFO - === API CALL START: start_session ===
+2025-10-08 14:16:19,971 - app - INFO - Method: POST
+2025-10-08 14:16:19,971 - app - INFO - URL: http://localhost:5000/api/start-session
+2025-10-08 14:16:19,971 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '71', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:16:19,971 - app - INFO - Request JSON: {
+  "problem_id": "2135C",
+  "conversation_id": "conv_1759913179968_mor8xdcy7"
+}
+Making non-streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:16:19,971 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:16:21,346 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 14:16:21,412 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:16:21,414 - app - INFO - Response Status: 200
+2025-10-08 14:16:21,415 - app - INFO - Duration: 1.443s
+2025-10-08 14:16:21,416 - app - INFO - === API CALL END: start_session ===
+2025-10-08 14:16:21,418 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:16:21] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 14:24:35,390 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:24:35] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 14:24:35,447 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:24:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:24:35,450 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:24:35] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 14:26:40,463 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:40] "GET / HTTP/1.1" 200 -
+2025-10-08 14:26:40,476 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:40] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 14:26:40,479 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:40] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:26:41,584 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-08 14:26:53,901 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:53] "GET / HTTP/1.1" 200 -
+2025-10-08 14:26:53,917 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:53] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 14:26:53,920 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:53] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:26:54,892 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:26:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-08 14:28:03,934 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:03] "GET / HTTP/1.1" 200 -
+2025-10-08 14:28:03,948 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:03] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 14:28:03,950 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:03] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:28:04,851 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-08 14:28:26,815 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:26] "GET / HTTP/1.1" 200 -
+2025-10-08 14:28:26,834 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:26] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 14:28:26,835 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:26] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:28:27,824 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-08 14:28:29,836 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:29] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 14:28:29,844 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:28:29,846 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:29] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 14:28:33,047 - app - INFO - === API CALL START: chat ===
+2025-10-08 14:28:33,047 - app - INFO - Method: POST
+2025-10-08 14:28:33,048 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 14:28:33,048 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '105', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not=A?Brand";v="24", "Chromium";v="140"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+2025-10-08 14:28:33,049 - app - INFO - Request JSON: {
+  "session_id": "2135C_20251008_140840",
+  "message": "Hello, can you help?",
+  "conversation_id": "conv_test_123"
+}
+2025-10-08 14:28:33,049 - app - INFO - Response Status: 404
+2025-10-08 14:28:33,050 - app - INFO - Duration: 0.002s
+2025-10-08 14:28:33,050 - app - INFO - === API CALL END: chat ===
+2025-10-08 14:28:33,050 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:33] "[33mPOST /api/chat HTTP/1.1[0m" 404 -
+2025-10-08 14:28:50,461 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:50] "GET / HTTP/1.1" 200 -
+2025-10-08 14:28:50,480 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:50] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 14:28:50,483 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:50] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:28:51,206 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-08 14:28:53,214 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:53] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 14:28:53,224 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:28:53,227 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:28:53] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 14:29:42,895 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:29:42] "GET / HTTP/1.1" 200 -
+2025-10-08 14:29:42,960 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:29:42] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:29:42,966 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:29:42] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 14:29:52,370 - app - INFO - === API CALL START: extract_problem ===
+2025-10-08 14:29:52,370 - app - INFO - Method: POST
+2025-10-08 14:29:52,371 - app - INFO - URL: http://localhost:5000/api/extract-problem
+2025-10-08 14:29:52,372 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:29:52,373 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2135/C"
+}
+
+🚀 Starting complete processing for: https://codeforces.com/problemset/problem/2135/C
+🔍 Fetching problem from: https://codeforces.com/problemset/problem/2135/C
+✅ Found tutorial: Tutorial(en) -> /blog/entry/145796
+✅ Successfully extracted problem: 2135C
+📖 Processing editorial: https://codeforces.com/blog/entry/145796
+📖 Fetching editorial from: https://codeforces.com/blog/entry/145796
+Found 10 problem links in editorial
+Processing 2136A - In the Dream
+  Found hint: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found code (python): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2136A: 1 hints, 4 solutions, 0 tutorials, 0 editorials
+Processing 2136B - Like the Bitset
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found code (python): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2136B: 2 hints, 4 solutions, 0 tutorials, 0 editorials
+Processing 2135A - Against the Difference
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135A: 2 hints, 3 solutions, 0 tutorials, 0 editorials
+Processing 2135B - For the Champion
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135B: 2 hints, 3 solutions, 0 tutorials, 0 editorials
+Processing 2135C - By the Assignment
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135C: 4 hints, 3 solutions, 0 tutorials, 0 editorials
+Processing 2135D1 - From the Unknown (Easy Version)
+⚠️  No content found for 2135D1
+Processing 2135D2 - From the Unknown (Hard Version)
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution (easy): 0 code blocks
+  Found code (easy, c++): 1 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found hint 5: 0 code blocks
+  Found solution (hard): 0 code blocks
+  Found code (hard, c++): 1 code blocks
+  Found rate the problem! (easy): 0 code blocks
+  Found rate the problem! (hard): 0 code blocks
+✅ 2135D2: 5 hints, 6 solutions, 0 tutorials, 0 editorials
+Processing 2135E1 - Beyond the Palindrome (Easy Version)
+⚠️  No content found for 2135E1
+Processing 2135E2 - Beyond the Palindrome (Hard Version)
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found solution (easy): 0 code blocks
+  Found code (easy, c++): 1 code blocks
+  Found hint 5: 0 code blocks
+  Found hint 6: 0 code blocks
+  Found solution (hard): 0 code blocks
+  Found code (hard, c++): 1 code blocks
+  Found rate the problem! (easy): 0 code blocks
+  Found rate the problem! (hard): 0 code blocks
+✅ 2135E2: 6 hints, 6 solutions, 0 tutorials, 0 editorials
+Processing 2135F - To the Infinity
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found hint 5: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found rate the problem!: 0 code blocks
+✅ 2135F: 5 hints, 3 solutions, 0 tutorials, 0 editorials
+✅ Found 8 problems in editorial!
+✅ Found 7 total content items for 2135C!
+✅ Also saved 2136A from editorial
+✅ Also saved 2136B from editorial
+✅ Also saved 2135A from editorial
+✅ Also saved 2135B from editorial
+✅ Also saved 2135D2 from editorial
+✅ Also saved 2135E2 from editorial
+✅ Also saved 2135F from editorial
+Saved 43 problems to comprehensive_codeforces_problems.json
+✅ Problem 2135C processing complete!
+2025-10-08 14:29:55,894 - app - INFO - Response Status: 200
+2025-10-08 14:29:55,894 - app - INFO - Duration: 3.524s
+2025-10-08 14:29:55,894 - app - INFO - === API CALL END: extract_problem ===
+2025-10-08 14:29:55,895 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:29:55] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-08 14:29:55,900 - app - INFO - === API CALL START: start_session ===
+2025-10-08 14:29:55,901 - app - INFO - Method: POST
+2025-10-08 14:29:55,901 - app - INFO - URL: http://localhost:5000/api/start-session
+2025-10-08 14:29:55,901 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '71', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:29:55,902 - app - INFO - Request JSON: {
+  "problem_id": "2135C",
+  "conversation_id": "conv_1759913995898_3v6agpp4m"
+}
+Making non-streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:29:55,902 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:29:57,538 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 14:29:57,620 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:29:57,622 - app - INFO - Response Status: 200
+2025-10-08 14:29:57,623 - app - INFO - Duration: 1.722s
+2025-10-08 14:29:57,623 - app - INFO - === API CALL END: start_session ===
+2025-10-08 14:29:57,625 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:29:57] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 14:30:06,983 - app - INFO - === API CALL START: chat ===
+2025-10-08 14:30:06,983 - app - INFO - Method: POST
+2025-10-08 14:30:06,983 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 14:30:06,984 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '156', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:30:06,984 - app - INFO - Request JSON: {
+  "session_id": "2135C_20251008_142955",
+  "message": "what is the overwive of this problem i dont want to read",
+  "conversation_id": "conv_1759913995898_3v6agpp4m"
+}
+2025-10-08 14:30:06,985 - app - INFO - Response Status: 200
+2025-10-08 14:30:06,985 - app - INFO - Duration: 0.002s
+2025-10-08 14:30:06,985 - app - INFO - === API CALL END: chat ===
+Making streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:30:06,986 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:30:06,986 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:30:07,869 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 14:30:07,871 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:07] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 14:30:34,580 - app - INFO - === API CALL START: extract_problem ===
+2025-10-08 14:30:34,580 - app - INFO - Method: POST
+2025-10-08 14:30:34,581 - app - INFO - URL: http://localhost:5000/api/extract-problem
+2025-10-08 14:30:34,582 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:30:34,582 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2155/F"
+}
+
+🚀 Starting complete processing for: https://codeforces.com/problemset/problem/2155/F
+🔍 Fetching problem from: https://codeforces.com/problemset/problem/2155/F
+✅ Found tutorial: Tutorial(en) -> /blog/entry/147174
+✅ Successfully extracted problem: 2155F
+📖 Processing editorial: https://codeforces.com/blog/entry/147174
+📖 Fetching editorial from: https://codeforces.com/blog/entry/147174
+Found 6 problem links in editorial
+Processing 2155A - El fucho
+  Found hint 1: 0 code blocks
+  Found solution 1: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found solution 2: 0 code blocks
+  Found code (c++): 1 code blocks
+✅ 2155A: 1 hints, 4 solutions, 0 tutorials, 0 editorials
+Processing 2155B - Abraham's Great Escape
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (python): 1 code blocks
+✅ 2155B: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155C - The Ancient Wizards' Capes
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (python): 1 code blocks
+✅ 2155C: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155D - Batteries
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code: 1 code blocks
+✅ 2155D: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155E - Mimo & Yuyu
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code: 1 code blocks
+✅ 2155E: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155F - Juan's Colorful Tree
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found solution: 0 code blocks
+  Found code: 1 code blocks
+✅ 2155F: 4 hints, 2 solutions, 0 tutorials, 0 editorials
+✅ Found 6 problems in editorial!
+✅ Found 6 total content items for 2155F!
+✅ Also saved 2155A from editorial
+✅ Also saved 2155B from editorial
+✅ Also saved 2155C from editorial
+✅ Also saved 2155D from editorial
+✅ Also saved 2155E from editorial
+Saved 49 problems to comprehensive_codeforces_problems.json
+✅ Problem 2155F processing complete!
+2025-10-08 14:30:36,316 - app - INFO - Response Status: 200
+2025-10-08 14:30:36,316 - app - INFO - Duration: 1.736s
+2025-10-08 14:30:36,316 - app - INFO - === API CALL END: extract_problem ===
+2025-10-08 14:30:36,317 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:36] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-08 14:30:36,321 - app - INFO - === API CALL START: start_session ===
+2025-10-08 14:30:36,322 - app - INFO - Method: POST
+2025-10-08 14:30:36,322 - app - INFO - URL: http://localhost:5000/api/start-session
+2025-10-08 14:30:36,322 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '71', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:30:36,323 - app - INFO - Request JSON: {
+  "problem_id": "2155F",
+  "conversation_id": "conv_1759914036319_ncx2t1w5u"
+}
+Making non-streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:30:36,323 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:30:37,653 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 14:30:37,696 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:30:37,697 - app - INFO - Response Status: 200
+2025-10-08 14:30:37,698 - app - INFO - Duration: 1.376s
+2025-10-08 14:30:37,699 - app - INFO - === API CALL END: start_session ===
+2025-10-08 14:30:37,701 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:37] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 14:30:40,541 - app - INFO - === API CALL START: chat ===
+2025-10-08 14:30:40,541 - app - INFO - Method: POST
+2025-10-08 14:30:40,542 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 14:30:40,543 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '148', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:30:40,543 - app - INFO - Request JSON: {
+  "session_id": "2155F_20251008_143036",
+  "message": "https://codeforces.com/problemset/problem/2155/F",
+  "conversation_id": "conv_1759914036319_ncx2t1w5u"
+}
+2025-10-08 14:30:40,544 - app - INFO - Response Status: 200
+2025-10-08 14:30:40,544 - app - INFO - Duration: 0.003s
+2025-10-08 14:30:40,544 - app - INFO - === API CALL END: chat ===
+Making streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:30:40,545 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:30:40,546 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:30:41,207 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 14:30:41,208 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:41] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 14:30:49,153 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:49] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 14:30:49,174 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:30:49,175 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:49] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 14:30:55,594 - app - INFO - === API CALL START: extract_problem ===
+2025-10-08 14:30:55,594 - app - INFO - Method: POST
+2025-10-08 14:30:55,595 - app - INFO - URL: http://localhost:5000/api/extract-problem
+2025-10-08 14:30:55,596 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:30:55,597 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2155/F"
+}
+
+🚀 Starting complete processing for: https://codeforces.com/problemset/problem/2155/F
+🔍 Fetching problem from: https://codeforces.com/problemset/problem/2155/F
+✅ Found tutorial: Tutorial(en) -> /blog/entry/147174
+✅ Successfully extracted problem: 2155F
+📖 Processing editorial: https://codeforces.com/blog/entry/147174
+📖 Fetching editorial from: https://codeforces.com/blog/entry/147174
+Found 6 problem links in editorial
+Processing 2155A - El fucho
+  Found hint 1: 0 code blocks
+  Found solution 1: 0 code blocks
+  Found code (c++): 1 code blocks
+  Found solution 2: 0 code blocks
+  Found code (c++): 1 code blocks
+✅ 2155A: 1 hints, 4 solutions, 0 tutorials, 0 editorials
+Processing 2155B - Abraham's Great Escape
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (python): 1 code blocks
+✅ 2155B: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155C - The Ancient Wizards' Capes
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code (python): 1 code blocks
+✅ 2155C: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155D - Batteries
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code: 1 code blocks
+✅ 2155D: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155E - Mimo & Yuyu
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found solution: 0 code blocks
+  Found code: 1 code blocks
+✅ 2155E: 2 hints, 2 solutions, 0 tutorials, 0 editorials
+Processing 2155F - Juan's Colorful Tree
+  Found hint 1: 0 code blocks
+  Found hint 2: 0 code blocks
+  Found hint 3: 0 code blocks
+  Found hint 4: 0 code blocks
+  Found solution: 0 code blocks
+  Found code: 1 code blocks
+✅ 2155F: 4 hints, 2 solutions, 0 tutorials, 0 editorials
+✅ Found 6 problems in editorial!
+✅ Found 6 total content items for 2155F!
+✅ Also saved 2155A from editorial
+✅ Also saved 2155B from editorial
+✅ Also saved 2155C from editorial
+✅ Also saved 2155D from editorial
+✅ Also saved 2155E from editorial
+Saved 49 problems to comprehensive_codeforces_problems.json
+✅ Problem 2155F processing complete!
+2025-10-08 14:30:57,260 - app - INFO - Response Status: 200
+2025-10-08 14:30:57,260 - app - INFO - Duration: 1.666s
+2025-10-08 14:30:57,260 - app - INFO - === API CALL END: extract_problem ===
+2025-10-08 14:30:57,260 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:57] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-08 14:30:57,265 - app - INFO - === API CALL START: start_session ===
+2025-10-08 14:30:57,266 - app - INFO - Method: POST
+2025-10-08 14:30:57,266 - app - INFO - URL: http://localhost:5000/api/start-session
+2025-10-08 14:30:57,266 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '71', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:30:57,267 - app - INFO - Request JSON: {
+  "problem_id": "2155F",
+  "conversation_id": "conv_1759914057263_uowu9ffd1"
+}
+Making non-streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:30:57,267 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:30:58,591 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 14:30:58,673 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:30:58,674 - app - INFO - Response Status: 200
+2025-10-08 14:30:58,674 - app - INFO - Duration: 1.408s
+2025-10-08 14:30:58,675 - app - INFO - === API CALL END: start_session ===
+2025-10-08 14:30:58,676 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:30:58] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 14:31:03,266 - app - INFO - === API CALL START: chat ===
+2025-10-08 14:31:03,266 - app - INFO - Method: POST
+2025-10-08 14:31:03,266 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 14:31:03,267 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '156', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 14:31:03,268 - app - INFO - Request JSON: {
+  "session_id": "2155F_20251008_143057",
+  "message": "what is the overwive of this problem i dont want to read",
+  "conversation_id": "conv_1759914057263_uowu9ffd1"
+}
+2025-10-08 14:31:03,268 - app - INFO - Response Status: 200
+2025-10-08 14:31:03,269 - app - INFO - Duration: 0.003s
+2025-10-08 14:31:03,269 - app - INFO - === API CALL END: chat ===
+Making streaming API call with model: gemini-2.0-flash-exp
+2025-10-08 14:31:03,271 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 14:31:03,271 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 14:31:03,937 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 14:31:03,939 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:31:03] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 14:31:09,190 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:31:09] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 14:31:09,221 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:31:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 14:31:09,223 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:31:09] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -

@@ -7,8 +7,6 @@ let cachedSolution = null; // Cache the solution to avoid duplicate API calls
 
 // DOM
 const sessionSection = document.getElementById('session-section');
-const urlInput = document.getElementById('problem-url');
-const startSessionBtn = document.getElementById('start-session-btn');
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
@@ -19,13 +17,17 @@ const codeModal = document.getElementById('code-input-modal');
 const studentCodeInput = document.getElementById('student-code');
 const problemDetailsModal = document.getElementById('problem-details-modal');
 const solutionModal = document.getElementById('solution-modal');
+const newProblemModal = document.getElementById('new-problem-modal');
+const modalUrlInput = document.getElementById('modal-problem-url');
+const submitProblemBtn = document.getElementById('submit-problem-btn');
+const cancelProblemBtn = document.getElementById('cancel-problem-btn');
 const conversationsList = document.getElementById('conversations-list');
 const newChatBtn = document.getElementById('new-chat-btn');
 const themeToggle = document.getElementById('theme-toggle');
 
 // Loading and error
-const urlLoading = document.getElementById('url-loading');
-const urlError = document.getElementById('url-error');
+const modalLoading = document.getElementById('modal-loading');
+const modalError = document.getElementById('modal-error');
 const globalLoading = document.getElementById('global-loading');
 const globalError = document.getElementById('global-error');
 
@@ -38,31 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded - initializing app');
   hydrateFromStorage();
   
-  // If no conversations exist after hydration, create a new one
-  if (Object.keys(conversations).length === 0) {
-    console.log('No conversations found, creating initial conversation');
-    createNewConversation();
-    renderConversations();
-    saveToLocalStorage();
-  }
-  
   setupEventListeners();
   autosize(chatInput);
-  urlInput?.focus();
+  renderConversations();
 });
 
 function setupEventListeners() {
-  // URL controls - auto extraction on input
-  startSessionBtn.addEventListener('click', startSession);
-  urlInput.addEventListener('input', autoExtractOnPaste);
-  urlInput.addEventListener('paste', (e) => {
-    setTimeout(autoExtractOnPaste, 100); // Delay to ensure pasted content is available
-  });
-  urlInput.addEventListener('keypress', (e) => { 
-    if (e.key === 'Enter') startSession(); 
-  });
-
-  // Chat controls
   sendBtn.addEventListener('click', sendMessage);
   chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
@@ -70,32 +53,38 @@ function setupEventListeners() {
   regenerateBtn.addEventListener('click', regenerateLast);
   stopBtn.addEventListener('click', stopGenerating);
 
-  // Hint/Solution/Analyze
   getHintBtn.addEventListener('click', getHint);
   getSolutionBtn.addEventListener('click', getSolution);
   analyzeCodeBtn.addEventListener('click', showCodeModal);
 
-  // Modals
-  document.querySelectorAll('.modal .close').forEach(x => x.addEventListener('click', () => { 
-    hideCodeModal(); 
-    hideProblemDetails(); 
-    hideSolutionModal(); 
+  document.querySelectorAll('.modal .close').forEach(x => x.addEventListener('click', (e) => { 
+    const modal = e.target.closest('.modal');
+    if (modal === codeModal) hideCodeModal();
+    else if (modal === problemDetailsModal) hideProblemDetails();
+    else if (modal === solutionModal) hideSolutionModal();
+    else if (modal === newProblemModal) hideNewProblemModal();
   }));
+  
   document.getElementById('submit-code-btn').addEventListener('click', submitCodeForAnalysis);
   document.getElementById('cancel-code-btn').addEventListener('click', hideCodeModal);
+  
+  submitProblemBtn.addEventListener('click', submitProblemUrl);
+  cancelProblemBtn.addEventListener('click', hideNewProblemModal);
+  modalUrlInput.addEventListener('keypress', (e) => { 
+    if (e.key === 'Enter') submitProblemUrl(); 
+  });
+  
   window.addEventListener('click', (e) => { 
     if (e.target === codeModal) hideCodeModal(); 
     if (e.target === problemDetailsModal) hideProblemDetails(); 
     if (e.target === solutionModal) hideSolutionModal();
+    if (e.target === newProblemModal) hideNewProblemModal();
   });
 
-  // View problem
   document.getElementById('view-problem-btn').addEventListener('click', showProblemDetails);
 
-  // Sidebar
   newChatBtn.addEventListener('click', newConversation);
 
-  // Theme toggle
   themeToggle.addEventListener('click', toggleTheme);
 }
 
@@ -150,29 +139,25 @@ async function apiCall(endpoint, method = 'GET', data = null) {
   }
 }
 
-// Auto-extraction function
+// Auto-extraction function (deprecated - now handled in modal)
 function autoExtractOnPaste() {
-  const url = urlInput.value.trim();
-  if (url && url.includes('codeforces.com') && !currentProblemData) {
-    extractProblem();
-  }
+  // No longer needed
 }
 
-// Problem extraction
-async function extractProblem() {
-  const url = urlInput.value.trim();
+// Problem extraction from modal
+async function extractProblemFromModal() {
+  const url = modalUrlInput.value.trim();
   if (!url || !url.includes('codeforces.com')) {
-    showError('Please enter a valid Codeforces URL', urlError); return;
+    showError('Please enter a valid Codeforces URL', modalError); return null;
   }
-  showLoading(urlLoading); hideError(urlError);
+  showLoading(modalLoading); hideError(modalError);
   try {
     const result = await apiCall('extract-problem', 'POST', { url });
-    currentProblemData = result;
-    updateProblemBar(result);
-    startSessionBtn.disabled = false;
+    return result;
   } catch (e) {
-    showError(`Failed to extract problem: ${e.message}`, urlError);
-  } finally { hideLoading(urlLoading); }
+    showError(`Failed to extract problem: ${e.message}`, modalError);
+    return null;
+  } finally { hideLoading(modalLoading); }
 }
 
 function updateProblemBar(data) {
@@ -232,38 +217,30 @@ function switchToConversation(conversationId) {
   currentConversationId = conversationId;
   const conversation = conversations[conversationId];
   
-  // Update UI state
   currentProblemData = conversation.problem;
   
-  // Clear chat and restore history
   chatMessages.innerHTML = '';
-  conversation.history.forEach(msg => {
-    addMessage(msg.type, msg.content, false); // false = don't save to history again
+  (conversation.history || []).forEach(msg => {
+    addMessage(msg.type, msg.content, false);
   });
   
-  // Update problem bar
   if (conversation.problem) {
     updateProblemBar(conversation.problem);
-    startSessionBtn.disabled = !conversation.session;
   } else {
     document.getElementById('problem-bar').classList.add('hidden');
-    startSessionBtn.disabled = true;
   }
   
-  // Update session display
   if (conversation.session) {
     document.getElementById('session-id-display').textContent = `Session: ${conversation.session.session_id}`;
-    document.getElementById('hints-counter').textContent = `Hints given: ${conversation.hints_given}`;
+    document.getElementById('hints-counter').textContent = `Hints given: ${conversation.hints_given || 0}`;
   } else {
     document.getElementById('session-id-display').textContent = '';
     document.getElementById('hints-counter').textContent = 'Hints given: 0';
-  }
-  
-  // Clear URL input if switching to a conversation with different problem
-  if (!conversation.problem) {
-    urlInput.value = '';
-  } else if (conversation.problem.url) {
-    urlInput.value = conversation.problem.url;
+    
+    // If conversation has history but no session, it may have expired
+    if (conversation.history && conversation.history.length > 0) {
+      addMessage('assistant', '⚠️ Your previous session has expired. You can view the conversation history, but to continue chatting, please click "New Chat" to start a fresh session.', false);
+    }
   }
   
   renderConversations();
@@ -271,19 +248,71 @@ function switchToConversation(conversationId) {
 }
 
 // Session management
+async function submitProblemUrl() {
+  const problemData = await extractProblemFromModal();
+  if (!problemData) return;
+  
+  hideNewProblemModal();
+  
+  currentProblemData = problemData;
+  updateProblemBar(problemData);
+  
+  let conversation = getCurrentConversation();
+  if (!conversation || conversation.session) {
+    conversation = createNewConversation(problemData);
+  } else {
+    conversation.problem = problemData;
+    conversation.title = `${problemData.problem_id} - ${problemData.title}`;
+    conversation.lastUpdated = new Date().toISOString();
+  }
+  
+  console.log('Starting session with conversation:', conversation.id);
+  
+  showLoading(globalLoading); hideError(globalError);
+  
+  cachedSolution = null;
+  
+  getSolutionBtn.innerHTML = '<i class="fa-solid fa-key"></i>';
+  getSolutionBtn.disabled = false;
+  getHintBtn.innerHTML = '<i class="fa-regular fa-lightbulb"></i>';
+  getHintBtn.disabled = false;
+  
+  try {
+    const result = await apiCall('start-session', 'POST', { 
+      problem_id: problemData.problem_id,
+      conversation_id: currentConversationId 
+    });
+    
+    conversation.session = { session_id: result.session_id, problem_title: result.problem_title };
+    conversation.lastUpdated = new Date().toISOString();
+    
+    document.getElementById('session-id-display').textContent = `Session: ${result.session_id}`;
+    document.getElementById('hints-counter').textContent = 'Hints given: 0';
+    chatMessages.innerHTML = '';
+    conversation.history = [];
+    addMessage('assistant', result.welcome_message);
+    chatInput.focus();
+    
+    console.log('Session started successfully. Conversations:', conversations);
+    renderConversations();
+    saveToLocalStorage();
+  } catch (e) { 
+    showError(`Failed to start session: ${e.message}`, globalError); 
+  }
+  finally { hideLoading(globalLoading); }
+}
+
 async function startSession() {
   if (!currentProblemData) { 
     showError('Please paste a Codeforces URL first', globalError); 
     return; 
   }
   
-  // Ensure we have a conversation
   let conversation = getCurrentConversation();
   if (!conversation) {
     console.log('No current conversation, creating new one');
     conversation = createNewConversation(currentProblemData);
   } else {
-    // Update existing conversation with problem data
     conversation.problem = currentProblemData;
     conversation.title = `${currentProblemData.problem_id} - ${currentProblemData.title}`;
     conversation.lastUpdated = new Date().toISOString();
@@ -291,12 +320,10 @@ async function startSession() {
   
   console.log('Starting session with conversation:', conversation.id);
   
-  showLoading(globalLoading); hideError(globalError); startSessionBtn.disabled = true;
+  showLoading(globalLoading); hideError(globalError);
   
-  // Clear cached solution when starting new session
   cachedSolution = null;
   
-  // Reset button states
   getSolutionBtn.innerHTML = '<i class="fa-solid fa-key"></i>';
   getSolutionBtn.disabled = false;
   getHintBtn.innerHTML = '<i class="fa-regular fa-lightbulb"></i>';
@@ -308,14 +335,13 @@ async function startSession() {
       conversation_id: currentConversationId 
     });
     
-    // Update conversation with session info
     conversation.session = { session_id: result.session_id, problem_title: result.problem_title };
     conversation.lastUpdated = new Date().toISOString();
     
     document.getElementById('session-id-display').textContent = `Session: ${result.session_id}`;
     document.getElementById('hints-counter').textContent = 'Hints given: 0';
     chatMessages.innerHTML = '';
-    conversation.history = []; // Clear conversation history for new session
+    conversation.history = [];
     addMessage('assistant', result.welcome_message);
     chatInput.focus();
     
@@ -325,7 +351,7 @@ async function startSession() {
   } catch (e) { 
     showError(`Failed to start session: ${e.message}`, globalError); 
   }
-  finally { hideLoading(globalLoading); startSessionBtn.disabled = false; }
+  finally { hideLoading(globalLoading); }
 }
 
 // Chat
@@ -418,6 +444,16 @@ async function sendMessage() {
       contentDiv.innerHTML = processMessageContent(fullResponse + '\n\n*[Response stopped]*');
     } else {
       contentDiv.innerHTML = `Sorry, I encountered an error: ${e.message}`;
+      
+      // Check if it's a session not found error (404)
+      if (e.message.includes('404') || e.message.includes('not found')) {
+        contentDiv.innerHTML += `<br><br><em>The session may have expired. Please start a new session with the problem URL.</em>`;
+        // Clear the invalid session
+        if (conversation) {
+          conversation.session = null;
+          saveToLocalStorage();
+        }
+      }
     }
   }
   finally { 
@@ -480,8 +516,19 @@ async function getHint() {
     renderConversations();
     saveToLocalStorage();
   } catch (e) { 
-    addMessage('assistant', `Sorry, I couldn't provide a hint: ${e.message}`); 
+    addMessage('assistant', `Sorry, I couldn't provide a hint: ${e.message}`);
+    
+    // Check if it's a session not found error
+    if (e.message.includes('404') || e.message.includes('not found')) {
+      addMessage('assistant', 'The session may have expired. Please start a new session with the problem URL.');
+      if (conversation) {
+        conversation.session = null;
+        saveToLocalStorage();
+      }
+    }
+    
     getHintBtn.innerHTML = originalText;
+    getHintBtn.disabled = false;
   }
   finally { 
     if (!getHintBtn.innerHTML.includes('No more hints') && !getHintBtn.innerHTML.includes('Solution revealed')) {
@@ -551,17 +598,40 @@ async function getSolution() {
     
   } catch (e) { 
     console.error("❌ Solution error:", e);
-    addMessage('assistant', `Sorry, I couldn't provide the solution: ${e.message}`); 
+    addMessage('assistant', `Sorry, I couldn't provide the solution: ${e.message}`);
     
-    // Restore button state on error
-    getSolutionBtn.innerHTML = originalText;
-    getSolutionBtn.disabled = false; 
+    // Check if it's a session not found error
+    if (e.message.includes('404') || e.message.includes('not found')) {
+      addMessage('assistant', 'The session may have expired. Please start a new session with the problem URL.');
+      if (conversation) {
+        conversation.session = null;
+        saveToLocalStorage();
+      }
+    }
+  } finally {
+    // Always restore button state if it's still in loading state
+    if (getSolutionBtn.innerHTML.includes('Loading solution')) {
+      getSolutionBtn.innerHTML = originalText;
+      getSolutionBtn.disabled = false;
+    }
   }
 }
 
 // Code analysis
 function showCodeModal() { codeModal.classList.remove('hidden'); studentCodeInput.focus(); }
 function hideCodeModal() { codeModal.classList.add('hidden'); studentCodeInput.value = ''; }
+
+function showNewProblemModal() { 
+  newProblemModal.classList.remove('hidden'); 
+  modalUrlInput.value = '';
+  hideError(modalError);
+  modalUrlInput.focus(); 
+}
+function hideNewProblemModal() { 
+  newProblemModal.classList.add('hidden'); 
+  modalUrlInput.value = '';
+  hideError(modalError);
+}
 
 function showProblemDetails() {
   console.log("🔍 showProblemDetails called");
@@ -921,33 +991,7 @@ function setComposerBusy(busy) {
 
 // Conversations management
 function newConversation() {
-  // Clear current state
-  chatMessages.innerHTML = '';
-  currentProblemData = null; 
-  urlInput.value = ''; 
-  startSessionBtn.disabled = true;
-  document.getElementById('problem-bar').classList.add('hidden');
-  document.getElementById('session-id-display').textContent = '';
-  document.getElementById('hints-counter').textContent = 'Hints given: 0';
-  
-  // Clear cached solution
-  cachedSolution = null;
-  
-  // Reset button states
-  getSolutionBtn.innerHTML = '<i class="fa-solid fa-key"></i>';
-  getSolutionBtn.disabled = false;
-  getHintBtn.innerHTML = '<i class="fa-regular fa-lightbulb"></i>';
-  getHintBtn.disabled = false;
-  
-  // Create new empty conversation immediately
-  const newConv = createNewConversation();
-  console.log('Created new conversation:', newConv.id);
-  
-  renderConversations();
-  saveToLocalStorage();
-  
-  // Focus on URL input
-  urlInput.focus();
+  showNewProblemModal();
 }
 
 function renderConversations() {
@@ -956,7 +1000,6 @@ function renderConversations() {
   
   conversationsList.innerHTML = '';
   
-  // Sort conversations by last updated (most recent first)
   const sortedConversations = Object.values(conversations).sort((a, b) => 
     new Date(b.lastUpdated) - new Date(a.lastUpdated)
   );
@@ -980,33 +1023,12 @@ function renderConversations() {
     conversationsList.appendChild(item);
   });
   
-  // If no conversations, show placeholder
   if (sortedConversations.length === 0) {
     const placeholder = document.createElement('div');
     placeholder.className = 'conversation-placeholder';
     placeholder.textContent = 'No conversations yet';
     conversationsList.appendChild(placeholder);
   }
-}
-
-function regenerateLast() {
-  const conversation = getCurrentConversation();
-  if (!conversation || !conversation.session) return;
-  
-  // Simple approach: resend the last user message if available
-  const lastUser = [...chatMessages.querySelectorAll('.message.user')].pop();
-  if (!lastUser) return;
-  const text = lastUser.querySelector('.message-content')?.innerText || lastUser.textContent;
-  chatInput.value = text.trim(); autosize(chatInput); sendMessage();
-}
-function touchConversation() { saveSessionToLocalStorage(); renderConversations(); }
-function renderConversations() {
-  // Minimal placeholder: current single chat
-  conversationsList.innerHTML = '';
-  const item = document.createElement('div');
-  item.className = 'conversation-item active';
-  item.innerHTML = `<div class="title">${currentProblemData?.title || 'Untitled chat'}</div><div class="meta">${new Date().toLocaleTimeString()}</div>`;
-  conversationsList.appendChild(item);
 }
 
 // Theme
@@ -1042,23 +1064,22 @@ function hydrateFromStorage() {
     
     if (!saved) {
       console.log('No saved data found');
+      conversations = {};
+      currentConversationId = null;
       return;
     }
     
     const data = JSON.parse(saved);
     console.log('Parsed data:', data);
     
-    // Load conversations if not too old (24 hours)
     if (Date.now() - data.timestamp < 24 * 3600000) {
       conversations = data.conversations || {};
       console.log('Loaded conversations:', conversations);
       
-      // If there's a current conversation ID and it exists, switch to it
       if (data.currentConversationId && conversations[data.currentConversationId]) {
         console.log('Switching to saved conversation:', data.currentConversationId);
         switchToConversation(data.currentConversationId);
       } else if (Object.keys(conversations).length > 0) {
-        // Switch to most recent conversation
         const sortedConversations = Object.values(conversations).sort((a, b) => 
           new Date(b.lastUpdated) - new Date(a.lastUpdated)
         );
@@ -1067,11 +1088,13 @@ function hydrateFromStorage() {
       }
     } else {
       console.log('Saved data is too old, ignoring');
+      conversations = {};
+      currentConversationId = null;
     }
-    
-    renderConversations();
   } catch (e) { 
     console.error('Failed to hydrate from localStorage:', e);
+    conversations = {};
+    currentConversationId = null;
   }
 }
 
