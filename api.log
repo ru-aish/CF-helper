@@ -3257,3 +3257,272 @@
 2025-10-08 14:31:39,895 - app - INFO - Duration: 0.004s
 2025-10-08 14:31:39,896 - app - INFO - === API CALL END: chat ===
 2025-10-08 14:31:39,897 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 14:31:39] "[33mPOST /api/chat HTTP/1.1[0m" 404 -
+2025-10-08 22:56:05,929 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-08 22:56:05,929 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-08 22:56:05,933 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 22:56:07,472 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 22:56:07,473 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 22:56:11,280 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:56:11] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 22:56:11,318 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:56:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 22:56:11,320 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:56:11] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 22:56:51,099 - app - INFO - === API CALL START: extract_problem ===
+2025-10-08 22:56:51,100 - app - INFO - Method: POST
+2025-10-08 22:56:51,101 - app - INFO - URL: http://localhost:5000/api/extract-problem
+2025-10-08 22:56:51,102 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 22:56:51,103 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2155/E"
+}
+2025-10-08 22:56:53,015 - app - INFO - Response Status: 200
+2025-10-08 22:56:53,015 - app - INFO - Duration: 1.916s
+2025-10-08 22:56:53,015 - app - INFO - === API CALL END: extract_problem ===
+2025-10-08 22:56:53,015 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:56:53] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-08 22:56:53,021 - app - INFO - === API CALL START: start_session ===
+2025-10-08 22:56:53,021 - app - INFO - Method: POST
+2025-10-08 22:56:53,021 - app - INFO - URL: http://localhost:5000/api/start-session
+2025-10-08 22:56:53,021 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '71', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 22:56:53,022 - app - INFO - Request JSON: {
+  "problem_id": "2155E",
+  "conversation_id": "conv_1759914057263_uowu9ffd1"
+}
+2025-10-08 22:56:53,022 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 22:56:55,356 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 22:56:55,358 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 22:56:55,358 - app - INFO - Response Status: 200
+2025-10-08 22:56:55,358 - app - INFO - Duration: 2.337s
+2025-10-08 22:56:55,358 - app - INFO - === API CALL END: start_session ===
+2025-10-08 22:56:55,358 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:56:55] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 22:57:30,036 - app - INFO - === API CALL START: chat ===
+2025-10-08 22:57:30,038 - app - INFO - Method: POST
+2025-10-08 22:57:30,039 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 22:57:30,040 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '137', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 22:57:30,040 - app - INFO - Request JSON: {
+  "session_id": "2155E_20251008_225653",
+  "message": "what is the overview of this question",
+  "conversation_id": "conv_1759914057263_uowu9ffd1"
+}
+2025-10-08 22:57:30,041 - app - INFO - Response Status: 200
+2025-10-08 22:57:30,042 - app - INFO - Duration: 0.005s
+2025-10-08 22:57:30,042 - app - INFO - === API CALL END: chat ===
+2025-10-08 22:57:30,042 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 22:57:30,043 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 22:57:32,066 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 22:57:32,067 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:57:32] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 22:58:16,219 - app - INFO - === API CALL START: chat ===
+2025-10-08 22:58:16,219 - app - INFO - Method: POST
+2025-10-08 22:58:16,219 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 22:58:16,220 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '121', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 22:58:16,220 - app - INFO - Request JSON: {
+  "session_id": "2155E_20251008_225653",
+  "message": "in the last test case",
+  "conversation_id": "conv_1759914057263_uowu9ffd1"
+}
+2025-10-08 22:58:16,221 - app - INFO - Response Status: 200
+2025-10-08 22:58:16,221 - app - INFO - Duration: 0.002s
+2025-10-08 22:58:16,221 - app - INFO - === API CALL END: chat ===
+2025-10-08 22:58:16,222 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 22:58:16,222 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 22:58:18,326 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 22:58:18,327 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 22:58:18] "POST /api/chat HTTP/1.1" 200 -
+2025-10-08 23:00:00,268 - app - INFO - === API CALL START: get_solution ===
+2025-10-08 23:00:00,268 - app - INFO - Method: POST
+2025-10-08 23:00:00,269 - app - INFO - URL: http://localhost:5000/api/get-solution
+2025-10-08 23:00:00,270 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '87', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 23:00:00,271 - app - INFO - Request JSON: {
+  "session_id": "2155E_20251008_225653",
+  "conversation_id": "conv_1759914057263_uowu9ffd1"
+}
+2025-10-08 23:00:00,272 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 23:00:08,655 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 23:00:08,752 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 23:00:08,753 - app - INFO - Response Status: 200
+2025-10-08 23:00:08,755 - app - INFO - Duration: 8.485s
+2025-10-08 23:00:08,755 - app - INFO - === API CALL END: get_solution ===
+2025-10-08 23:00:08,757 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:00:08] "POST /api/get-solution HTTP/1.1" 200 -
+2025-10-08 23:07:57,034 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:07:57,035 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:07:57,645 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:07:59,363 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:07:59,363 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:08:08,089 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:08:08,090 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:08:09,327 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:08:11,171 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:08:11,171 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:08:17,387 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:08:17,389 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:08:17,888 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:08:19,482 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:08:19,482 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:08:30,461 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:08:30,462 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:08:31,100 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:08:32,651 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:08:32,651 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:25:50,528 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:25:50,533 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:25:51,302 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:25:52,994 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:25:52,995 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:26:10,264 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:10,265 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:11,667 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:26:13,235 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:26:13,235 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:26:31,642 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:31,642 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:31,642 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:32,952 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:26:34,559 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:26:34,559 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:26:53,636 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:53,636 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:26:54,234 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:26:55,806 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:26:55,807 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:27:12,271 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:27:12,272 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:27:13,499 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:27:15,067 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:27:15,068 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:33:50,372 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:33:50,373 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:33:51,275 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:33:52,969 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:33:52,969 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:33:56,857 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:33:56,858 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:33:57,646 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:33:59,300 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:33:59,300 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:34:14,058 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:34:14,058 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:34:14,059 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:34:14,920 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:34:16,614 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:34:16,614 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:34:32,882 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:34:32,883 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:34:33,395 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:34:35,105 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:34:35,106 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:34:47,594 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:34:47,595 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:34:48,832 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:34:50,484 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:34:50,484 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:36:08,685 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:36:08,687 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:36:09,197 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:36:10,897 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:36:10,898 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:42:38,911 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:42:38,911 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:42:40,122 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:42:41,952 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:42:41,953 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:42:57,085 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:42:57,086 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:42:57,671 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:42:59,493 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:42:59,493 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:43:08,750 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:08,751 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:08,751 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:09,249 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:43:11,026 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:43:11,026 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:43:22,040 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:22,040 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:22,723 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:43:24,530 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:43:24,530 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:43:42,082 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:42,082 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:43:43,171 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:43:44,913 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:43:44,913 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:44:04,271 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:44:04,272 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:44:05,587 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:44:07,362 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:44:07,362 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:44:14,262 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:44:14,262 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:44:15,077 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:44:16,874 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:44:16,874 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:51:05,043 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:51:05] "GET / HTTP/1.1" 200 -
+2025-10-08 23:51:05,096 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:51:05] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 23:51:05,098 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:51:05] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 23:51:09,662 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:51:09] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 23:51:09,701 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:51:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 23:51:09,703 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:51:09] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 23:52:17,424 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:52:17,425 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:52:17,425 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:52:17,426 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/ai_service.py', reloading
+2025-10-08 23:52:17,426 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:52:17,427 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:52:17,428 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:52:17,428 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:52:17,428 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:52:17,428 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:52:17,429 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:52:17,429 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/final.py', reloading
+2025-10-08 23:52:18,153 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:52:19,917 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:52:19,917 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:52:36,797 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:52:36,798 - werkzeug - INFO -  * Detected change in '/home/rudra/Code/CF-helper/backend/app.py', reloading
+2025-10-08 23:52:37,516 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-10-08 23:52:39,145 - werkzeug - WARNING -  * Debugger is active!
+2025-10-08 23:52:39,146 - werkzeug - INFO -  * Debugger PIN: 934-513-264
+2025-10-08 23:54:13,749 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:54:13] "GET / HTTP/1.1" 200 -
+2025-10-08 23:54:13,799 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:54:13] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-10-08 23:54:13,802 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:54:13] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-10-08 23:55:31,449 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:55:31] "[36mGET / HTTP/1.1[0m" 304 -
+2025-10-08 23:55:31,482 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:55:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-10-08 23:55:31,483 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:55:31] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-10-08 23:55:48,641 - app - INFO - === API CALL START: extract_problem ===
+2025-10-08 23:55:48,641 - app - INFO - Method: POST
+2025-10-08 23:55:48,642 - app - INFO - URL: http://localhost:5000/api/extract-problem
+2025-10-08 23:55:48,642 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '58', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 23:55:48,644 - app - INFO - Request JSON: {
+  "url": "https://codeforces.com/problemset/problem/2135/C"
+}
+2025-10-08 23:55:52,202 - app - INFO - Response Status: 200
+2025-10-08 23:55:52,202 - app - INFO - Duration: 3.561s
+2025-10-08 23:55:52,202 - app - INFO - === API CALL END: extract_problem ===
+2025-10-08 23:55:52,203 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:55:52] "POST /api/extract-problem HTTP/1.1" 200 -
+2025-10-08 23:55:52,210 - app - INFO - === API CALL START: start_session ===
+2025-10-08 23:55:52,210 - app - INFO - Method: POST
+2025-10-08 23:55:52,211 - app - INFO - URL: http://localhost:5000/api/start-session
+2025-10-08 23:55:52,211 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '71', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 23:55:52,211 - app - INFO - Request JSON: {
+  "problem_id": "2135C",
+  "conversation_id": "conv_1759947952207_fcrrfsgur"
+}
+2025-10-08 23:55:52,212 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 23:55:54,002 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent "HTTP/1.1 200 OK"
+2025-10-08 23:55:54,113 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 23:55:54,114 - app - INFO - Response Status: 200
+2025-10-08 23:55:54,115 - app - INFO - Duration: 1.904s
+2025-10-08 23:55:54,116 - app - INFO - === API CALL END: start_session ===
+2025-10-08 23:55:54,117 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:55:54] "POST /api/start-session HTTP/1.1" 200 -
+2025-10-08 23:56:17,350 - app - INFO - === API CALL START: chat ===
+2025-10-08 23:56:17,350 - app - INFO - Method: POST
+2025-10-08 23:56:17,351 - app - INFO - URL: http://localhost:5000/api/chat
+2025-10-08 23:56:17,351 - app - INFO - Headers: {'Host': 'localhost:5000', 'Connection': 'keep-alive', 'Content-Length': '133', 'Sec-Ch-Ua-Platform': '"Linux"', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Brave";v="138"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Sec-Gpc': '1', 'Accept-Language': 'en-US,en;q=0.5', 'Origin': 'http://localhost:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Cookie': 'categories=general; language=auto; locale=en; autocomplete=; favicon_resolver=; image_proxy=1; method=POST; safesearch=0; theme=simple; results_on_new_tab=0; doi_resolver=oadoi.org; simple_style=auto; center_alignment=0; advanced_search=0; query_in_title=0; infinite_scroll=0; search_on_category_select=1; hotkeys=default; url_formatting=pretty; disabled_engines="wikipedia__general\\054currency__general\\054wikidata__general\\054duckduckgo__general\\054lingva__general\\054startpage__general\\054dictzone__general\\054mymemory translated__general"; enabled_engines="mullvadleta__general\\054mullvadleta brave__general"; disabled_plugins=; enabled_plugins=; tokens=; PHPSESSID=vbak6qjtlja4s034iagp21405g; username-localhost-8888="2|1:0|10:1758865783|23:username-localhost-8888|200:eyJ1c2VybmFtZSI6ICJkMWE4YzgwZTQxZGQ0NDRhYjE4NDBlOWE4ZWFmZDM5YyIsICJuYW1lIjogIkFub255bW91cyBQYXNpdGhlZSIsICJkaXNwbGF5X25hbWUiOiAiQW5vbnltb3VzIFBhc2l0aGVlIiwgImluaXRpYWxzIjogIkFQIiwgImNvbG9yIjogbnVsbH0=|2ef79b6d2c1ec48cd2ec4d285aff92bd39a76b3f5148aada8b45b9786d629507"; _xsrf=2|fe79bc69|fad3d8170b8934d652b144c83173bc77|1758865783; ext_name=ojplmecpdpgccookcobabopnaifgidhf'}
+2025-10-08 23:56:17,352 - app - INFO - Request JSON: {
+  "session_id": "2135C_20251008_235552",
+  "message": "what is the first test case here>",
+  "conversation_id": "conv_1759947952207_fcrrfsgur"
+}
+2025-10-08 23:56:17,353 - app - INFO - Response Status: 200
+2025-10-08 23:56:17,353 - app - INFO - Duration: 0.003s
+2025-10-08 23:56:17,353 - app - INFO - === API CALL END: chat ===
+2025-10-08 23:56:17,354 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-10-08 23:56:17,354 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-10-08 23:56:18,503 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+2025-10-08 23:56:18,505 - werkzeug - INFO - 127.0.0.1 - - [08/Oct/2025 23:56:18] "POST /api/chat HTTP/1.1" 200 -

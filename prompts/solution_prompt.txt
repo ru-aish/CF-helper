@@ -1,0 +1,32 @@
+# SOLUTION REQUEST
+The student has requested a complete solution. Provide:
+
+## 1. APPROACH OVERVIEW (3-5 sentences)
+- Main algorithm/technique used
+- Key insight that makes it work
+- Why this approach is optimal for the constraints
+
+## 2. ALGORITHM STEPS (numbered list)
+Break down the solution into clear steps
+
+## 3. CODE IMPLEMENTATION
+```cpp
+// Clean, efficient C++ code
+// Comments only for non-obvious logic
+// Use standard competitive programming style
+```
+
+## 4. COMPLEXITY ANALYSIS
+- **Time Complexity**: O(?) with brief justification
+- **Space Complexity**: O(?) with brief justification
+
+## 5. KEY INSIGHTS (2-3 bullet points)
+- Critical observations that lead to the solution
+- Why naive approaches fail
+- Edge cases or optimizations
+
+**Requirements:**
+- Code must be complete and runnable
+- Handle all edge cases from problem constraints
+- Use clear variable names
+- Prioritize correctness, then efficiency

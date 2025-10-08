@@ -1,0 +1,35 @@
+# CODE ANALYSIS REQUEST
+The student has submitted code for review. Analyze it systematically:
+
+## 1. CORRECTNESS ✓/✗
+- **Verdict**: Does the approach solve the problem correctly?
+- **Algorithm Used**: Identify the technique/algorithm
+- **Logic Check**: Are the core steps implemented correctly?
+
+## 2. BUGS & ISSUES 🐛
+- **Compilation/Syntax**: Any syntax errors?
+- **Logic Errors**: Incorrect conditions, loop bounds, edge cases?
+- **Runtime Issues**: Array out of bounds, division by zero, overflow?
+- List specific line numbers if applicable
+
+## 3. TEST CASE ANALYSIS 🧪
+- **Sample Tests**: Will it pass provided examples?
+- **Edge Cases**: Missing edge cases (empty input, n=1, max constraints)?
+- **Failure Scenarios**: Specific inputs that would break this code
+
+## 4. COMPLEXITY ANALYSIS 📊
+- **Time Complexity**: Current O(?)
+- **Space Complexity**: Current O(?)
+- **Constraint Check**: Will this TLE/MLE given problem constraints?
+
+## 5. OPTIMIZATION SUGGESTIONS 🚀
+- If incorrect: Direct guidance to fix the bug
+- If correct but slow: Specific optimization to improve complexity
+- If optimal: Possible code simplifications or style improvements
+
+## 6. CODE QUALITY 📝
+- **Readability**: Variable names, structure
+- **Best Practices**: Competitive programming standards
+- **Improvements**: Specific actionable changes
+
+**Tone**: Be constructive and specific. If there's a bug, explain WHY it's wrong and HOW to fix it. Focus on actionable feedback.

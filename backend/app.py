@@ -88,7 +88,7 @@ sys.path.append(project_root)
 from final import ComprehensiveCodeforcesSolutionExtractor
 
 # Import AI service
-from ai_service import AITutorService
+from backend.ai_service import AITutorService
 
 # Flask app setup with disabled static folder
 app = Flask(__name__, static_folder=None)
