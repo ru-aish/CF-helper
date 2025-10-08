@@ -24,9 +24,11 @@ def main():
     from app import app
     
     # Get configuration from environment
-    port = int(os.getenv('FLASK_PORT', 5000))
-    debug = os.getenv('FLASK_DEBUG', 'True').lower() == 'true'
-    host = os.getenv('FLASK_HOST', '127.0.0.1')
+    # Railway uses PORT environment variable
+    port = int(os.getenv('PORT', os.getenv('FLASK_PORT', 5000)))
+    debug = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    # Railway requires binding to 0.0.0.0
+    host = os.getenv('FLASK_HOST', '0.0.0.0')
     
     print("=" * 60)
     print("🎯 CODEFORCES AI TUTOR")
