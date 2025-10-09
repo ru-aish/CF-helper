@@ -24,6 +24,8 @@ const cancelProblemBtn = document.getElementById('cancel-problem-btn');
 const conversationsList = document.getElementById('conversations-list');
 const newChatBtn = document.getElementById('new-chat-btn');
 const themeToggle = document.getElementById('theme-toggle');
+const moreOptionsBtn = document.getElementById('more-options-btn');
+const moreOptionsMenu = document.getElementById('more-options-menu');
 
 // Loading and error
 const modalLoading = document.getElementById('modal-loading');
@@ -41,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   hydrateFromStorage();
   
   setupEventListeners();
-  autosize(chatInput);
   renderConversations();
 });
 
@@ -53,8 +54,10 @@ function setupEventListeners() {
   regenerateBtn.addEventListener('click', regenerateLast);
   stopBtn.addEventListener('click', stopGenerating);
 
-  getHintBtn.addEventListener('click', getHint);
-  getSolutionBtn.addEventListener('click', getSolution);
+  moreOptionsBtn.addEventListener('click', toggleMoreOptions);
+  getHintBtn.addEventListener('click', () => { hideMoreOptions(); getHint(); });
+  getSolutionBtn.addEventListener('click', () => { hideMoreOptions(); getSolution(); });
+  regenerateBtn.addEventListener('click', () => { hideMoreOptions(); regenerateLast(); });
   analyzeCodeBtn.addEventListener('click', showCodeModal);
 
   document.querySelectorAll('.modal .close').forEach(x => x.addEventListener('click', (e) => { 
@@ -79,6 +82,9 @@ function setupEventListeners() {
     if (e.target === problemDetailsModal) hideProblemDetails(); 
     if (e.target === solutionModal) hideSolutionModal();
     if (e.target === newProblemModal) hideNewProblemModal();
+    if (!e.target.closest('.more-options-menu') && !e.target.closest('#more-options-btn')) {
+      hideMoreOptions();
+    }
   });
 
   document.getElementById('view-problem-btn').addEventListener('click', showProblemDetails);
@@ -86,6 +92,11 @@ function setupEventListeners() {
   newChatBtn.addEventListener('click', newConversation);
 
   themeToggle.addEventListener('click', toggleTheme);
+  
+  const tagsToggle = document.getElementById('tags-toggle');
+  if (tagsToggle) {
+    tagsToggle.addEventListener('click', toggleTags);
+  }
 }
 
 // API helper with abort controller support
@@ -161,17 +172,51 @@ async function extractProblemFromModal() {
 }
 
 function updateProblemBar(data) {
-  // Populate the compact problem bar
   document.getElementById('problem-title').textContent = `${data.problem_id} - ${data.title}`;
   document.getElementById('problem-contest').textContent = data.contest_title || '';
   document.getElementById('time-limit').textContent = data.time_limit ? `Time: ${data.time_limit}` : '';
   document.getElementById('memory-limit').textContent = data.memory_limit ? `Memory: ${data.memory_limit}` : '';
+  
   const tags = document.getElementById('tags');
+  const tagsToggle = document.getElementById('tags-toggle');
+  const tagsCount = document.getElementById('tags-count');
+  
   tags.innerHTML = '';
-  (data.tags || []).forEach(t => { const el = document.createElement('span'); el.className = 'tag'; el.textContent = t; tags.appendChild(el); });
+  tags.classList.remove('expanded');
+  
+  if (data.tags && data.tags.length > 0) {
+    data.tags.forEach(t => { 
+      const el = document.createElement('span'); 
+      el.className = 'tag'; 
+      el.textContent = t; 
+      tags.appendChild(el); 
+    });
+    
+    tagsCount.textContent = `${data.tags.length} tag${data.tags.length > 1 ? 's' : ''}`;
+    tagsToggle.classList.remove('hidden');
+  } else {
+    tagsToggle.classList.add('hidden');
+  }
+  
   const link = document.getElementById('problem-open-link');
   link.href = data.url || '#';
   document.getElementById('problem-bar').classList.remove('hidden');
+}
+
+function toggleTags() {
+  const tags = document.getElementById('tags');
+  const tagsToggle = document.getElementById('tags-toggle');
+  
+  tags.classList.toggle('expanded');
+  tagsToggle.classList.toggle('expanded');
+}
+
+function toggleMoreOptions() {
+  moreOptionsMenu.classList.toggle('hidden');
+}
+
+function hideMoreOptions() {
+  moreOptionsMenu.classList.add('hidden');
 }
 
 // Conversation management
@@ -231,10 +276,8 @@ function switchToConversation(conversationId) {
   }
   
   if (conversation.session) {
-    document.getElementById('session-id-display').textContent = `Session: ${conversation.session.session_id}`;
     document.getElementById('hints-counter').textContent = `Hints given: ${conversation.hints_given || 0}`;
   } else {
-    document.getElementById('session-id-display').textContent = '';
     document.getElementById('hints-counter').textContent = 'Hints given: 0';
     
     // If conversation has history but no session, it may have expired
@@ -286,7 +329,6 @@ async function submitProblemUrl() {
     conversation.session = { session_id: result.session_id, problem_title: result.problem_title };
     conversation.lastUpdated = new Date().toISOString();
     
-    document.getElementById('session-id-display').textContent = `Session: ${result.session_id}`;
     document.getElementById('hints-counter').textContent = 'Hints given: 0';
     chatMessages.innerHTML = '';
     conversation.history = [];
@@ -338,7 +380,6 @@ async function startSession() {
     conversation.session = { session_id: result.session_id, problem_title: result.problem_title };
     conversation.lastUpdated = new Date().toISOString();
     
-    document.getElementById('session-id-display').textContent = `Session: ${result.session_id}`;
     document.getElementById('hints-counter').textContent = 'Hints given: 0';
     chatMessages.innerHTML = '';
     conversation.history = [];
