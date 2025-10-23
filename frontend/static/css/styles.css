@@ -62,12 +62,14 @@ body {
 .sidebar.collapsed .sidebar-btn span,
 .sidebar.collapsed .sidebar-section-title,
 .sidebar.collapsed .conversations-list,
-.sidebar.collapsed .sidebar-bottom a {
-  display: none;
+.sidebar.collapsed .sidebar-bottom a,
+.sidebar.collapsed .sidebar-brand {
+   display: none;
 }
 
 .sidebar.collapsed .sidebar-header {
-  justify-content: center;
+   justify-content: center;
+   padding: 12px 10px;
 }
 
 .sidebar.collapsed .sidebar-brand {
@@ -75,8 +77,7 @@ body {
 }
 
 .sidebar.collapsed #sidebar-menu-btn {
-  position: absolute;
-  right: 10px;
+   position: static;
 }
 
 .sidebar.collapsed .sidebar-top {

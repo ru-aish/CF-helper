@@ -13,15 +13,16 @@
 <body class="theme-dark">
     <!-- Mobile sidebar overlay -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Mobile options menu overlay -->
     <div class="mobile-options-overlay" id="mobile-options-overlay"></div>
-    
+
     <!-- Mobile options menu -->
     <div class="mobile-options-menu hidden" id="mobile-options-menu">
         <h3>Options</h3>
         <div class="mobile-options-list">
-            <button class="mobile-option-item" onclick="document.getElementById('theme-toggle').click(); showMobileOptionsMenu();">
+            <button class="mobile-option-item"
+                onclick="document.getElementById('theme-toggle').click(); showMobileOptionsMenu();">
                 <i class="fa-solid fa-moon"></i>
                 <span>Toggle Theme</span>
             </button>
@@ -31,14 +32,13 @@
             </a>
         </div>
     </div>
-    
+
     <div class="app-shell">
         <!-- Sidebar (ChatGPT-like) -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-brand">
                     <i class="fa-solid fa-graduation-cap"></i>
-                    <span>Codeforces AI Tutor</span>
                 </div>
                 <button id="sidebar-menu-btn" class="icon-btn" title="Menu">
                     <i class="fa-solid fa-ellipsis"></i>
@@ -120,16 +120,23 @@
                 <!-- Composer -->
                 <div class="composer">
                     <div class="composer-row">
-                        <button id="more-options-btn" class="composer-btn" title="More options"><i class="fa-solid fa-plus"></i></button>
+                        <button id="more-options-btn" class="composer-btn" title="More options"><i
+                                class="fa-solid fa-plus"></i></button>
                         <input type="text" id="chat-input" placeholder="Ask anything" />
-                        <button id="analyze-code-btn" class="composer-btn" title="Analyze my code"><i class="fa-solid fa-code"></i></button>
-                        <button id="send-btn" class="composer-btn primary" title="Send message"><i class="fa-solid fa-arrow-up"></i></button>
-                        <button id="stop-btn" class="composer-btn danger hidden" title="Stop generating"><i class="fa-solid fa-stop"></i></button>
+                        <button id="analyze-code-btn" class="composer-btn" title="Analyze my code"><i
+                                class="fa-solid fa-code"></i></button>
+                        <button id="send-btn" class="composer-btn primary" title="Send message"><i
+                                class="fa-solid fa-arrow-up"></i></button>
+                        <button id="stop-btn" class="composer-btn danger hidden" title="Stop generating"><i
+                                class="fa-solid fa-stop"></i></button>
                     </div>
                     <div id="more-options-menu" class="more-options-menu hidden">
-                        <button id="get-hint-btn" class="option-item"><i class="fa-regular fa-lightbulb"></i> Get Hint</button>
-                        <button id="get-solution-btn" class="option-item"><i class="fa-solid fa-key"></i> Reveal Solution</button>
-                        <button id="regenerate-btn" class="option-item"><i class="fa-solid fa-rotate-right"></i> Regenerate</button>
+                        <button id="get-hint-btn" class="option-item"><i class="fa-regular fa-lightbulb"></i> Get
+                            Hint</button>
+                        <button id="get-solution-btn" class="option-item"><i class="fa-solid fa-key"></i> Reveal
+                            Solution</button>
+                        <button id="regenerate-btn" class="option-item"><i class="fa-solid fa-rotate-right"></i>
+                            Regenerate</button>
                     </div>
                     <div class="composer-hint" id="hints-counter">Hints given: 0</div>
                 </div>
