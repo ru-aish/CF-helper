@@ -11,9 +11,39 @@
 </head>
 
 <body class="theme-dark">
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Mobile options menu overlay -->
+    <div class="mobile-options-overlay" id="mobile-options-overlay"></div>
+    
+    <!-- Mobile options menu -->
+    <div class="mobile-options-menu hidden" id="mobile-options-menu">
+        <h3>Options</h3>
+        <div class="mobile-options-list">
+            <button class="mobile-option-item" onclick="document.getElementById('theme-toggle').click(); showMobileOptionsMenu();">
+                <i class="fa-solid fa-moon"></i>
+                <span>Toggle Theme</span>
+            </button>
+            <a href="https://codeforces.com" target="_blank" class="mobile-option-item" style="text-decoration: none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span>Open Codeforces</span>
+            </a>
+        </div>
+    </div>
+    
     <div class="app-shell">
         <!-- Sidebar (ChatGPT-like) -->
         <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Codeforces AI Tutor</span>
+                </div>
+                <button id="sidebar-menu-btn" class="icon-btn" title="Menu">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </button>
+            </div>
             <div class="sidebar-top">
                 <button id="new-chat-btn" class="sidebar-btn primary">
                     <i class="fa-solid fa-plus"></i>
@@ -38,6 +68,20 @@
 
         <!-- Main area -->
         <main class="main">
+            <!-- Mobile header with hamburger menu -->
+            <div class="mobile-header">
+                <button id="mobile-menu-btn" class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="brand">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Codeforces AI Tutor</span>
+                </div>
+                <button id="mobile-new-chat-btn" class="mobile-menu-btn">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
             <!-- Topbar (simplified header without URL bar) -->
             <header class="topbar">
                 <div class="brand">

@@ -37,9 +37,60 @@ const globalError = document.getElementById('global-error');
 const regenerateBtn = document.getElementById('regenerate-btn');
 const stopBtn = document.getElementById('stop-btn');
 
+// Mobile elements (loaded after DOM ready)
+let mobileMenuBtn = null;
+let mobileNewChatBtn = null;
+let sidebar = null;
+let sidebarOverlay = null;
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded - initializing app');
+  
+  // Fix mobile layout on load and initialize mobile elements
+  const appShell = document.querySelector('.app-shell');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNewChatBtn = document.getElementById('mobile-new-chat-btn');
+  sidebar = document.querySelector('.sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+  
+  const isMobile = window.innerWidth <= 900;
+  if (isMobile) {
+    if (appShell) appShell.classList.remove('sidebar-collapsed');
+    if (sidebar) sidebar.classList.remove('collapsed');
+  }
+  
+  // Setup mobile menu handlers
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      sidebarOverlay.classList.toggle('active');
+    });
+  }
+  
+  if (mobileNewChatBtn) {
+    mobileNewChatBtn.addEventListener('click', newConversation);
+  }
+  
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      sidebarOverlay.classList.remove('active');
+    });
+  }
+  
+  // Setup mobile options menu handlers
+  const mobileOptionsOverlay = document.getElementById('mobile-options-overlay');
+  if (mobileOptionsOverlay) {
+    mobileOptionsOverlay.addEventListener('click', () => {
+      const menu = document.getElementById('mobile-options-menu');
+      if (menu) {
+        menu.classList.add('hidden');
+        mobileOptionsOverlay.classList.remove('active');
+      }
+    });
+  }
+  
   hydrateFromStorage();
   
   setupEventListeners();
@@ -96,6 +147,24 @@ function setupEventListeners() {
   const tagsToggle = document.getElementById('tags-toggle');
   if (tagsToggle) {
     tagsToggle.addEventListener('click', toggleTags);
+  }
+  
+  const sidebarMenuBtn = document.getElementById('sidebar-menu-btn');
+  if (sidebarMenuBtn) {
+    sidebarMenuBtn.addEventListener('click', toggleSidebarMenu);
+  }
+  
+  window.addEventListener('resize', handleResize);
+}
+
+function handleResize() {
+  const sidebar = document.querySelector('.sidebar');
+  const appShell = document.querySelector('.app-shell');
+  const isMobile = window.innerWidth <= 900;
+  
+  if (isMobile) {
+    if (appShell) appShell.classList.remove('sidebar-collapsed');
+    if (sidebar) sidebar.classList.remove('collapsed');
   }
 }
 
@@ -259,6 +328,14 @@ function switchToConversation(conversationId) {
     return;
   }
   
+  // Close mobile sidebar if open
+  const sidebar = document.querySelector('.sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+  if (sidebar && sidebarOverlay) {
+    sidebar.classList.remove('active');
+    sidebarOverlay.classList.remove('active');
+  }
+  
   currentConversationId = conversationId;
   const conversation = conversations[conversationId];
   
@@ -399,7 +476,15 @@ async function startSession() {
 async function sendMessage() {
   const message = chatInput.value.trim();
   const conversation = getCurrentConversation();
-  if (!message || !conversation || !conversation.session) return;
+  
+  if (!message) return;
+  
+  // Check if there's an active session
+  if (!conversation || !conversation.session) {
+    // Show the new problem modal to prompt user to start a session
+    showNewProblemModal();
+    return;
+  }
   
   addMessage('user', message);
   chatInput.value = ''; autosize(chatInput);
@@ -1074,6 +1159,42 @@ function renderConversations() {
 
 // Theme
 function toggleTheme() { document.body.classList.toggle('theme-dark'); }
+
+// Sidebar menu toggle
+function toggleSidebarMenu() {
+  const sidebar = document.querySelector('.sidebar');
+  const appShell = document.querySelector('.app-shell');
+  
+  // Check if we're on mobile (screen width <= 900px)
+  const isMobile = window.innerWidth <= 900;
+  
+  if (isMobile) {
+    // On mobile: show a menu with desktop features
+    showMobileOptionsMenu();
+  } else {
+    // On desktop: toggle sidebar collapse
+    sidebar.classList.toggle('collapsed');
+    appShell.classList.toggle('sidebar-collapsed');
+  }
+}
+
+function showMobileOptionsMenu() {
+  const menu = document.getElementById('mobile-options-menu');
+  const overlay = document.getElementById('mobile-options-overlay');
+  
+  if (menu && overlay) {
+    const isHidden = menu.classList.contains('hidden');
+    
+    if (isHidden) {
+      menu.classList.remove('hidden');
+      overlay.classList.add('active');
+    } else {
+      menu.classList.add('hidden');
+      overlay.classList.remove('active');
+    }
+  }
+}
+
 
 // Autosize textarea
 function autosize(el) {
