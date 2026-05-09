@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Problem {
+  id              String   @id // e.g. "2135C"
+  title           String
+  contestTitle    String?
+  statement       String
+  timeLimit       String?
+  memoryLimit     String?
+  sampleInputs    String[]
+  sampleOutputs   String[]
+  tags            String[]
+  url             String
+
+  // Storing related tutorial/editorial content as JSON
+  hints           Json?    @default("[]")
+  solutions       Json?    @default("[]")
+  tutorials       Json?    @default("[]")
+  editorials      Json?    @default("[]")
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  sessions        Session[]
+}
+
+model Conversation {
+  id          String   @id @default(uuid())
+  title       String?  @default("New Conversation")
+  context     Json     @default("[]") // Array of messages
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  sessions    Session[]
+}
+
+model Session {
+  id             String   @id // e.g. "2135C_20231012_123456"
+  problemId      String
+  conversationId String?
+  history        Json     @default("[]") // Array of messages specific to session
+  hintsGiven     Int      @default(0)
+  createdAt      DateTime @default(now())
+  lastActivity   DateTime @default(now())
+
+  problem        Problem  @relation(fields: [problemId], references: [id])
+  conversation   Conversation? @relation(fields: [conversationId], references: [id])
+}
