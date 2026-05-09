@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import cloudscraper
+from curl_cffi import requests
 from bs4 import BeautifulSoup
 import json
 import re
@@ -10,7 +10,7 @@ from typing import Dict, List, Optional
 
 class ComprehensiveCodeforcesSolutionExtractor:
     def __init__(self):
-        self.scraper = cloudscraper.create_scraper()
+        self.scraper = requests.Session(impersonate="chrome110")
         self.problems_data = {}
         self.data_file = "comprehensive_codeforces_problems.json"
         self.load_existing_data()
