@@ -98,9 +98,40 @@ CORS(app)
 extractor = ComprehensiveCodeforcesSolutionExtractor()
 ai_tutor = AITutorService()
 
-# Store active sessions and conversations
-active_sessions = {}
-conversations = {}  # {conversation_id: {sessions: [], context: [], created_at: ...}}
+
+import threading
+import atexit
+
+DB_FILE = 'storage.json'
+db_lock = threading.Lock()
+
+def load_db():
+    try:
+        if os.path.exists(DB_FILE):
+            with open(DB_FILE, 'r') as f:
+                data = json.load(f)
+                return data.get('active_sessions', {}), data.get('conversations', {})
+    except Exception as e:
+        print(f"Error loading DB: {e}")
+    return {}, {}
+
+def save_db():
+    with db_lock:
+        try:
+            with open(DB_FILE, 'w') as f:
+                json.dump({
+                    'active_sessions': active_sessions,
+                    'conversations': conversations
+                }, f)
+        except Exception as e:
+            print(f"Error saving DB: {e}")
+
+# Persistent storage using JSON
+active_sessions, conversations = load_db()
+
+# Ensure we save on exit just in case
+atexit.register(save_db)
+
 
 # Frontend serving routes
 @app.route('/')
@@ -224,6 +255,7 @@ def start_session():
         }
         
         active_sessions[session_id] = session_data
+        save_db()
         
         # If conversation_id is provided, track this session in the conversation
         if conversation_id:
@@ -341,6 +373,7 @@ def chat():
                         'session_id': session_id
                     })
                 
+                save_db()
                 yield f"data: {json.dumps({'done': True, 'is_hint': is_hint, 'hints_given': session['hints_given']})}\n\n"
                 
             except Exception as e:
@@ -412,6 +445,7 @@ def get_hint():
                 'session_id': session_id
             })
         
+        save_db()
         return jsonify({
             'hint': hint_response['message'],
             'hint_number': session['hints_given'],
@@ -477,6 +511,7 @@ def get_solution():
                 'session_id': session_id
             })
         
+        save_db()
         return jsonify({
             'solution': solution_response['message'],
             'explanation': solution_response.get('explanation', ''),
