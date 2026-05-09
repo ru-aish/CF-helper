@@ -6,7 +6,7 @@ Flask-CORS==4.0.0
 google-generativeai==0.7.2
 
 # Web Scraping (from existing final.py)
-cloudscraper==1.2.71
+curl_cffi>=0.15.0
 beautifulsoup4==4.12.2
 
 # Utilities
