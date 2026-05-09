@@ -547,6 +547,10 @@ async function sendMessage() {
             }
             
             attachCopyButtons(messageElement);
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+              MathJax.typesetPromise([messageElement]).catch((err) => console.log('MathJax error:', err));
+            }
           }
           
           if (data.error) {
@@ -773,7 +777,30 @@ function showProblemDetails() {
   const samplesEl = document.getElementById('pd-samples');
   
   titleEl.innerHTML = `<i class="fa-solid fa-file-lines"></i> ${currentProblemData.problem_id} - ${currentProblemData.title}`;
-  stmtEl.textContent = currentProblemData.statement || 'Problem statement not available.';
+
+  // Format statement with marked first if possible, and set as HTML
+  let statementText = currentProblemData.statement || 'Problem statement not available.';
+
+  // Create a temporary div to safely escape HTML entities like < and > so math doesn't break
+  if (statementText !== 'Problem statement not available.') {
+    const div = document.createElement('div');
+    div.textContent = statementText;
+    statementText = div.innerHTML;
+  }
+
+  // Some inline parsing first with marked if available
+  if (typeof marked !== 'undefined') {
+    // Process markdown but tell MathJax to handle equations
+    statementText = marked.parse(statementText);
+  } else {
+    statementText = statementText.replace(/\n/g, '<br>');
+  }
+
+  stmtEl.innerHTML = statementText;
+
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    MathJax.typesetPromise([stmtEl]).catch((err) => console.log('MathJax error:', err));
+  }
   
   samplesEl.innerHTML = '';
   const inputs = currentProblemData.sample_inputs || [];
@@ -994,6 +1021,11 @@ function addMessage(type, content, saveToHistory = true) {
   
   // Apply syntax highlighting
   if (window.Prism) Prism.highlightAllUnder(msg);
+
+  // Apply MathJax
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    MathJax.typesetPromise([msg]).catch((err) => console.log('MathJax error:', err));
+  }
 }
 
 function attachCopyButtons(scope) {
