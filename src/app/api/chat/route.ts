@@ -1,9 +1,18 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { AITutorService, ChatMessage } from '@/lib/ai/ai_service';
+import { getUserApiKey } from '@/lib/encryption/server-utils';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(request: Request) {
   try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { session_id, message, conversation_id, model } = await request.json();
 
     if (!session_id || !message) {
@@ -15,8 +24,8 @@ export async function POST(request: Request) {
       include: { problem: true }
     });
 
-    if (!session) {
-      return NextResponse.json({ error: 'Session not found' }, { status: 404 });
+    if (!session || session.userId !== user.id) {
+      return NextResponse.json({ error: 'Session not found or unauthorized' }, { status: 404 });
     }
 
     const isHint = ['hint', 'help', 'stuck', "don't know", 'how to'].some(k => message.toLowerCase().includes(k));
@@ -43,7 +52,8 @@ export async function POST(request: Request) {
       contextToUse.push(userMsg);
     }
 
-    const aiTutor = new AITutorService(model);
+    const userApiKey = await getUserApiKey();
+    const aiTutor = new AITutorService(userApiKey, model);
     const stream = await aiTutor.getResponseStream(message, session.problem as any, contextToUse, session.hintsGiven);
 
     const encoder = new TextEncoder();
