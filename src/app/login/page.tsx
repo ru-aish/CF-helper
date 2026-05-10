@@ -96,18 +96,23 @@ export default function LoginPage() {
     })
 
     if (error) {
-      console.error('Error verifying OTP:', error.message)
-      // Special handling for expired/invalid tokens
-      if (error.message.toLowerCase().includes('expired') || error.message.toLowerCase().includes('invalid')) {
-        setErrorMsg('The code is invalid or has expired. Please request a new one.')
-      } else {
-        setErrorMsg(error.message)
+      // Sometimes it registers as a magiclink token depending on the Supabase project configuration
+      const fallbackAttempt = await supabase.auth.verifyOtp({
+        email,
+        token: otp,
+        type: 'magiclink',
+      })
+
+      if (fallbackAttempt.error) {
+        console.error('Error verifying OTP (email & magiclink types):', fallbackAttempt.error)
+        setErrorMsg(`Invalid code. Please try again. (${fallbackAttempt.error.message})`)
+        setIsLoading(false)
+        return
       }
-      setIsLoading(false)
-    } else {
-      // Setup successful, redirect happens automatically or we can force it
-      window.location.href = '/'
     }
+
+    // Setup successful, redirect happens automatically or we can force it
+    window.location.href = '/'
   }
 
   return (
@@ -166,7 +171,7 @@ export default function LoginPage() {
               <div>
                 <div className="flex justify-between items-center mb-1">
                   <label htmlFor="otp" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    6-digit code
+                    Verification code
                   </label>
                   <span className="text-xs text-gray-500 dark:text-gray-400">Sent to {email}</span>
                 </div>
@@ -176,7 +181,7 @@ export default function LoginPage() {
                   required
                   value={otp}
                   onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                  maxLength={6}
+                  maxLength={8}
                   className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-center text-3xl tracking-[0.5em] font-mono text-gray-900 placeholder-gray-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 transition-all"
                   placeholder="••••••"
                   autoFocus
@@ -184,7 +189,7 @@ export default function LoginPage() {
               </div>
               <button
                 type="submit"
-                disabled={isLoading || otp.length !== 6}
+                disabled={isLoading || otp.length < 6}
                 className="flex w-full justify-center rounded-lg border border-transparent bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 dark:focus:ring-offset-gray-800 transition-colors"
               >
                 {isLoading ? (
