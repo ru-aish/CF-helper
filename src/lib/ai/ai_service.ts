@@ -18,10 +18,9 @@ export class AITutorService {
   private modelName: string;
   private systemPrompt: string;
 
-  constructor(modelName?: string) {
-    const apiKey = process.env.GEMINI_API_KEY;
+  constructor(apiKey: string, modelName?: string) {
     if (!apiKey) {
-      throw new Error("GEMINI_API_KEY not found in environment variables");
+      throw new Error("API Key is required to initialize AITutorService");
     }
 
     this.ai = new GoogleGenerativeAI(apiKey);

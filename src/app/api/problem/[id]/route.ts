@@ -16,8 +16,10 @@ export async function GET(
 
     const { id } = await params;
 
+    // The id is the session ID, so we find the session and include the problem
     const session = await prisma.session.findUnique({
-      where: { id }
+      where: { id },
+      include: { problem: true }
     });
 
     if (!session || session.userId !== user.id) {
@@ -25,14 +27,11 @@ export async function GET(
     }
 
     return NextResponse.json({
-      session_id: session.id,
-      problem_id: session.problemId,
-      conversation_history: session.history,
-      hints_given: session.hintsGiven,
-      created_at: session.createdAt
+      problem: session.problem
     });
-  } catch (error) {
-    console.error('Error fetching session history:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Error fetching problem details:', error);
+    const errorMessage = error?.message || 'Internal server error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

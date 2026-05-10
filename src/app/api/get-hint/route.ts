@@ -1,9 +1,18 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { AITutorService, ChatMessage } from '@/lib/ai/ai_service';
+import { getUserApiKey } from '@/lib/encryption/server-utils';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(request: Request) {
   try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { session_id, conversation_id, model } = await request.json();
 
     if (!session_id) {
@@ -15,8 +24,8 @@ export async function POST(request: Request) {
       include: { problem: true }
     });
 
-    if (!session) {
-      return NextResponse.json({ error: 'Session not found' }, { status: 404 });
+    if (!session || session.userId !== user.id) {
+      return NextResponse.json({ error: 'Session not found or unauthorized' }, { status: 404 });
     }
 
     let contextToUse: ChatMessage[] = [];
@@ -29,7 +38,8 @@ export async function POST(request: Request) {
       contextToUse = (session.history as any) || [];
     }
 
-    const aiTutor = new AITutorService(model);
+    const userApiKey = await getUserApiKey();
+    const aiTutor = new AITutorService(userApiKey, model);
     const hintResult = await aiTutor.getProgressiveHint(session.problem as any, session.hintsGiven, contextToUse);
 
     const assistantMsg: ChatMessage = {
@@ -69,8 +79,9 @@ export async function POST(request: Request) {
       hint_number: newHintsGiven,
       more_hints_available: hintResult.moreHintsAvailable
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error getting hint:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error?.message || 'Internal server error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

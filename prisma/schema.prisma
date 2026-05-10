@@ -34,6 +34,7 @@ model Problem {
 
 model Conversation {
   id          String   @id @default(uuid())
+  userId      String?  // References Supabase auth.users.id
   title       String?  @default("New Conversation")
   context     Json     @default("[]") // Array of messages
   createdAt   DateTime @default(now())
@@ -44,6 +45,7 @@ model Conversation {
 
 model Session {
   id             String   @id // e.g. "2135C_20231012_123456"
+  userId         String?  // References Supabase auth.users.id
   problemId      String
   conversationId String?
   history        Json     @default("[]") // Array of messages specific to session
