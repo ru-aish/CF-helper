@@ -13,6 +13,8 @@ export default function LoginPage() {
   const [otp, setOtp] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
   const [resendTimer, setResendTimer] = useState(0)
+  const [isTestUser, setIsTestUser] = useState(false)
+  const [password, setPassword] = useState('')
 
   const supabase = createClient()
 
@@ -44,6 +46,11 @@ export default function LoginPage() {
 
   const sendOtp = async (isResend = false) => {
     if (!email) return
+
+    if (email.toLowerCase() === 'test@example.com') {
+      setIsTestUser(true)
+      return
+    }
 
     setIsLoading(true)
     setErrorMsg('')
@@ -80,6 +87,27 @@ export default function LoginPage() {
 
   const handleResendOtp = async () => {
     await sendOtp(true)
+  }
+
+  const handlePasswordLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || !password) return
+
+    setIsLoading(true)
+    setErrorMsg('')
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+
+    if (error) {
+      console.error('Error logging in:', error.message)
+      setErrorMsg(error.message)
+      setIsLoading(false)
+    } else {
+      window.location.href = '/'
+    }
   }
 
   const handleVerifyOtp = async (e: React.FormEvent) => {
@@ -137,7 +165,49 @@ export default function LoginPage() {
         )}
 
         <div className="mt-8 space-y-6">
-          {!showOtpInput ? (
+          {isTestUser ? (
+            <form onSubmit={handlePasswordLogin} className="space-y-5">
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Password for test account
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm transition-all"
+                  placeholder="Enter password"
+                  autoFocus
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isLoading || !password}
+                className="flex w-full justify-center rounded-lg border border-transparent bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 dark:focus:ring-offset-gray-800 transition-colors"
+              >
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
+                    Signing in...
+                  </span>
+                ) : 'Sign In'}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsTestUser(false)
+                  setPassword('')
+                  setErrorMsg('')
+                }}
+                className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors w-full pt-2"
+              >
+                <ArrowLeft size={16} />
+                Back
+              </button>
+            </form>
+          ) : !showOtpInput ? (
             <form onSubmit={handleSendOtp} className="space-y-5">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">

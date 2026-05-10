@@ -240,7 +240,7 @@ export default function Home() {
                 onNewSession={() => setShowNewModal(true)}
               />
             </Panel>
-            <PanelResizeHandle className="w-1 bg-border hover:bg-primary/50 cursor-col-resize transition-colors" />
+            <PanelResizeHandle className="w-1.5 bg-border hover:bg-primary/50 cursor-col-resize transition-colors flex items-center justify-center relative active:bg-primary z-50" />
           </>
         )}
         <Panel>
