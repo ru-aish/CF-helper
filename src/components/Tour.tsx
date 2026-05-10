@@ -17,12 +17,7 @@ export function Tour() {
   }, []);
 
   const steps: Step[] = [
-    {
-      target: '.tour-new-problem',
-      content: 'Start a new session by pasting a Codeforces problem URL here.',
-      // disableBeacon: true,
-      placement: 'right',
-    },
+
     {
       target: '.tour-api-key',
       content: 'Make sure to configure your API key for the AI to work properly.',
