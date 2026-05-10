@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Sidebar } from '@/components/Sidebar';
 import { Chat } from '@/components/Chat';
+import { Panel, Group as PanelGroup, Separator as PanelResizeHandle } from 'react-resizable-panels';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -18,10 +19,20 @@ export default function Home() {
   const [urlInput, setUrlInput] = useState('');
   const [error, setError] = useState('');
   const [selectedModel, setSelectedModel] = useState('gemini-3.1-flash-lite');
-  const [showProblemDrawer, setShowProblemDrawer] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [problemDetails, setProblemDetails] = useState<any>(null);
 
   useEffect(() => {
+    // Check local storage for cached threads
+    const cachedSessions = localStorage.getItem('thread_cache');
+    if (cachedSessions) {
+      try {
+        setSessions(JSON.parse(cachedSessions));
+      } catch (e) {
+        console.error('Failed to parse cached threads', e);
+      }
+    }
+
     // Load historical sessions on mount
     const fetchHistory = async () => {
       try {
@@ -29,6 +40,7 @@ export default function Home() {
         if (res.ok) {
           const data = await res.json();
           setSessions(data.conversations || []);
+          localStorage.setItem('thread_cache', JSON.stringify(data.conversations || []));
         }
       } catch (e) {
         console.error("Failed to load history", e);
@@ -125,8 +137,12 @@ export default function Home() {
       setShowNewModal(false);
       setUrlInput('');
 
-      // Add to session list optimistically
-      setSessions((prev) => [{id: startData.session_id, title: startData.problem_title}, ...prev]);
+            // Add to session list optimistically
+      setSessions((prev) => {
+        const updated = [{id: startData.session_id, title: startData.problem_title}, ...prev];
+        localStorage.setItem('thread_cache', JSON.stringify(updated));
+        return updated;
+      });
 
     } catch (err: any) {
       setError(err.message);
@@ -203,124 +219,83 @@ export default function Home() {
   };
 
 
+
   return (
     <div className="flex h-screen bg-bg text-text font-sans overflow-hidden">
-      <Sidebar
-        conversations={sessions}
-        currentSessionId={currentSessionId}
-        onSelectSession={loadSession}
-        onNewSession={() => setShowNewModal(true)}
-      />
-      <main className="flex-1 flex flex-col min-w-0 relative">
-        <header className="h-14 flex items-center justify-between px-4 border-b border-border bg-surface shrink-0 z-10">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-sm font-semibold tracking-wide">Codeforces AI Tutor</h1>
-            {currentSessionId && (
-              <button
-                onClick={() => setShowProblemDrawer(!showProblemDrawer)}
-                className={`text-xs px-3 py-1.5 rounded-md border transition-colors ${showProblemDrawer ? 'bg-primary/20 text-primary border-primary/30' : 'bg-surface-2 border-border text-subtle hover:text-white hover:border-border/80'}`}
-              >
-                {showProblemDrawer ? 'Hide Problem' : 'View Problem'}
-              </button>
-            )}
-          </div>
-          <div className="flex items-center space-x-3">
-            <select
-              value={selectedModel}
-              onChange={(e) => setSelectedModel(e.target.value)}
-              className="bg-surface-2 border border-border text-sm rounded-md px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-primary text-text"
-            >
-              {MODELS.map(m => (
-                <option key={m.id} value={m.id}>{m.name}</option>
-              ))}
-            </select>
-            <a
-              href="/setup-key"
-              className="text-xs font-medium text-subtle hover:text-primary transition-colors flex items-center space-x-1"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-              <span>API Key</span>
-            </a>
-          </div>
-        </header>
-
-        <div className="flex-1 flex overflow-hidden relative">
-          {/* Main Chat Area */}
-          <div className={`flex-1 overflow-hidden relative transition-all duration-300 ${showProblemDrawer ? 'mr-[400px]' : ''}`}>
-             <Chat
-              messages={messages}
-              isLoading={isLoading}
-              onSendMessage={handleSendMessage}
-              onGetHint={handleGetHint}
-              onGetSolution={handleGetSolution}
-             />
-          </div>
-
-          {/* Problem Details Drawer */}
-          <div
-            className={`absolute right-0 top-0 bottom-0 w-[400px] bg-surface-2 border-l border-border transform transition-transform duration-300 ease-in-out flex flex-col ${showProblemDrawer ? 'translate-x-0' : 'translate-x-full'}`}
-          >
-            {problemDetails ? (
-              <>
-                <div className="p-4 border-b border-border bg-surface shrink-0 flex justify-between items-center">
-                  <h2 className="font-bold truncate pr-2 text-white">{problemDetails.title}</h2>
-                  <button onClick={() => setShowProblemDrawer(false)} className="text-subtle hover:text-white p-1">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      <PanelGroup orientation="horizontal">
+        {isSidebarOpen && (
+          <>
+            <Panel defaultSize={20} minSize={15} maxSize={40}>
+              <Sidebar
+                conversations={sessions}
+                currentSessionId={currentSessionId}
+                onSelectSession={loadSession}
+                onNewSession={() => setShowNewModal(true)}
+              />
+            </Panel>
+            <PanelResizeHandle className="w-1 bg-border hover:bg-primary/50 cursor-col-resize transition-colors" />
+          </>
+        )}
+        <Panel>
+          <main className="h-full flex flex-col min-w-0 relative">
+            <header className="h-14 flex items-center justify-between px-4 border-b border-border bg-surface shrink-0 z-10">
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                  className="p-1.5 rounded-md hover:bg-surface-2 text-subtle hover:text-white transition-colors"
+                  title={isSidebarOpen ? "Collapse Sidebar" : "Expand Sidebar"}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
+                </button>
+                <h1 className="text-sm font-semibold tracking-wide">Codeforces AI Tutor</h1>
+                {currentSessionId && problemDetails && (
+                  <button
+                    onClick={() => {
+                      const url = problemDetails.url;
+                      const features = 'width=800,height=800,resizable=yes,scrollbars=yes,status=no,location=no,toolbar=no,menubar=no';
+                      window.open(url, 'CodeforcesProblem', features);
+                    }}
+                    className={`text-xs px-3 py-1.5 rounded-md border transition-colors bg-surface-2 border-border text-subtle hover:text-white hover:border-border/80 flex items-center gap-1`}
+                  >
+                    View Problem
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                   </button>
-                </div>
-                <div className="p-5 overflow-y-auto flex-1 text-sm space-y-6">
-                  <div className="flex gap-3 text-xs text-subtle font-mono">
-                     {problemDetails.timeLimit && <div>⏱ {problemDetails.timeLimit}</div>}
-                     {problemDetails.memoryLimit && <div>💾 {problemDetails.memoryLimit}</div>}
-                  </div>
-
-                  {problemDetails.tags && problemDetails.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {problemDetails.tags.map((tag: string, i: number) => (
-                        <span key={i} className="bg-primary/10 text-primary px-2 py-1 rounded text-xs border border-primary/20">{tag}</span>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="prose prose-invert prose-sm max-w-none text-text leading-relaxed">
-                     <p className="whitespace-pre-wrap">{problemDetails.statement}</p>
-                  </div>
-
-                  {problemDetails.sampleInputs && problemDetails.sampleInputs.length > 0 && (
-                    <div className="space-y-4">
-                      <h3 className="font-semibold text-white border-b border-border pb-2">Sample Test Cases</h3>
-                      {problemDetails.sampleInputs.map((input: string, idx: number) => (
-                        <div key={idx} className="bg-[#1e1e1e] rounded-lg border border-border overflow-hidden">
-                          <div className="bg-[#2d2d2d] px-3 py-1.5 text-xs font-mono text-subtle border-b border-border flex justify-between">
-                            <span>Input {idx + 1}</span>
-                          </div>
-                          <pre className="p-3 text-xs font-mono overflow-x-auto m-0 bg-transparent text-white">{input}</pre>
-
-                          <div className="bg-[#2d2d2d] px-3 py-1.5 text-xs font-mono text-subtle border-b border-t border-border flex justify-between">
-                            <span>Output {idx + 1}</span>
-                          </div>
-                          <pre className="p-3 text-xs font-mono overflow-x-auto m-0 bg-transparent text-[#a6e22e]">{problemDetails.sampleOutputs?.[idx] || ''}</pre>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="pt-4">
-                    <a href={problemDetails.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors inline-flex items-center text-sm font-medium">
-                      View Original on Codeforces
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div className="flex-1 flex items-center justify-center text-subtle text-sm">
-                Loading problem details...
+                )}
               </div>
-            )}
-          </div>
-        </div>
-      </main>
+              <div className="flex items-center space-x-3">
+                <select
+                  value={selectedModel}
+                  onChange={(e) => setSelectedModel(e.target.value)}
+                  className="bg-surface-2 border border-border text-sm rounded-md px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-primary text-text"
+                >
+                  {MODELS.map(m => (
+                    <option key={m.id} value={m.id}>{m.name}</option>
+                  ))}
+                </select>
+                <a
+                  href="/setup-key"
+                  className="text-xs font-medium text-subtle hover:text-primary transition-colors flex items-center space-x-1"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <span>API Key</span>
+                </a>
+              </div>
+            </header>
+
+            <div className="flex-1 flex overflow-hidden relative">
+              <Chat
+                messages={messages}
+                isLoading={isLoading}
+                onSendMessage={handleSendMessage}
+                onGetHint={handleGetHint}
+                onGetSolution={handleGetSolution}
+              />
+            </div>
+          </main>
+        </Panel>
+      </PanelGroup>
 
       {/* New Problem Modal */}
       {showNewModal && (
@@ -369,4 +344,5 @@ export default function Home() {
       )}
     </div>
   );
+
 }
