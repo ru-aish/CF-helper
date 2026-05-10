@@ -80,7 +80,7 @@ export function Chat({ messages, isLoading, onSendMessage, onGetHint, onGetSolut
                🔑 Solution
              </button>
           </div>
-          <div className="relative flex items-center">
+          <div className="relative flex items-center tour-chat-input">
             <input
               type="text"
               value={input}
