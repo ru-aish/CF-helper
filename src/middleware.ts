@@ -65,6 +65,7 @@ export async function middleware(request: NextRequest) {
       if (!data?.encrypted_key) {
         const url = request.nextUrl.clone()
         url.pathname = '/setup-key'
+        url.searchParams.set('force', 'true')
         return NextResponse.redirect(url)
       }
     } catch (e) {

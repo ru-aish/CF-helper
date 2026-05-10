@@ -78,8 +78,9 @@ export async function POST(request: Request) {
       code: solutionResult.code,
       complexity: solutionResult.complexity
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error getting solution:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error?.message || 'Internal server error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

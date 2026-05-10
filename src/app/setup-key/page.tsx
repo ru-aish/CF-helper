@@ -16,9 +16,13 @@ export default function SetupKeyPage() {
   useEffect(() => {
     // Check if they already have a key
     const checkKey = async () => {
+      // If the user navigates here manually via the settings link, let them stay.
+      // We only redirect if they just logged in and we're forcing setup.
+      const isForceSetup = new URLSearchParams(window.location.search).get('force') === 'true'
+
       const res = await fetch('/api/user/key')
       const data = await res.json()
-      if (data.hasKey) {
+      if (data.hasKey && isForceSetup) {
         // Redirect to main app if they already have a key
         router.push('/')
       }

@@ -90,8 +90,9 @@ export async function POST(request: Request) {
       welcome_message: welcomeMessage,
       problem_title: problem.title
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error starting session:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error?.message || 'Internal server error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

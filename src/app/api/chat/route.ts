@@ -103,9 +103,10 @@ export async function POST(request: Request) {
 
           controller.enqueue(encoder.encode(`data: ${JSON.stringify({ done: true, is_hint: isHint, hints_given: hintsGiven })}\n\n`));
           controller.close();
-        } catch (error) {
+        } catch (error: any) {
           console.error("Stream error:", error);
-          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ error: String(error) })}\n\n`));
+          const errorMessage = error?.message || String(error);
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ error: errorMessage })}\n\n`));
           controller.close();
         }
       }
@@ -119,8 +120,9 @@ export async function POST(request: Request) {
       },
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in chat:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error?.message || 'Internal server error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

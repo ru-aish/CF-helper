@@ -79,8 +79,9 @@ export async function POST(request: Request) {
       hint_number: newHintsGiven,
       more_hints_available: hintResult.moreHintsAvailable
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error getting hint:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error?.message || 'Internal server error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
