@@ -35,8 +35,18 @@ export default function Home() {
   const [selectedModel, setSelectedModel] = useState('gemini-3.1-flash-lite');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [problemDetails, setProblemDetails] = useState<any>(null);
+  const [userEmail, setUserEmail] = useState<string>('');
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user?.email) {
+        setUserEmail(user.email);
+      }
+    };
+    fetchUser();
+
     const cachedSessions = localStorage.getItem('thread_cache');
     if (cachedSessions) {
       try {
@@ -235,7 +245,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen bg-bg text-text font-sans overflow-hidden">
+    <div className="flex h-[100dvh] bg-bg text-text font-sans overflow-hidden">
       {/* Sidebar */}
       <div 
         className={`h-full shrink-0 transition-all duration-300 ease-in-out overflow-hidden ${
@@ -244,6 +254,7 @@ export default function Home() {
       >
         <div className="w-[280px] h-full">
           <Sidebar
+            userEmail={userEmail}
             conversations={sessions}
             currentSessionId={currentSessionId}
             onSelectSession={loadSession}
@@ -281,7 +292,7 @@ export default function Home() {
 
             {currentSessionId && problemDetails && (
               <button
-                onClick={() => window.open(problemDetails.url, '_blank')}
+                onClick={() => window.open(problemDetails.url, 'popup', 'width=800,height=600')}
                 className="ml-2 group flex items-center gap-2 text-xs font-medium bg-surface-2 hover:bg-surface-3 border border-border rounded-lg px-3 py-1.5 transition-all"
               >
                 <span className="truncate max-w-[150px]">{problemDetails.title}</span>

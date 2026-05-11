@@ -1,13 +1,14 @@
 import { Plus, MessageSquare, History, User, Settings, LogOut } from 'lucide-react';
 
 interface SidebarProps {
+  userEmail?: string;
   conversations: any[];
   currentSessionId: string | null;
   onSelectSession: (id: string) => void;
   onNewSession: () => void;
 }
 
-export function Sidebar({ conversations, currentSessionId, onSelectSession, onNewSession }: SidebarProps) {
+export function Sidebar({ conversations, currentSessionId, onSelectSession, onNewSession, userEmail }: SidebarProps) {
   return (
     <div className="h-full w-full flex flex-col bg-surface border-r border-border overflow-hidden">
       {/* Header / New Session */}
@@ -74,12 +75,10 @@ export function Sidebar({ conversations, currentSessionId, onSelectSession, onNe
             <User className="w-5 h-5" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-text truncate">Test User</p>
-            <p className="text-xs text-text-subtle truncate">test@example.com</p>
+            <p className="text-sm font-semibold text-text truncate">{userEmail ? userEmail.split('@')[0] : 'User'}</p>
+            <p className="text-xs text-text-subtle truncate">{userEmail || 'Loading...'}</p>
           </div>
-          <button className="p-2 text-text-subtle hover:text-text hover:bg-surface-3 rounded-lg transition-colors">
-            <Settings className="w-4 h-4" />
-          </button>
+
         </div>
       </div>
     </div>

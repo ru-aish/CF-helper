@@ -1,7 +1,5 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
 import { createClient } from '@/lib/supabase/client'
 import { useState, useEffect } from 'react'
 import { Bot, LogIn, ArrowLeft, Sparkles, Mail, Lock, ChevronRight, Loader2 } from 'lucide-react'
@@ -143,7 +141,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-bg overflow-hidden px-4">
+    <div className="relative min-h-[100dvh] flex items-center justify-center bg-bg overflow-hidden px-4">
       {/* Background Orbs */}
       <div className="absolute top-0 -left-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 -right-20 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
