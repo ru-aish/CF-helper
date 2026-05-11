@@ -54,7 +54,7 @@ export function Chat({ messages, isLoading, onSendMessage, onGetHint, onGetSolut
             <div className="space-y-2">
               <h3 className="text-3xl font-bold tracking-tight text-gradient">How can I help you today?</h3>
               <p className="text-text-muted max-w-md mx-auto leading-relaxed">
-                I'm your Codeforces AI Tutor. Paste a problem URL to start, or ask me anything about competitive programming.
+                I&apos;m your Codeforces AI Tutor. Paste a problem URL to start, or ask me anything about competitive programming.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-lg mt-8">
