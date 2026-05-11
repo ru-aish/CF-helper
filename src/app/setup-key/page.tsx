@@ -1,7 +1,5 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { KeyRound, ExternalLink, CheckCircle, Loader2, ShieldCheck, ChevronRight } from 'lucide-react'
@@ -60,7 +58,7 @@ export default function SetupKeyPage() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-bg overflow-hidden px-4">
+    <div className="relative min-h-[100dvh] flex items-center justify-center bg-bg overflow-hidden px-4">
       {/* Background Orbs */}
       <div className="absolute top-0 -left-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 -right-20 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
