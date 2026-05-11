@@ -4,7 +4,8 @@ export const dynamic = 'force-dynamic'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { KeyRound, ExternalLink, CheckCircle } from 'lucide-react'
+import { KeyRound, ExternalLink, CheckCircle, Loader2, ShieldCheck, ChevronRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function SetupKeyPage() {
   const [apiKey, setApiKey] = useState('')
@@ -59,77 +60,127 @@ export default function SetupKeyPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-4 dark:bg-gray-900">
-      <div className="w-full max-w-lg space-y-8 rounded-xl bg-white p-10 shadow-lg dark:bg-gray-800">
-        <div className="flex flex-col items-center text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-300">
-            <KeyRound size={32} />
-          </div>
-          <h2 className="mt-6 text-2xl font-extrabold text-gray-900 dark:text-white">
-            Setup Google AI Studio Key
-          </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            To use the Codeforces AI Tutor, you need to provide your own Gemini API Key. This key is encrypted and stored securely.
-          </p>
-        </div>
-
-        <div className="rounded-md bg-blue-50 p-4 dark:bg-blue-900/30">
-          <div className="flex">
-            <div className="ml-3 flex-1 md:flex md:justify-between">
-              <p className="text-sm text-blue-700 dark:text-blue-300">
-                <strong>Step 1:</strong> Get your free API key from Google AI Studio.
-              </p>
-              <p className="mt-3 text-sm md:ml-6 md:mt-0">
-                <a
-                  href="https://aistudio.google.com/app/apikey"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="whitespace-nowrap font-medium text-blue-700 hover:text-blue-600 flex items-center gap-1 dark:text-blue-400 dark:hover:text-blue-300"
+    <div className="relative min-h-screen flex items-center justify-center bg-bg overflow-hidden px-4">
+      {/* Background Orbs */}
+      <div className="absolute top-0 -left-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 -right-20 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full max-w-lg relative"
+      >
+        <div className="glass p-8 md:p-10 rounded-[32px] shadow-2xl border border-white/5 space-y-8">
+          {/* Logo & Header */}
+          <div className="text-center space-y-4">
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full" />
+                <div className="relative w-20 h-20 bg-surface-2 border border-border rounded-3xl flex items-center justify-center shadow-2xl">
+                  <KeyRound className="w-10 h-10 text-primary" />
+                </div>
+                <motion.div 
+                  animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                  className="absolute -top-1 -right-1 w-6 h-6 bg-secondary rounded-full flex items-center justify-center border-4 border-surface shadow-lg"
                 >
-                  Get API Key <ExternalLink size={14} />
-                </a>
+                  <ShieldCheck className="w-3 h-3 text-white" />
+                </motion.div>
+              </div>
+            </div>
+            <div className="space-y-1">
+              <h2 className="text-3xl font-bold tracking-tight text-gradient">Secure API Key</h2>
+              <p className="text-text-muted text-sm px-4 leading-relaxed">
+                Provide your Gemini API Key to power the AI Tutor. Your key is encrypted and stored securely.
               </p>
             </div>
           </div>
-        </div>
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="api-key" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              <strong>Step 2:</strong> Paste your API Key here
-            </label>
-            <div className="mt-2">
-              <input
-                id="api-key"
-                name="apiKey"
-                type="password"
-                required
-                className="block w-full rounded-md border-0 py-2.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-gray-700 dark:text-white dark:ring-gray-600 dark:placeholder:text-gray-400"
-                placeholder="AIzaSy..."
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-              />
+          <div className="bg-surface-2 border border-primary/20 rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs shrink-0 mt-0.5">
+                1
+              </div>
+              <p className="text-sm text-text-muted font-medium">
+                Get your free API key from Google AI Studio.
+              </p>
             </div>
+            <a
+              href="https://aistudio.google.com/app/apikey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whitespace-nowrap font-bold text-xs uppercase tracking-widest text-primary hover:text-primary-light flex items-center gap-1.5 transition-colors md:pl-4"
+            >
+              Get Key <ExternalLink size={14} />
+            </a>
           </div>
 
-          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
-          {success && (
-            <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
-              <CheckCircle size={16} /> Key saved successfully! Redirecting...
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 px-1">
+                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs shrink-0">
+                  2
+                </div>
+                <label htmlFor="api-key" className="text-xs font-bold text-text-subtle uppercase tracking-widest">
+                  Paste your API Key
+                </label>
+              </div>
+              <div className="relative group">
+                <input
+                  id="api-key"
+                  name="apiKey"
+                  type="password"
+                  required
+                  className="w-full bg-surface-2 border border-border group-focus-within:border-primary/50 rounded-2xl px-5 py-4 text-text placeholder-text-subtle focus:outline-none transition-all font-mono text-sm tracking-wider"
+                  placeholder="AIzaSy..."
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                />
+              </div>
             </div>
-          )}
 
-          <div>
+            <AnimatePresence mode="wait">
+              {error && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="rounded-2xl p-4 text-sm flex items-center gap-3 bg-danger/10 border border-danger/20 text-danger"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-danger shrink-0" />
+                  {error}
+                </motion.div>
+              )}
+              {success && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="rounded-2xl p-4 text-sm flex items-center gap-3 bg-success/10 border border-success/20 text-success"
+                >
+                  <CheckCircle size={16} className="shrink-0" />
+                  Key saved successfully! Redirecting...
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <button
               type="submit"
-              disabled={isLoading || success}
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50"
+              disabled={isLoading || success || !apiKey.trim()}
+              className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white rounded-2xl py-4 font-bold transition-all shadow-lg shadow-primary/20 disabled:opacity-50 active:scale-95"
             >
-              {isLoading ? 'Saving...' : 'Save and Continue'}
+              {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <span>Save and Continue</span>}
+              {!isLoading && <ChevronRight className="w-4 h-4" />}
             </button>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+        
+        {/* Footer */}
+        <div className="mt-8 flex items-center justify-center gap-2 text-xs text-text-subtle font-medium uppercase tracking-widest opacity-60">
+           <ShieldCheck size={14} />
+           <span>Stored securely on your device</span>
+        </div>
+      </motion.div>
     </div>
   )
 }
