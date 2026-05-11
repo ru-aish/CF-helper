@@ -3,8 +3,21 @@
 import { useState, useEffect } from 'react';
 import { Sidebar } from '@/components/Sidebar';
 import { Chat } from '@/components/Chat';
-import { Panel, Group as PanelGroup, Separator as PanelResizeHandle } from 'react-resizable-panels';
+
 import { createClient } from '@/lib/supabase/client';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Menu, 
+  ExternalLink, 
+  Cpu, 
+  Key as KeyIcon, 
+  LogOut, 
+  X, 
+  ChevronRight, 
+  Globe,
+  Loader2,
+  Sparkles
+} from 'lucide-react';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -24,7 +37,6 @@ export default function Home() {
   const [problemDetails, setProblemDetails] = useState<any>(null);
 
   useEffect(() => {
-    // Check local storage for cached threads
     const cachedSessions = localStorage.getItem('thread_cache');
     if (cachedSessions) {
       try {
@@ -34,7 +46,6 @@ export default function Home() {
       }
     }
 
-    // Load historical sessions on mount
     const fetchHistory = async () => {
       try {
         const res = await fetch('/api/conversations');
@@ -89,17 +100,17 @@ export default function Home() {
 
         for (const line of lines) {
           if (line.startsWith('data: ')) {
-            const data = JSON.parse(line.slice(6));
-            if (data.chunk) {
-              assistantResponse += data.chunk;
-              setMessages((prev) => {
-                const newMsgs = [...prev];
-                newMsgs[newMsgs.length - 1].content = assistantResponse;
-                return newMsgs;
-              });
-            } else if (data.error) {
-               console.error("Chat Error:", data.error);
-            }
+            try {
+              const data = JSON.parse(line.slice(6));
+              if (data.chunk) {
+                assistantResponse += data.chunk;
+                setMessages((prev) => {
+                  const newMsgs = [...prev];
+                  newMsgs[newMsgs.length - 1].content = assistantResponse;
+                  return newMsgs;
+                });
+              }
+            } catch (e) {}
           }
         }
       }
@@ -138,9 +149,8 @@ export default function Home() {
       setShowNewModal(false);
       setUrlInput('');
 
-            // Add to session list optimistically
       setSessions((prev) => {
-        const updated = [{id: startData.session_id, title: startData.problem_title}, ...prev];
+        const updated = [{id: startData.session_id, title: startData.problem_title, created_at: new Date().toISOString()}, ...prev];
         localStorage.setItem('thread_cache', JSON.stringify(updated));
         return updated;
       });
@@ -165,7 +175,6 @@ export default function Home() {
           content: msg.message
         })));
 
-        // Also fetch the problem details for the drawer
         const problemRes = await fetch(`/api/problem/${id}`);
         if (problemRes.ok) {
           const problemData = await problemRes.json();
@@ -219,8 +228,6 @@ export default function Home() {
     }
   };
 
-
-
   const handleLogout = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
@@ -229,134 +236,201 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-bg text-text font-sans overflow-hidden">
-      <PanelGroup orientation="horizontal" className="flex-1 w-full h-full">
-        {isSidebarOpen && (
-          <>
-            <Panel defaultSize={20} minSize={15} maxSize={40}>
-              <Sidebar
-                conversations={sessions}
-                currentSessionId={currentSessionId}
-                onSelectSession={loadSession}
-                onNewSession={() => setShowNewModal(true)}
-              />
-            </Panel>
-            <PanelResizeHandle className="w-1.5 bg-border hover:bg-primary/50 cursor-col-resize transition-colors flex items-center justify-center relative active:bg-primary z-50" />
-          </>
-        )}
-        <Panel>
-          <main className="h-full flex flex-col min-w-0 relative">
-            <header className="h-14 flex items-center justify-between px-4 border-b border-border bg-surface shrink-0 z-10">
-              <div className="flex items-center space-x-4">
-                <button
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                  className="p-1.5 rounded-md hover:bg-surface-2 text-subtle hover:text-white transition-colors"
-                  title={isSidebarOpen ? "Collapse Sidebar" : "Expand Sidebar"}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                  </svg>
-                </button>
-                <h1 className="text-sm font-semibold tracking-wide">Codeforces AI Tutor</h1>
+      {/* Sidebar */}
+      <div 
+        className={`h-full shrink-0 transition-all duration-300 ease-in-out overflow-hidden ${
+          isSidebarOpen ? 'w-[280px]' : 'w-0'
+        }`}
+      >
+        <div className="w-[280px] h-full">
+          <Sidebar
+            conversations={sessions}
+            currentSessionId={currentSessionId}
+            onSelectSession={loadSession}
+            onNewSession={() => setShowNewModal(true)}
+          />
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="flex-1 h-full flex flex-col min-w-0 relative bg-bg">
+        <header className="h-16 flex items-center justify-between px-6 border-b border-border bg-surface/50 backdrop-blur-md shrink-0 z-10">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="p-2 rounded-xl hover:bg-surface-2 text-text-muted hover:text-text transition-all active:scale-90"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+            
+            <div className="h-6 w-px bg-border mx-1" />
+            
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Cpu className="w-4 h-4 text-primary" />
+              </div>
+              <div>
+                <h1 className="text-sm font-bold tracking-tight">Codeforces AI</h1>
                 {currentSessionId && problemDetails && (
-                  <button
-                    onClick={() => {
-                      const url = problemDetails.url;
-                      const features = 'width=800,height=800,resizable=yes,scrollbars=yes,status=no,location=no,toolbar=no,menubar=no';
-                      window.open(url, 'CodeforcesProblem', features);
-                    }}
-                    className={`text-xs px-3 py-1.5 rounded-md border transition-colors bg-surface-2 border-border text-subtle hover:text-white hover:border-border/80 flex items-center gap-1`}
-                  >
-                    View Problem
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                  </button>
+                  <p className="text-[10px] text-text-subtle uppercase tracking-widest font-bold">
+                    Current Session
+                  </p>
                 )}
               </div>
-              <div className="flex items-center space-x-3">
-                <select
-                  value={selectedModel}
-                  onChange={(e) => setSelectedModel(e.target.value)}
-                  className="bg-surface-2 border border-border text-sm rounded-md px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-primary text-text"
-                >
-                  {MODELS.map(m => (
-                    <option key={m.id} value={m.id}>{m.name}</option>
-                  ))}
-                </select>
-                <a
-                  href="/setup-key"
-                  className="text-xs font-medium text-subtle hover:text-primary transition-colors flex items-center space-x-1"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                  <span>API Key</span>
-                </a>
-                <button
-                  onClick={handleLogout}
-                  className="text-xs font-medium text-danger hover:text-danger/80 transition-colors flex items-center space-x-1 border border-danger/20 hover:border-danger/40 bg-danger/10 px-2 py-1.5 rounded-md ml-2"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                  <span>Sign Out</span>
-                </button>
-              </div>
-            </header>
-
-            <div className="flex-1 flex overflow-hidden relative">
-              <Chat
-                messages={messages}
-                isLoading={isLoading}
-                onSendMessage={handleSendMessage}
-                onGetHint={handleGetHint}
-                onGetSolution={handleGetSolution}
-              />
             </div>
-          </main>
-        </Panel>
-      </PanelGroup>
+
+            {currentSessionId && problemDetails && (
+              <button
+                onClick={() => window.open(problemDetails.url, '_blank')}
+                className="ml-2 group flex items-center gap-2 text-xs font-medium bg-surface-2 hover:bg-surface-3 border border-border rounded-lg px-3 py-1.5 transition-all"
+              >
+                <span className="truncate max-w-[150px]">{problemDetails.title}</span>
+                <ExternalLink className="w-3 h-3 text-text-subtle group-hover:text-primary transition-colors" />
+              </button>
+            )}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2 bg-surface-2 border border-border rounded-xl px-3 py-1.5 focus-within:ring-1 focus-within:ring-primary/30 transition-all">
+              <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="bg-transparent border-none text-[13px] font-medium focus:outline-none text-text cursor-pointer pr-1"
+              >
+                {MODELS.map(m => (
+                  <option key={m.id} value={m.id} className="bg-surface-2">{m.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="h-6 w-px bg-border mx-1" />
+
+            <button
+              onClick={() => window.location.href = '/setup-key'}
+              className="p-2 text-text-muted hover:text-text hover:bg-surface-2 rounded-xl transition-all"
+              title="API Settings"
+            >
+              <KeyIcon className="w-5 h-5" />
+            </button>
+            
+            <button
+              onClick={handleLogout}
+              className="p-2 text-text-muted hover:text-danger hover:bg-danger/10 rounded-xl transition-all"
+              title="Sign Out"
+            >
+              <LogOut className="w-5 h-5" />
+            </button>
+          </div>
+        </header>
+
+        <div className="flex-1 w-full flex overflow-hidden relative">
+          <Chat
+            messages={messages}
+            isLoading={isLoading}
+            onSendMessage={handleSendMessage}
+            onGetHint={handleGetHint}
+            onGetSolution={handleGetSolution}
+          />
+        </div>
+      </main>
 
       {/* New Problem Modal */}
-      {showNewModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-surface rounded-2xl w-full max-w-md overflow-hidden border border-border shadow-2xl">
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">Start New Problem</h3>
-              <p className="text-subtle text-sm mb-6">Enter a Codeforces problem URL to begin a tutoring session.</p>
+      <AnimatePresence>
+        {showNewModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => { setShowNewModal(false); setError(''); }}
+              className="absolute inset-0 bg-bg/80 backdrop-blur-xl"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-surface border border-border shadow-2xl rounded-3xl w-full max-w-xl overflow-hidden"
+            >
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold tracking-tight">Extract Problem</h3>
+                      <p className="text-text-muted text-sm">Enter a Codeforces URL to begin</p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => { setShowNewModal(false); setError(''); }}
+                    className="p-2 hover:bg-surface-2 rounded-full transition-colors"
+                  >
+                    <X className="w-5 h-5 text-text-subtle" />
+                  </button>
+                </div>
 
-              <input
-                type="url"
-                value={urlInput}
-                onChange={(e) => setUrlInput(e.target.value)}
-                placeholder="https://codeforces.com/contest/2135/problem/C"
-                className="w-full bg-surface-2 border border-border rounded-xl px-4 py-3 text-text placeholder-subtle mb-4 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                autoFocus
-                disabled={isLoading}
-              />
+                <div className="space-y-6">
+                  <div className="relative group">
+                    <input
+                      type="url"
+                      value={urlInput}
+                      onChange={(e) => setUrlInput(e.target.value)}
+                      placeholder="https://codeforces.com/contest/..."
+                      className="w-full bg-surface-2 border border-border group-focus-within:border-primary/50 rounded-2xl px-5 py-4 text-text placeholder-text-subtle focus:outline-none transition-all pr-12"
+                      autoFocus
+                      disabled={isLoading}
+                    />
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                      <ChevronRight className="w-5 h-5 text-text-subtle group-focus-within:text-primary transition-colors" />
+                    </div>
+                  </div>
 
-              {error && <div className="text-danger text-sm mb-4 bg-danger/10 p-3 rounded-lg border border-danger/20">{error}</div>}
+                  {error && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="text-danger text-sm bg-danger/10 p-4 rounded-2xl border border-danger/20 flex items-center gap-3"
+                    >
+                      <X className="w-4 h-4 shrink-0" />
+                      {error}
+                    </motion.div>
+                  )}
 
-              <div className="flex justify-end space-x-3">
-                <button
-                  onClick={() => { setShowNewModal(false); setError(''); }}
-                  className="px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-surface-2 transition-colors disabled:opacity-50"
-                  disabled={isLoading}
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleNewSession}
-                  disabled={!urlInput || isLoading}
-                  className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-colors disabled:opacity-50 flex items-center"
-                >
-                  {isLoading ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                      Extracting...
-                    </>
-                  ) : 'Start Session'}
-                </button>
+                  <div className="flex justify-end gap-3 pt-2">
+                    <button
+                      onClick={() => { setShowNewModal(false); setError(''); }}
+                      className="px-6 py-3 rounded-2xl text-sm font-semibold hover:bg-surface-2 transition-colors disabled:opacity-50"
+                      disabled={isLoading}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleNewSession}
+                      disabled={!urlInput || isLoading}
+                      className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-2xl text-sm font-bold transition-all shadow-lg shadow-primary/25 disabled:opacity-50 flex items-center gap-2"
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Extracting...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Start Session</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
-
 }
