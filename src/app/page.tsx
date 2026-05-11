@@ -229,7 +229,7 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-bg text-text font-sans overflow-hidden">
-      <PanelGroup orientation="horizontal">
+      <PanelGroup orientation="horizontal" className="flex-1 w-full h-full">
         {isSidebarOpen && (
           <>
             <Panel defaultSize={20} minSize={15} maxSize={40}>
