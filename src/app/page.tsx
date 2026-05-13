@@ -269,6 +269,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              aria-label="Toggle sidebar"
               className="p-2 rounded-xl hover:bg-surface-2 text-text-muted hover:text-text transition-all active:scale-90"
             >
               <Menu className="w-5 h-5" />
@@ -319,6 +320,7 @@ export default function Home() {
 
             <button
               onClick={() => window.location.href = '/setup-key'}
+              aria-label="API Settings"
               className="p-2 text-text-muted hover:text-text hover:bg-surface-2 rounded-xl transition-all"
               title="API Settings"
             >
@@ -327,6 +329,7 @@ export default function Home() {
             
             <button
               onClick={handleLogout}
+              aria-label="Sign Out"
               className="p-2 text-text-muted hover:text-danger hover:bg-danger/10 rounded-xl transition-all"
               title="Sign Out"
             >
@@ -377,6 +380,7 @@ export default function Home() {
                   </div>
                   <button 
                     onClick={() => { setShowNewModal(false); setError(''); }}
+                    aria-label="Close modal"
                     className="p-2 hover:bg-surface-2 rounded-full transition-colors"
                   >
                     <X className="w-5 h-5 text-text-subtle" />
